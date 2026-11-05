@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-reliability-platform"
+version = "0.1.0"
+description = "Reproducible, local LLM regression checks"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.10,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llm_reliability"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
