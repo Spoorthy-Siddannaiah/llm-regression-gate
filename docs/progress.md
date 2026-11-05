@@ -18,6 +18,7 @@
 - Errors identify files, nested invalid fields, duplicate values, and case coverage.
 - Empty answers, unknown citations, and retrieval order survive loading unchanged.
 - Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 42 passed.
+- Saved technical practice questions in `docs/interview-questions.md` for review.
 
 ## Next bounded task (not implemented)
 
