@@ -20,14 +20,24 @@
 - Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 42 passed.
 - Saved technical practice questions in `docs/interview-questions.md` for review.
 
+## Completed: deterministic required-fact checks
+
+- Added `check_required_facts(case, response)` returning matched and missing phrases.
+- Matching ignores case/repeated whitespace, preserves punctuation, and avoids
+  partial word/number matches. It rejects mismatched case IDs and does not mutate inputs.
+- Verified the synthetic candidate refund answer misses both required phrases,
+  while baseline answers and the unchanged support-hours answer pass.
+- Tests explicitly demonstrate limitations for negation and paraphrases.
+- Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 56 passed.
+
 ## Next bounded task (not implemented)
 
-Implement deterministic required-fact checks with explicit limitations and tests.
-Comparison gates, citation/retrieval metrics, reports, and the CLI remain later tasks.
-Keep the baseline fixed.
+Add citation source-ID checks and retrieval Recall@K with clearly defined semantics.
+Comparison gates, report generation, and the CLI remain later tasks. Keep the baseline fixed.
 
 ## Current limitations
 
-No runner, CLI, scoring, reports, or CI gate. Versions are manually maintained
+Only required-phrase presence checks exist; no runner, CLI, reports, or CI gate.
+No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between
 recordings. No paid APIs or external services are used.
