@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "recording_id": "synthetic-baseline-v1",
+  "dataset_id": "fictional-support-policy",
+  "dataset_version": "1.0.0",
+  "configuration": {
+    "configuration_id": "synthetic-support",
+    "configuration_version": "1",
+    "model_version": "synthetic-handwritten-v1",
+    "prompt_version": "synthetic-v1",
+    "retrieval_version": "synthetic-v1"
+  },
+  "responses": [
+    {
+      "case_id": "refund-window",
+      "answer": "You can request a refund within 30 days of purchase with proof of purchase.",
+      "cited_source_ids": ["refund-policy-v1"],
+      "retrieved_source_ids": ["refund-policy-v1"]
+    },
+    {
+      "case_id": "support-hours",
+      "answer": "Support is available Monday to Friday, 09:00 to 17:00 UTC.",
+      "cited_source_ids": ["support-hours-v1"],
+      "retrieved_source_ids": ["support-hours-v1"]
+    }
+  ]
+}

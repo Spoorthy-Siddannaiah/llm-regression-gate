@@ -9,11 +9,21 @@
 - Verified with Python 3.12.13: `uv run --python 3.12 pytest` — 19 passed.
 - Fixed package discovery after the initial editable build exposed a package-name mismatch.
 
+## Completed: synthetic recordings and validated loading
+
+- Added explicitly synthetic baseline/candidate recordings, separate from the dataset.
+- Candidate intentionally changes the critical refund answer to 60 days and omits
+  proof of purchase; no actual model or prompt experiment was performed.
+- Added read-only UTF-8 JSON loaders using existing Pydantic models and ComparisonInput.
+- Errors identify files, nested invalid fields, duplicate values, and case coverage.
+- Empty answers, unknown citations, and retrieval order survive loading unchanged.
+- Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 42 passed.
+
 ## Next bounded task (not implemented)
 
-Add local baseline/candidate JSON recordings and a loader that surfaces file and
-validation errors clearly. Then proceed incrementally to deterministic scoring,
-comparison gates, reports, and finally the CLI. Keep the baseline fixed.
+Implement deterministic required-fact checks with explicit limitations and tests.
+Comparison gates, citation/retrieval metrics, reports, and the CLI remain later tasks.
+Keep the baseline fixed.
 
 ## Current limitations
 

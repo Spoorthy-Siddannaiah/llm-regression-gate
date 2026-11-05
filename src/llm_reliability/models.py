@@ -20,8 +20,14 @@ class Criticality(StrEnum):
 
 
 def require_unique(values: list[str], label: str) -> None:
-    if len(values) != len(set(values)):
-        raise ValueError(f"duplicate {label}")
+    seen: set[str] = set()
+    duplicates: set[str] = set()
+    for value in values:
+        if value in seen:
+            duplicates.add(value)
+        seen.add(value)
+    if duplicates:
+        raise ValueError(f"duplicate {label}: {sorted(duplicates)}")
 
 
 class EvaluationCase(Contract):
