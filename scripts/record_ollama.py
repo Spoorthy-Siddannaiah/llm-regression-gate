@@ -28,6 +28,7 @@ def main() -> None:
     parser.add_argument("--sources", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--recording-id", required=True)
+    parser.add_argument("--top-k", type=int, default=3, help="Number of BM25 passages sent to the model")
     parser.add_argument("--limit", type=int, help="Smoke test only; not a full comparison recording")
     args = parser.parse_args()
     try:
@@ -35,6 +36,8 @@ def main() -> None:
         retriever = BM25Retriever(load_corpus(args.sources))
         if args.limit is not None and not 1 <= args.limit <= len(dataset.cases):
             raise ValueError("limit must be between 1 and dataset case count")
+        if args.top_k <= 0:
+            raise ValueError("top-k must be a positive integer")
         client = LocalOllama()
         model = client.verify_model()
         server = client.request("/api/version")
@@ -54,7 +57,7 @@ def main() -> None:
         observations = []
         cases = dataset.cases[:args.limit] if args.limit is not None else dataset.cases
         for number, case in enumerate(cases, 1):
-            hits = retriever.retrieve(case.question, top_k=3)
+            hits = retriever.retrieve(case.question, top_k=args.top_k)
             payload = build_request(case.question, hits)
             # Numbered paths avoid interpreting upstream IDs as filesystem paths.
             prefix = evidence / f"{number:03d}"
@@ -73,9 +76,10 @@ def main() -> None:
             recording_id=args.recording_id, dataset_id=dataset.dataset_id,
             dataset_version=dataset.dataset_version,
             configuration=Configuration(
-                configuration_id="ollama-llama3.2-bm25", configuration_version="1.0.0",
+                configuration_id="ollama-llama3.2-bm25",
+                configuration_version="1.0.0" if args.top_k == 3 else f"1.0.0-top{args.top_k}",
                 model_version=f"{MODEL}@sha256:{MODEL_DIGEST}",
-                prompt_version=PROMPT_VERSION, retrieval_version="bm25-v1-top3",
+                prompt_version=PROMPT_VERSION, retrieval_version=f"bm25-v1-top{args.top_k}",
             ), responses=observations,
         )
         write_json(args.output_dir / "recording.json", recording.model_dump(mode="json"))
@@ -87,7 +91,7 @@ def main() -> None:
             "model": model, "server": server, "model_metadata": model_metadata,
             "metadata_omissions": ["modelfile (local filesystem paths)", "tensors"],
             "generation_options": OPTIONS, "system_prompt": SYSTEM_PROMPT,
-            "prompt_version": PROMPT_VERSION, "retrieval_top_k": 3,
+            "prompt_version": PROMPT_VERSION, "retrieval_top_k": args.top_k,
             "retrieval_settings": retriever.settings.model_dump(mode="json"),
             "platform": platform.platform(), "python": platform.python_version(),
             "input_sha256": {

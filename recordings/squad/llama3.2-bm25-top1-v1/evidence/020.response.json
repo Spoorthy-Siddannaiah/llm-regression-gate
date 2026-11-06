@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56dfa13d4a1a83140091ebc1",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-06T19:07:52.882338Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"Croatia\", \"cited_source_ids\": [\"squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2925197541,
+    "load_duration": 2797333,
+    "prompt_eval_count": 313,
+    "prompt_eval_cached_count": 111,
+    "prompt_eval_duration": 751372000,
+    "eval_count": 56,
+    "eval_duration": 2150175000
+  }
+}

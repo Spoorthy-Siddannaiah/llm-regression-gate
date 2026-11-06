@@ -3,6 +3,9 @@
 Actual local Ollama outputs for the real dataset are documented in
 [`squad/llama3.2-bm25-v1`](squad/llama3.2-bm25-v1/README.md). They are an observed
 reference with known failures, not release-approved model results.
+The separate [`squad/llama3.2-bm25-top1-v1`](squad/llama3.2-bm25-top1-v1/README.md)
+candidate changes retrieval depth to one and demonstrates actual relative
+regressions without changing the fixed baseline.
 
 ## Synthetic fixtures at this directory's root
 

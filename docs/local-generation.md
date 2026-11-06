@@ -45,10 +45,13 @@ uv run --python 3.12 scripts/record_ollama.py \
   --output-dir recordings/squad/new-run
 ```
 
-An existing output directory is refused. `--limit 1` makes a smoke subset; its
-manifest identifies that scope and it cannot substitute for a complete recording
-in a comparison against the full dataset. A failed run leaves evidence but no
-completed manifest; inspect it and choose a new directory rather than overwriting.
+An existing output directory is refused. `--top-k` defaults to 3 and can change
+the passage budget for a candidate experiment. The recording configuration and
+manifest include the selected K; this does not change evaluation Recall@K settings.
+`--limit 1` makes a smoke subset, explicitly identified in its manifest. It cannot
+substitute for a complete recording in a comparison against the full dataset.
+A failed run leaves evidence but no completed manifest; inspect it and choose a
+new directory rather than overwriting.
 
 Each successful run stores:
 

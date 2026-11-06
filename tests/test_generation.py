@@ -75,7 +75,8 @@ def test_unsupported_endpoint_rejected_before_network():
         LocalOllama().request("/api/pull", {"model": "anything"})
 
 
-def test_recorder_writes_evidence_and_never_overwrites(tmp_path, monkeypatch):
+@pytest.mark.parametrize("top_k", [1, 3])
+def test_recorder_writes_evidence_and_never_overwrites(tmp_path, monkeypatch, top_k):
     root = Path(__file__).resolve().parents[1]
     verified = []
 
@@ -94,16 +95,19 @@ def test_recorder_writes_evidence_and_never_overwrites(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", [
         "record_ollama.py", "--dataset", str(root / "datasets/squad/v1/dataset.json"),
         "--sources", str(root / "datasets/squad/v1/sources.json"), "--output-dir", str(output),
-        "--recording-id", "unit-test-not-model-output", "--limit", "1",
+        "--recording-id", "unit-test-not-model-output", "--limit", "1", "--top-k", str(top_k),
     ])
     script = str(root / "scripts/record_ollama.py")
     runpy.run_path(script, run_name="__main__")
     recording = load_recording(output / "recording.json")
     assert recording.responses[0].cited_source_ids == ["unlabelled-test-citation"]
     assert recording.responses[0].answer == "unit answer"
+    assert len(recording.responses[0].retrieved_source_ids) == top_k
+    assert recording.configuration.retrieval_version == f"bm25-v1-top{top_k}"
     manifest = json.loads((output / "manifest.json").read_text())
     assert manifest["scope"] == "smoke_subset"
     assert manifest["status"] == "completed_not_promoted"
+    assert manifest["retrieval_top_k"] == top_k
     assert len(verified) == 2
     assert (output / "evidence/001.request.json").exists()
     assert (output / "evidence/001.response.json").exists()
@@ -112,3 +116,23 @@ def test_recorder_writes_evidence_and_never_overwrites(tmp_path, monkeypatch):
         runpy.run_path(script, run_name="__main__")
     assert caught.value.code == 2
     assert (output / "recording.json").read_bytes() == before
+
+
+@pytest.mark.parametrize("top_k", [0, -1])
+def test_invalid_retrieval_budget_rejected_before_model_call(tmp_path, monkeypatch, top_k):
+    root = Path(__file__).resolve().parents[1]
+
+    def unexpected_client():
+        raise AssertionError("invalid arguments must not contact Ollama")
+
+    monkeypatch.setattr("llm_reliability.generation.LocalOllama", unexpected_client)
+    output = tmp_path / "invalid-run"
+    monkeypatch.setattr(sys, "argv", [
+        "record_ollama.py", "--dataset", str(root / "datasets/squad/v1/dataset.json"),
+        "--sources", str(root / "datasets/squad/v1/sources.json"), "--output-dir", str(output),
+        "--recording-id", "invalid", "--top-k", str(top_k),
+    ])
+    with pytest.raises(SystemExit) as caught:
+        runpy.run_path(str(root / "scripts/record_ollama.py"), run_name="__main__")
+    assert caught.value.code == 2
+    assert not output.exists()

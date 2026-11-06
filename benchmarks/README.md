@@ -39,3 +39,26 @@ Tokenization case-folds Unicode word tokens, retains stopwords and numbers, and
 does not stem. Repeated query terms count once. Zero-score passages are omitted;
 ties break by source ID. Floating-point scores can vary slightly across platforms;
 tests compare rankings and recall rather than exact score bytes.
+
+## Real RAG candidate comparison
+
+[`squad-top1-experiment-v1.json`](squad-top1-experiment-v1.json) preserves the actual
+gate result and unchanged-baseline hashes for a separate local generation run.
+Only the intended passage budget changes: three -> one. Model digest, corpus,
+questions, generation/prompt settings, server, and BM25 configuration match.
+
+| Metric | Baseline | Candidate | Delta |
+| --- | ---: | ---: | ---: |
+| Required-phrase coverage | 0.84 | 0.68 | -0.16 |
+| Citation-label coverage | 0.80 | 0.68 | -0.12 |
+| Retrieval Recall@3 | 0.84 | 0.68 | -0.16 |
+
+The zero-drop, zero-floor relative policy fails on all three drops. This avoids
+confusing genuine relative changes with the baseline's existing absolute-floor
+failures. Both sides are evaluated with the same K=3; the candidate returns only
+one source. This measures coverage lost to the smaller budget, not degraded BM25
+ranking. Single-run answer differences are not a statistical causal estimate.
+No latency or cost improvement was measured or claimed. Raw timing/token fields
+are preserved in each run's evidence for inspection only.
+
+See [candidate recording and replay command](../recordings/squad/llama3.2-bm25-top1-v1/README.md).

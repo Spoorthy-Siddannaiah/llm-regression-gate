@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56ddde6b9a695914005b9628",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-06T19:07:27.710555Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"\", \"cited_source_ids\": []}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1419761041,
+    "load_duration": 16736583,
+    "prompt_eval_count": 340,
+    "prompt_eval_cached_count": 110,
+    "prompt_eval_duration": 886391000,
+    "eval_count": 13,
+    "eval_duration": 498546000
+  }
+}

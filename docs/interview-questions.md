@@ -77,3 +77,10 @@ labels be kept out of the retriever's inputs?
 Why must we capture the model digest, prompt, generation settings, and corpus hash
 alongside a recording? Does temperature zero make baseline regeneration perfectly
 deterministic, and does a completed run mean the baseline is release-ready?
+
+## Real candidate experiment
+
+We reduced retrieval output from three passages to one and evaluated both at
+Recall@3. Why is the resulting coverage drop not evidence that BM25 ranking got
+worse? Why use a relative-only policy to demonstrate regression separately from
+absolute quality requirements the baseline already misses?

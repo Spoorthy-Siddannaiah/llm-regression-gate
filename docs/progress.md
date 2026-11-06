@@ -149,11 +149,25 @@
   illustrative 0.90 absolute floors fails; no relative regression claim is made.
 - Verified 179 offline tests, including real recording/evidence/hash integrity.
 
+## Completed: real candidate change and fixed-baseline comparison
+
+- Added `--top-k` to the explicit recording script (default 3), with metadata and
+  validation. Generated 25 actual candidate responses with top K changed to 1.
+- Verified matching model digest, prompt/schema, options, corpus/questions, server,
+  and BM25 settings. Preserved all 54 baseline files byte-for-byte.
+- Relative-only comparison returned exit 1: phrase coverage 0.84 -> 0.68,
+  citation-label coverage 0.80 -> 0.68, retrieval Recall@3 0.84 -> 0.68.
+- Saved complete run evidence and `benchmarks/squad-top1-experiment-v1.json`.
+- New real-data offline CLI replay test confirms all failures are relative drops,
+  not the baseline's known failures against illustrative 0.90 absolute floors.
+- Verified 187 tests on Python 3.12.13. No paid calls or automatic baseline promotion.
+- One run/configuration; no statistical, semantic-accuracy, latency, or cost claim.
+
 ## Next bounded task (not implemented)
 
-Choose a deliberate candidate change (prompt or retrieval) and record it separately
-against the same real dataset. Compare it with this fixed observed reference while
-keeping the metric limitations and uncalibrated release floors explicit.
+Add explicit real-recording replay steps to GitHub Actions with expected-rejection
+handling, while retaining the synthetic fixtures as fast unit/demo cases. Actual
+PR-driven model generation remains a separate future integration.
 
 ## Current limitations
 

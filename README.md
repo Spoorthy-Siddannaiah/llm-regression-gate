@@ -167,6 +167,31 @@ output directories, verifies the installed digest, and never downloads models or
 automatically replaces baselines. The existing CI gate continues using synthetic
 fixtures; real recording integrity is tested offline without Ollama.
 
+## Real candidate regression caught
+
+A separate [actual candidate run](recordings/squad/llama3.2-bm25-top1-v1/README.md)
+changes only the intended retrieval budget from three passages to one. Model,
+prompt, generation settings, questions/corpus, and BM25 settings match; all 54
+baseline files remain unchanged. The relative-only gate returns **exit 1**:
+
+| Metric | Baseline | Candidate | Change |
+| --- | ---: | ---: | ---: |
+| Required-phrase coverage | 84% | 68% | -16 percentage points |
+| Citation-label coverage | 80% | 68% | -12 percentage points |
+| Recall@3 | 84% | 68% | -16 percentage points |
+
+For "Who was the Super Bowl 50 MVP?", the baseline answers "Von Miller";
+the candidate does not retrieve its associated passage and returns an empty answer.
+The evidence is in [the experiment artifact](benchmarks/squad-top1-experiment-v1.json).
+
+`configs/gate.relative-only.v1.json` uses zero metric floors and permits no drops.
+It isolates relative regressions rather than re-reporting the baseline's known
+absolute-quality failures. Passing that policy would not establish production
+acceptance. This is a small single-run experiment with limited phrase/source-ID
+checks, not a semantic-accuracy, statistical, latency, or cost benchmark.
+Pytest replays the real comparison CLI offline; explicit Actions CLI steps still
+use synthetic recordings. No model calls are added to CI.
+
 ## Comparison and gate policy
 
 ```python
