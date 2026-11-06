@@ -163,11 +163,22 @@
 - Verified 187 tests on Python 3.12.13. No paid calls or automatic baseline promotion.
 - One run/configuration; no statistical, semantic-accuracy, latency, or cost claim.
 
+## Completed: explicit real-data Actions replay
+
+- Added observed real-baseline stability replay and actual candidate expected-rejection
+  steps alongside the synthetic replay cases. Both use the same relative-only policy.
+- Candidate must exit exactly 1; unexpected success or execution failure breaks CI.
+- Configured all eight JSON/Markdown report paths for upload even after failures.
+- Verified 187 tests; workflow YAML parses and all shell blocks pass `bash -n`.
+- Executed all four replay bodies locally, plus real-candidate unexpected-pass and
+  missing-input scenarios. All step outcomes matched expectations. No model calls.
+- No hosted Actions run or artifact upload was performed; nothing was pushed.
+
 ## Next bounded task (not implemented)
 
-Add explicit real-recording replay steps to GitHub Actions with expected-rejection
-handling, while retaining the synthetic fixtures as fast unit/demo cases. Actual
-PR-driven model generation remains a separate future integration.
+Validate real recording manifests against dataset/corpus and recording hashes before
+comparison, so stale or incompatible recorded inputs fail explicitly. Automatic
+PR-driven candidate generation remains separate future work.
 
 ## Current limitations
 

@@ -72,6 +72,37 @@ jobs:
             exit 1
           fi
 
+      # Self-replay checks stability only; it does not approve baseline quality.
+      - name: Replay observed SQuAD baseline
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/squad/v1/dataset.json \
+            --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+            --candidate recordings/squad/llama3.2-bm25-v1/recording.json \
+            --policy configs/gate.relative-only.v1.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-squad-baseline
+
+      - name: Verify real SQuAD regression is rejected
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          if uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/squad/v1/dataset.json \
+            --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+            --candidate recordings/squad/llama3.2-bm25-top1-v1/recording.json \
+            --policy configs/gate.relative-only.v1.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-squad-regression; then
+            gate_status=0
+          else
+            gate_status=$?
+          fi
+          if [ "$gate_status" -ne 1 ]; then
+            echo "Expected real quality-regression exit 1; got $gate_status" >&2
+            exit 1
+          fi
+
       - name: Upload available evaluation reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
@@ -82,5 +113,9 @@ jobs:
             reports/ci-accepted/report.md
             reports/ci-intentional-regression/report.json
             reports/ci-intentional-regression/report.md
+            reports/ci-squad-baseline/report.json
+            reports/ci-squad-baseline/report.md
+            reports/ci-squad-regression/report.json
+            reports/ci-squad-regression/report.md
           if-no-files-found: warn
           retention-days: 7

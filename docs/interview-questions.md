@@ -84,3 +84,9 @@ We reduced retrieval output from three passages to one and evaluated both at
 Recall@3. Why is the resulting coverage drop not evidence that BM25 ranking got
 worse? Why use a relative-only policy to demonstrate regression separately from
 absolute quality requirements the baseline already misses?
+
+## Real recordings in CI
+
+Why is CI green when its expected-rejection step observes a real candidate's exit 1?
+How does that differ from a production candidate gate that must return exit 0,
+and why does replaying committed recordings not evaluate new prompt code by itself?

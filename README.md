@@ -164,8 +164,8 @@ fails. No candidate comparison or improvement claim is made by that self-check.
 See [local generation](docs/local-generation.md) for explicit opt-in recording.
 `scripts/record_ollama.py` is separate from offline CI replay, refuses existing
 output directories, verifies the installed digest, and never downloads models or
-automatically replaces baselines. The existing CI gate continues using synthetic
-fixtures; real recording integrity is tested offline without Ollama.
+automatically replaces baselines. CI replays both synthetic fixtures and real
+recordings, and checks their integrity without Ollama.
 
 ## Real candidate regression caught
 
@@ -189,8 +189,8 @@ It isolates relative regressions rather than re-reporting the baseline's known
 absolute-quality failures. Passing that policy would not establish production
 acceptance. This is a small single-run experiment with limited phrase/source-ID
 checks, not a semantic-accuracy, statistical, latency, or cost benchmark.
-Pytest replays the real comparison CLI offline; explicit Actions CLI steps still
-use synthetic recordings. No model calls are added to CI.
+Both pytest and explicit Actions steps replay the real comparison CLI offline.
+No model calls are added to CI.
 
 ## Comparison and gate policy
 
@@ -327,26 +327,36 @@ pushes, and manual dispatch. It installs Python 3.12.13 and dependencies from
    fixture. A quality failure (1) or execution error (2) fails this step.
 3. A separate negative check on `candidate.synthetic.v2.json`. It must return
    exactly 1; an unexpected pass or execution error fails this check.
+4. Self-replay of the observed real SQuAD baseline under the relative-only policy.
+   This must pass as a stability check; it does not approve the baseline's quality.
+5. Replay of the actual top-one SQuAD candidate against that fixed baseline.
+   It must return exactly 1; an unexpected pass or execution error fails the step.
 
 Replay steps still run after test failures when installation succeeded. The
 workflow never suppresses the accepted gate's failure. Available reports from
-both evaluations are uploaded as `regression-reports` with seven-day retention,
+all four evaluations are uploaded as `regression-reports` with seven-day retention,
 even when earlier checks fail. Setup failures may produce no reports.
 
 The workflow uses read-only repository permissions, no persisted checkout
 credentials, and no model-provider secrets or paid inference calls. Runner and
-dependency setup still require network access. The accepted candidate is a
-handwritten demonstration, not output generated from a changed RAG pipeline.
+dependency setup still require network access. The synthetic accepted candidate
+is handwritten. The real candidate contains actual previously recorded outputs
+from the changed RAG pipeline, not freshly generated responses to each PR's code.
 The baseline is not automatically promoted. Changes to baseline fixtures and
 thresholds still require deliberate review; this workflow does not enforce
 approval or protect baseline contents from edits in a pull request.
 
 Local verification covered YAML parsing, shell syntax, replay step execution
-(including unexpected-pass/error scenarios), and 135 passing tests. No hosted
+(including unexpected-pass/error scenarios), and 187 passing tests. No hosted
 Actions run or artifact upload has been verified; nothing has been pushed.
 After publishing, select `Tests and recorded-response gate` as a required status
 check in GitHub branch protection/rulesets to prevent merging failed checks.
 This workflow does not deploy anything.
+
+A green workflow means the evaluator passed its tests and correctly accepted or
+rejected these known recordings. It does not mean the intentionally degraded
+candidate passed, nor does it approve deployment. Automatic candidate generation
+from a PR's model/prompt/retrieval changes is not wired yet.
 
 Action usage follows the upstream documentation for
 [checkout](https://github.com/actions/checkout),
