@@ -5,6 +5,9 @@ No model was called. Configuration versions describe fixture variants; they do n
 demonstrate measured effects of an actual prompt change.
 
 - `baseline.synthetic.v1.json`: fixed reference answers for dataset 1.0.0.
+- `candidate.synthetic.v1.json`: accepted passing synthetic fixture used by CI;
+  wording differs but required phrases and labelled sources are preserved. This
+  is an evaluator demonstration, not an accepted real model release.
 - `candidate.synthetic.v2.json`: intentionally changes `refund-window` to 60 days
   and omits proof of purchase. The support-hours answer stays identical.
 

@@ -6,8 +6,8 @@ checks, citation-ID checks, retrieval Recall@K, a runner, an in-process gate, an
 
 The first local milestone is implemented: one CLI command compares recorded baseline
 and candidate responses against a versioned dataset, writes JSON and Markdown
-reports, and exits nonzero for a critical regression. CI wiring and real RAG
-integration are not implemented yet.
+reports, and exits nonzero for a critical regression. A GitHub Actions workflow
+is included; hosted execution and real RAG integration are not verified yet.
 
 ## Development
 
@@ -150,7 +150,7 @@ the mean; general per-case regression policies are not implemented.
 
 Policy identity and values are preserved in the decision. These settings govern
 narrow assertions, not general correctness. The gate returns a Python result only;
-CI integration is not implemented yet. The baseline is
+A GitHub Actions replay workflow is included. The baseline is
 never replaced automatically.
 
 ## Reports
@@ -233,8 +233,45 @@ help distinguish where the failure appeared. A metric change alone does not prov
 its cause. This is pre-release testing, not live traffic monitoring, and passing
 these narrow checks is not proof of general semantic correctness.
 
-Our command currently consumes recordings only. Candidate generation, GitHub Actions,
-and real RAG integration remain future tasks; replay never makes model calls.
+Our command currently consumes recordings only. Candidate generation and real RAG
+integration remain future tasks; replay never makes model calls.
+
+## GitHub Actions
+
+[Regression workflow](.github/workflows/regression.yml) runs on pull requests,
+pushes, and manual dispatch. It installs Python 3.12.13 and dependencies from
+`uv.lock`, then runs:
+
+1. The pytest suite.
+2. The actual CLI gate on `candidate.synthetic.v1.json`, the accepted synthetic
+   fixture. A quality failure (1) or execution error (2) fails this step.
+3. A separate negative check on `candidate.synthetic.v2.json`. It must return
+   exactly 1; an unexpected pass or execution error fails this check.
+
+Replay steps still run after test failures when installation succeeded. The
+workflow never suppresses the accepted gate's failure. Available reports from
+both evaluations are uploaded as `regression-reports` with seven-day retention,
+even when earlier checks fail. Setup failures may produce no reports.
+
+The workflow uses read-only repository permissions, no persisted checkout
+credentials, and no model-provider secrets or paid inference calls. Runner and
+dependency setup still require network access. The accepted candidate is a
+handwritten demonstration, not output generated from a changed RAG pipeline.
+The baseline is not automatically promoted. Changes to baseline fixtures and
+thresholds still require deliberate review; this workflow does not enforce
+approval or protect baseline contents from edits in a pull request.
+
+Local verification covered YAML parsing, shell syntax, replay step execution
+(including unexpected-pass/error scenarios), and 135 passing tests. No hosted
+Actions run or artifact upload has been verified; nothing has been pushed.
+After publishing, select `Tests and recorded-response gate` as a required status
+check in GitHub branch protection/rulesets to prevent merging failed checks.
+This workflow does not deploy anything.
+
+Action usage follows the upstream documentation for
+[checkout](https://github.com/actions/checkout),
+[setup-uv](https://github.com/astral-sh/setup-uv), and
+[upload-artifact](https://github.com/actions/upload-artifact).
 
 The fictional support policies have no relationship to any real company's policies.
 These phrase checks test narrow assertions, not general semantic correctness.

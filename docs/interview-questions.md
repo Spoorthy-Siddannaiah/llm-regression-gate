@@ -47,3 +47,9 @@ establish that the candidate is acceptable for release?
 Why should a missing recording file or report-write failure return an execution
 error rather than a quality-regression exit code? Should either outcome allow
 a deployment, and how would the team's response differ?
+
+## GitHub Actions regression checks
+
+Why must the intentionally degraded fixture return exactly exit 1, rather than
+just any nonzero exit? What would go wrong if CI used `continue-on-error` for the
+real candidate gate?

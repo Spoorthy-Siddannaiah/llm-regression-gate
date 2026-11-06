@@ -1,0 +1,86 @@
+name: Regression checks
+
+"on":
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regression-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    name: Tests and recorded-response gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.7.12"
+          enable-cache: false
+
+      - name: Install Python and locked dependencies
+        id: install
+        run: |
+          uv python install 3.12.13
+          uv sync --python 3.12.13 --locked
+
+      - name: Run tests
+        run: uv run --python 3.12.13 --locked pytest
+
+      # Run replay checks even if tests fail, provided installation succeeded.
+      - name: Gate accepted synthetic candidate
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/support_policy/v1/dataset.json \
+            --baseline recordings/baseline.synthetic.v1.json \
+            --candidate recordings/candidate.synthetic.v1.json \
+            --policy configs/gate.synthetic.v1.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-accepted
+
+      - name: Verify intentional regression is rejected
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          if uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/support_policy/v1/dataset.json \
+            --baseline recordings/baseline.synthetic.v1.json \
+            --candidate recordings/candidate.synthetic.v2.json \
+            --policy configs/gate.synthetic.v1.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-intentional-regression; then
+            gate_status=0
+          else
+            gate_status=$?
+          fi
+          if [ "$gate_status" -ne 1 ]; then
+            echo "Expected quality-regression exit 1; got $gate_status" >&2
+            exit 1
+          fi
+
+      - name: Upload available evaluation reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: regression-reports
+          path: |
+            reports/ci-accepted/report.json
+            reports/ci-accepted/report.md
+            reports/ci-intentional-regression/report.json
+            reports/ci-intentional-regression/report.md
+          if-no-files-found: warn
+          retention-days: 7

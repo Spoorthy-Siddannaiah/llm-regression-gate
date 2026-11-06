@@ -82,16 +82,30 @@
 - Both pass/fail write reports; existing output is refused. Baseline remains fixed.
 - Verified 133 tests on Python 3.12.13 and installed console command exits 0/1/2.
 
+## Completed: GitHub Actions replay checks
+
+- Added `.github/workflows/regression.yml` for pull requests, pushes, and manual runs.
+- Installs Python 3.12.13 and locked dependencies, runs tests, gates a separate
+  accepted synthetic candidate, and asserts the degraded fixture exits exactly 1.
+- Configured report upload even on failure with seven-day retention; no secrets,
+  paid calls, candidate generation, pushes, or deployments are performed.
+- Verified 135 tests on Python 3.12.13. YAML parsed and shell syntax checked.
+- Executed the workflow replay bodies locally: accepted pass, expected regression,
+  unexpected pass, and execution-error scenarios behaved correctly.
+- Hosted Actions execution and artifact upload remain unverified: repository has
+  not been pushed. Required branch checks must be configured later on GitHub.
+
 ## Next bounded task (not implemented)
 
-Add GitHub Actions with deterministic tests and replay evaluation, retaining reports
-on failure. Separate the intentionally failing demo from the accepted passing gate.
+Prepare the selected real RAG example's dataset/provenance plan: pin source and
+dataset revisions, review labels and licensing, and define a small reproducible
+subset before adding a recording adapter. No paid provider is required.
 
 ## Current limitations
 
 Required-phrase, citation-ID, retrieval recall checks, a runner, gate, and reports
-exist with an offline CLI and exit codes; no CI integration or RAG recording generator
-exists yet. Source checks use case labels, not a validated source registry.
+exist with an offline CLI, exit codes, and an unexecuted hosted CI workflow. No RAG
+recording generator exists yet. Source checks use case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between
 recordings. No paid APIs or external services are used.

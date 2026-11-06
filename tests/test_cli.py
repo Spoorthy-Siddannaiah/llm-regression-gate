@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATASET = ROOT / "datasets/support_policy/v1/dataset.json"
 BASELINE = ROOT / "recordings/baseline.synthetic.v1.json"
 CANDIDATE = ROOT / "recordings/candidate.synthetic.v2.json"
+ACCEPTED_CANDIDATE = ROOT / "recordings/candidate.synthetic.v1.json"
 
 
 def arguments(output, candidate=CANDIDATE):
@@ -20,7 +21,9 @@ def arguments(output, candidate=CANDIDATE):
 
 
 @pytest.mark.parametrize("module", ["llm_reliability", "llm_reliability.cli"])
-@pytest.mark.parametrize("candidate, expected", [(BASELINE, 0), (CANDIDATE, 1)])
+@pytest.mark.parametrize("candidate, expected", [
+    (BASELINE, 0), (ACCEPTED_CANDIDATE, 0), (CANDIDATE, 1),
+])
 def test_process_exit_codes_and_reports(tmp_path, module, candidate, expected):
     output = tmp_path / "reports"
     before = BASELINE.read_bytes()
