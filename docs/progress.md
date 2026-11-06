@@ -63,15 +63,24 @@
   source metric drops, absolute floors, and unchanged input models.
 - Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 110 passed.
 
+## Completed: JSON and Markdown reports
+
+- Added deterministic JSON output with report schema version 1 and the full gate result.
+- Markdown includes decision, versions, policy, metric deltas, failures, and case evidence.
+- Added explicit UTF-8 writing into new directories only; existing output is preserved.
+  Disk failures identify the destination and warn about possible partial output.
+- Generated and inspected local synthetic reports under `reports/` (ignored by Git).
+- Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 119 passed.
+
 ## Next bounded task (not implemented)
 
-Render the evaluation and gate decision as JSON and Markdown reports.
-CLI process exit codes and GitHub Actions integration remain later tasks.
+Add the CLI to connect loading, gate evaluation, and report writing with explicit
+exit codes for pass, quality failure, and input/output errors. CI integration follows.
 
 ## Current limitations
 
-Required-phrase, citation-ID, retrieval recall checks and a runner exist; no CLI,
-reports, or CI integration. An in-process policy gate exists; it does not yet block
+Required-phrase, citation-ID, retrieval recall checks, a runner, gate, and reports
+exist; no CLI or CI integration. The gate does not yet block
 a build or set an exit code. Source checks use case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between

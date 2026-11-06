@@ -35,3 +35,9 @@ even though their model, prompt, or retrieval configurations may differ?
 Why do we need both a baseline-relative regression limit and an absolute candidate
 quality requirement? What happens if baseline and candidate both fail the same
 critical case, or if improvements elsewhere hide that failure in the average?
+
+## Reports and baseline acceptance
+
+Why should a regression report preserve the baseline identity, evaluator settings,
+and gate policy? If a baseline has known failures, can a passing comparison alone
+establish that the candidate is acceptable for release?

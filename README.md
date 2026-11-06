@@ -2,7 +2,7 @@
 
 Independent portfolio project, separate from the Databricks Enterprise AI Knowledge Copilot.
 Current scope: typed contracts, synthetic recordings, validated loading, required-phrase
-checks, citation-ID checks, retrieval Recall@K, a runner, and an in-process regression gate.
+checks, citation-ID checks, retrieval Recall@K, a runner, an in-process gate, and reports.
 
 Target milestone: one CLI command compares recorded baseline and candidate responses
 against a versioned dataset, writes JSON and Markdown reports, and exits nonzero
@@ -149,8 +149,36 @@ the mean; general per-case regression policies are not implemented.
 
 Policy identity and values are preserved in the decision. These settings govern
 narrow assertions, not general correctness. The gate returns a Python result only;
-there are no report files, CLI exit codes, or CI integration yet. The baseline is
+there are no CLI exit codes or CI integration yet. The baseline is
 never replaced automatically.
+
+## Reports
+
+```python
+from llm_reliability.reports import render_json, render_markdown, write_reports
+
+json_text = render_json(decision)
+markdown_text = render_markdown(decision)
+json_path, markdown_path = write_reports(decision, "reports/my-run-001")
+```
+
+JSON contains report schema version 1 plus the complete gate result, including
+computed metrics, configuration snapshots, evaluator settings, and policy. It is
+an output artifact, not a supported input format for the existing result models.
+Markdown presents the decision, aggregate changes, thresholds, gate failures, and
+per-case evidence for both recordings. Fixture text is escaped. Displayed numbers
+are rounded to six decimals; JSON preserves numeric values.
+
+Rendering is deterministic and does not write files. `write_reports` writes UTF-8
+`report.json` and `report.md` in a new directory, refusing existing destinations.
+The pair is not atomic: an I/O failure can leave partial artifacts. `ReportWriteError`
+names the destination; inspect partial output and retry with a new directory.
+Generated `reports/` artifacts are excluded from Git. Reports do not promote baselines.
+
+A real baseline must be deliberately recorded, reviewed, and accepted with pinned
+data and configuration. It can have known weaknesses, so use absolute candidate
+floors as well as relative regression limits. Our bundled baseline is synthetic
+and demonstrates evaluator behaviour, not measured real-pipeline quality.
 
 The fictional support policies have no relationship to any real company's policies.
 These phrase checks test narrow assertions, not general semantic correctness.
