@@ -1,4 +1,25 @@
-# Selected integration example: Haystack + PubMedQA
+# Selected real-data integration: SQuAD 1.1
+
+## Active decision
+
+Use the real [SQuAD 1.1 development slice](../datasets/squad/v1/README.md) now
+committed under `datasets/squad/v1`: 25 original questions, 50 context paragraphs,
+reference answer spans, attribution, and checksums. It has a declared CC BY-SA 4.0
+license and stable upstream IDs. This supersedes the unmaterialized PubMedQA plan.
+
+The pinned source is imported by `scripts/prepare_squad.py`; tests verify the real
+artifacts offline. No generated baseline exists. A later local retrieval/generation
+adapter will consume only questions and corpus text, keeping reference answers
+out of retrieval and prompts. The existing synthetic cases remain unit-test and
+failure-injection examples, not the real integration dataset.
+
+SQuAD is extractive QA data being adapted for a RAG integration slice, not an
+already-built RAG pipeline or a source of baseline model results. The Haystack
+tutorial below remains an architecture reference; its PubMedQA data choice is
+superseded. Required-phrase checking currently accepts only the first answer span;
+alternative-answer evaluation needs a later explicit extension.
+
+## Historical selection: Haystack + PubMedQA (superseded)
 
 Decision: adapt Haystack's official [Evaluating RAG Pipelines tutorial](https://haystack.deepset.ai/tutorials/35_evaluating_rag_pipelines).
 Selected on 2026-11-06; integration is not implemented.

@@ -108,11 +108,24 @@
   case IDs, and no-execution flags; Git whitespace checks passed. No runtime code
   changed, so the previously passing 135-test suite was not rerun for this task.
 
+## Completed: real online SQuAD dataset import
+
+- User requested actual online data instead of another invented integration fixture.
+- Replaced the planned PubMedQA integration with licensed SQuAD 1.1 development data.
+- Downloaded the pinned official source; the importer verifies its full SHA-256.
+- Materialized 25 original questions, 50 paragraphs, all answer alternatives and
+  offsets, source hashes, provenance/selection manifest, and CC BY-SA attribution.
+- First annotated answer is a narrow required-phrase proxy. All cases are standard;
+  alternative-answer acceptance and reviewed critical labels are not implemented.
+- Verified 141 tests, artifact hashes, answer offsets, source IDs, byte-for-byte
+  reproduction from the real upstream file, and refusal to overwrite output.
+- No generation, paid calls, or real model baseline/candidate recordings were made.
+
 ## Next bounded task (not implemented)
 
-Implement a local-file dataset adapter against tiny invented fixtures, keeping
-reference answers separate and requiring explicit reviewed fact annotations. Resolve
-real-data terms or select an explicitly licensed replacement before materialization.
+Add a local retrieval adapter over the real SQuAD corpus, producing ranked source
+IDs without access to reference answers. Then add actual local answer generation
+and reviewed baseline recording as separate bounded tasks.
 
 ## Current limitations
 

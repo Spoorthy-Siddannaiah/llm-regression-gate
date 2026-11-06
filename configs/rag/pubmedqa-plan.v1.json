@@ -1,7 +1,7 @@
 {
   "artifact_kind": "dataset_preparation_plan",
   "plan_version": "1.0.0",
-  "status": "planned_not_materialized",
+  "status": "superseded_by_squad_not_materialized",
   "tutorial": {
     "repository": "https://github.com/deepset-ai/haystack-tutorials",
     "revision": "61213e2a8664e5137e9cc73d24d7458ae1ba0808",

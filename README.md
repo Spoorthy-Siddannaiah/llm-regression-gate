@@ -110,12 +110,15 @@ The runner does not write files, aggregate scores, decide release eligibility, o
 replace the baseline. Result models are output contracts; parsing serialized results
 back into models is not yet supported as a persistence API.
 
-The selected future real-data integration is documented in
-[docs/real-rag-example.md](docs/real-rag-example.md); it is not implemented yet.
-Its pinned source and planned selection rules are in
-[docs/pubmedqa-data-contract.md](docs/pubmedqa-data-contract.md). The selected
-dataset card has no declared license; data materialization awaits clarified terms
-or an explicitly licensed replacement. No real baseline has been recorded.
+The active real-data integration uses an imported
+[SQuAD 1.1 development slice](datasets/squad/v1/README.md): 25 real questions,
+50 source paragraphs, original reference answers, and pinned provenance. This
+replaces the unmaterialized PubMedQA plan. No real model baseline has been recorded.
+
+The offline importer `scripts/prepare_squad.py` verifies the full upstream checksum
+and reproduces the committed subset. Data attribution and CC BY-SA 4.0 license
+information are in the dataset README. Unit/regression tests keep their existing
+synthetic fixtures; integration data now comes from the actual public dataset.
 
 ## Comparison and gate policy
 

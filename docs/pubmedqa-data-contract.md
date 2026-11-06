@@ -1,5 +1,9 @@
 # PubMedQA preparation contract
 
+**Superseded:** the user requested real imported data. The active integration uses
+[SQuAD](../datasets/squad/v1/README.md), which has a declared license and is already
+materialized. This document preserves the earlier plan; do not implement it.
+
 This is a plan, not an imported dataset, runnable RAG configuration, or measured
 baseline. The machine-readable companion is
 [`configs/rag/pubmedqa-plan.v1.json`](../configs/rag/pubmedqa-plan.v1.json).

@@ -59,3 +59,9 @@ real candidate gate?
 Why is a reference answer not the same as a pipeline baseline? How could using
 reference answers or per-question relevant documents during candidate generation
 make a RAG evaluation misleading?
+
+## Real SQuAD integration
+
+Why must alternative human answers be treated differently from several required
+facts? What misleading failures could result if a correct answer uses a different
+annotated span than our currently selected first span?

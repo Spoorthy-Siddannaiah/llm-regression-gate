@@ -1,0 +1,481 @@
+{
+  "squad-56be4db0acb8001400a502ec": {
+    "upstream_question_id": "56be4db0acb8001400a502ec",
+    "article_title": "Super_Bowl_50",
+    "answers": [
+      {
+        "answer_start": 177,
+        "text": "Denver Broncos"
+      },
+      {
+        "answer_start": 177,
+        "text": "Denver Broncos"
+      },
+      {
+        "answer_start": 177,
+        "text": "Denver Broncos"
+      }
+    ],
+    "source_id": "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+  },
+  "squad-56be4e1facb8001400a502f6": {
+    "upstream_question_id": "56be4e1facb8001400a502f6",
+    "article_title": "Super_Bowl_50",
+    "answers": [
+      {
+        "answer_start": 77,
+        "text": "Cam Newton"
+      },
+      {
+        "answer_start": 77,
+        "text": "Cam Newton"
+      },
+      {
+        "answer_start": 77,
+        "text": "Cam Newton"
+      }
+    ],
+    "source_id": "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+  },
+  "squad-56be4eafacb8001400a50302": {
+    "upstream_question_id": "56be4eafacb8001400a50302",
+    "article_title": "Super_Bowl_50",
+    "answers": [
+      {
+        "answer_start": 248,
+        "text": "Von Miller"
+      },
+      {
+        "answer_start": 248,
+        "text": "Von Miller"
+      },
+      {
+        "answer_start": 252,
+        "text": "Miller"
+      }
+    ],
+    "source_id": "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+  },
+  "squad-56be5333acb8001400a5030a": {
+    "upstream_question_id": "56be5333acb8001400a5030a",
+    "article_title": "Super_Bowl_50",
+    "answers": [
+      {
+        "answer_start": 0,
+        "text": "CBS"
+      },
+      {
+        "answer_start": 0,
+        "text": "CBS"
+      },
+      {
+        "answer_start": 0,
+        "text": "CBS"
+      }
+    ],
+    "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+  },
+  "squad-56be53b8acb8001400a50314": {
+    "upstream_question_id": "56be53b8acb8001400a50314",
+    "article_title": "Super_Bowl_50",
+    "answers": [
+      {
+        "answer_start": 32,
+        "text": "Roger Goodell"
+      },
+      {
+        "answer_start": 32,
+        "text": "Roger Goodell"
+      },
+      {
+        "answer_start": 38,
+        "text": "Goodell"
+      }
+    ],
+    "source_id": "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+  },
+  "squad-5733a5f54776f41900660f45": {
+    "upstream_question_id": "5733a5f54776f41900660f45",
+    "article_title": "Warsaw",
+    "answers": [
+      {
+        "answer_start": 188,
+        "text": "Nobel Prize"
+      },
+      {
+        "answer_start": 188,
+        "text": "Nobel Prize"
+      },
+      {
+        "answer_start": 188,
+        "text": "Nobel Prize"
+      }
+    ],
+    "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+  },
+  "squad-57336755d058e614000b5a3d": {
+    "upstream_question_id": "57336755d058e614000b5a3d",
+    "article_title": "Warsaw",
+    "answers": [
+      {
+        "answer_start": 92,
+        "text": "100"
+      },
+      {
+        "answer_start": 87,
+        "text": "over 100"
+      },
+      {
+        "answer_start": 92,
+        "text": "100"
+      }
+    ],
+    "source_id": "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+  },
+  "squad-57337ddc4776f41900660bbb": {
+    "upstream_question_id": "57337ddc4776f41900660bbb",
+    "article_title": "Warsaw",
+    "answers": [
+      {
+        "answer_start": 109,
+        "text": "15 kilometres"
+      },
+      {
+        "answer_start": 109,
+        "text": "15 kilometres"
+      },
+      {
+        "answer_start": 103,
+        "text": "About 15 kilometres"
+      }
+    ],
+    "source_id": "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+  },
+  "squad-57337ea24776f41900660bd0": {
+    "upstream_question_id": "57337ea24776f41900660bd0",
+    "article_title": "Warsaw",
+    "answers": [
+      {
+        "answer_start": 41,
+        "text": "city"
+      },
+      {
+        "answer_start": 0,
+        "text": "Demographically"
+      },
+      {
+        "answer_start": 41,
+        "text": "city"
+      }
+    ],
+    "source_id": "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+  },
+  "squad-57339555d058e614000b5df4": {
+    "upstream_question_id": "57339555d058e614000b5df4",
+    "article_title": "Warsaw",
+    "answers": [
+      {
+        "answer_start": 169,
+        "text": "Warsaw University of Technology"
+      },
+      {
+        "answer_start": 169,
+        "text": "Warsaw University of Technology"
+      },
+      {
+        "answer_start": 169,
+        "text": "Warsaw University of Technology"
+      }
+    ],
+    "source_id": "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+  },
+  "squad-56ddde6b9a695914005b9628": {
+    "upstream_question_id": "56ddde6b9a695914005b9628",
+    "article_title": "Normans",
+    "answers": [
+      {
+        "answer_start": 159,
+        "text": "France"
+      },
+      {
+        "answer_start": 159,
+        "text": "France"
+      },
+      {
+        "answer_start": 159,
+        "text": "France"
+      },
+      {
+        "answer_start": 159,
+        "text": "France"
+      }
+    ],
+    "source_id": "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+  },
+  "squad-56dddf4066d3e219004dad5f": {
+    "upstream_question_id": "56dddf4066d3e219004dad5f",
+    "article_title": "Normans",
+    "answers": [
+      {
+        "answer_start": 1022,
+        "text": "William the Conqueror"
+      },
+      {
+        "answer_start": 1022,
+        "text": "William the Conqueror"
+      },
+      {
+        "answer_start": 1022,
+        "text": "William the Conqueror"
+      }
+    ],
+    "source_id": "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+  },
+  "squad-56dde0379a695914005b9636": {
+    "upstream_question_id": "56dde0379a695914005b9636",
+    "article_title": "Normans",
+    "answers": [
+      {
+        "answer_start": 341,
+        "text": "Viking"
+      },
+      {
+        "answer_start": 331,
+        "text": "Norseman, Viking"
+      },
+      {
+        "answer_start": 331,
+        "text": "Norseman, Viking"
+      }
+    ],
+    "source_id": "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+  },
+  "squad-56dde0ba66d3e219004dad75": {
+    "upstream_question_id": "56dde0ba66d3e219004dad75",
+    "article_title": "Normans",
+    "answers": [
+      {
+        "answer_start": 244,
+        "text": "911"
+      },
+      {
+        "answer_start": 244,
+        "text": "911"
+      },
+      {
+        "answer_start": 244,
+        "text": "911"
+      }
+    ],
+    "source_id": "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+  },
+  "squad-56dde1d966d3e219004dad8d": {
+    "upstream_question_id": "56dde1d966d3e219004dad8d",
+    "article_title": "Normans",
+    "answers": [
+      {
+        "answer_start": 7,
+        "text": "Rollo"
+      },
+      {
+        "answer_start": 7,
+        "text": "Rollo"
+      },
+      {
+        "answer_start": 7,
+        "text": "Rollo"
+      }
+    ],
+    "source_id": "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+  },
+  "squad-56df9e2838dc4217001520f6": {
+    "upstream_question_id": "56df9e2838dc4217001520f6",
+    "article_title": "Nikola_Tesla",
+    "answers": [
+      {
+        "answer_start": 54,
+        "text": "1856"
+      },
+      {
+        "answer_start": 54,
+        "text": "1856"
+      },
+      {
+        "answer_start": 54,
+        "text": "1856"
+      }
+    ],
+    "source_id": "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+  },
+  "squad-56df9ee138dc421700152108": {
+    "upstream_question_id": "56df9ee138dc421700152108",
+    "article_title": "Nikola_Tesla",
+    "answers": [
+      {
+        "answer_start": 106,
+        "text": "1884"
+      },
+      {
+        "answer_start": 106,
+        "text": "1884"
+      },
+      {
+        "answer_start": 106,
+        "text": "1884"
+      }
+    ],
+    "source_id": "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+  },
+  "squad-56dfa01738dc42170015211d": {
+    "upstream_question_id": "56dfa01738dc42170015211d",
+    "article_title": "Nikola_Tesla",
+    "answers": [
+      {
+        "answer_start": 188,
+        "text": "1893"
+      },
+      {
+        "answer_start": 188,
+        "text": "1893"
+      },
+      {
+        "answer_start": 188,
+        "text": "1893"
+      }
+    ],
+    "source_id": "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+  },
+  "squad-56dfa0d84a1a83140091ebb7": {
+    "upstream_question_id": "56dfa0d84a1a83140091ebb7",
+    "article_title": "Nikola_Tesla",
+    "answers": [
+      {
+        "answer_start": 399,
+        "text": "1943"
+      },
+      {
+        "answer_start": 399,
+        "text": "1943"
+      },
+      {
+        "answer_start": 399,
+        "text": "1943"
+      }
+    ],
+    "source_id": "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+  },
+  "squad-56dfa13d4a1a83140091ebc1": {
+    "upstream_question_id": "56dfa13d4a1a83140091ebc1",
+    "article_title": "Nikola_Tesla",
+    "answers": [
+      {
+        "answer_start": 120,
+        "text": "Croatia"
+      },
+      {
+        "answer_start": 120,
+        "text": "Croatia"
+      },
+      {
+        "answer_start": 120,
+        "text": "Croatia"
+      }
+    ],
+    "source_id": "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+  },
+  "squad-56e16182e3433e1400422e28": {
+    "upstream_question_id": "56e16182e3433e1400422e28",
+    "article_title": "Computational_complexity_theory",
+    "answers": [
+      {
+        "answer_start": 0,
+        "text": "Computational complexity theory"
+      },
+      {
+        "answer_start": 0,
+        "text": "Computational complexity theory"
+      },
+      {
+        "answer_start": 0,
+        "text": "Computational complexity theory"
+      }
+    ],
+    "source_id": "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+  },
+  "squad-56e16839cd28a01900c67887": {
+    "upstream_question_id": "56e16839cd28a01900c67887",
+    "article_title": "Computational_complexity_theory",
+    "answers": [
+      {
+        "answer_start": 46,
+        "text": "if its solution requires significant resources"
+      },
+      {
+        "answer_start": 49,
+        "text": "its solution requires significant resources"
+      },
+      {
+        "answer_start": 46,
+        "text": "if its solution requires significant resources"
+      }
+    ],
+    "source_id": "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+  },
+  "squad-56e17644e3433e1400422f40": {
+    "upstream_question_id": "56e17644e3433e1400422f40",
+    "article_title": "Computational_complexity_theory",
+    "answers": [
+      {
+        "answer_start": 59,
+        "text": "analysis of algorithms and computability theory"
+      },
+      {
+        "answer_start": 59,
+        "text": "analysis of algorithms and computability theory"
+      },
+      {
+        "answer_start": 59,
+        "text": "analysis of algorithms and computability theory"
+      }
+    ],
+    "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+  },
+  "squad-56e17a7ccd28a01900c679a1": {
+    "upstream_question_id": "56e17a7ccd28a01900c679a1",
+    "article_title": "Computational_complexity_theory",
+    "answers": [
+      {
+        "answer_start": 187,
+        "text": "problem instance"
+      },
+      {
+        "answer_start": 185,
+        "text": "a problem instance"
+      },
+      {
+        "answer_start": 187,
+        "text": "problem instance"
+      }
+    ],
+    "source_id": "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+  },
+  "squad-56e17e6ee3433e1400422f7f": {
+    "upstream_question_id": "56e17e6ee3433e1400422f7f",
+    "article_title": "Computational_complexity_theory",
+    "answers": [
+      {
+        "answer_start": 190,
+        "text": "2000"
+      },
+      {
+        "answer_start": 190,
+        "text": "2000"
+      },
+      {
+        "answer_start": 190,
+        "text": "2000"
+      }
+    ],
+    "source_id": "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+  }
+}
