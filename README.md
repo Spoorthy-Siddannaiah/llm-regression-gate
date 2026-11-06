@@ -113,7 +113,8 @@ back into models is not yet supported as a persistence API.
 The active real-data integration uses an imported
 [SQuAD 1.1 development slice](datasets/squad/v1/README.md): 25 real questions,
 50 source paragraphs, original reference answers, and pinned provenance. This
-replaces the unmaterialized PubMedQA plan. No real model baseline has been recorded.
+replaces the unmaterialized PubMedQA plan. A first real local recording is now
+available as an observed reference; it is not release-approved.
 
 The offline importer `scripts/prepare_squad.py` verifies the full upstream checksum
 and reproduces the committed subset. Data attribution and CC BY-SA 4.0 license
@@ -145,7 +146,26 @@ download, or paid API is needed. Tokenizer and k1/b settings are explicit/versio
 
 Measured on the real slice: Recall@1 **0.68**, Recall@3 **0.84**, Recall@5 **0.88**.
 See [benchmark evidence and reproduction](benchmarks/README.md). These are retrieval
-measurements only: no answers or accepted model baseline have been generated.
+measurements only; the separate local model run is documented below.
+
+## First real local model recording
+
+The [observed baseline recording](recordings/squad/llama3.2-bm25-v1/README.md) contains
+25 actual answers from the installed Llama 3.2 3B model through local Ollama and BM25
+top-3 retrieval. It includes exact prompts, raw responses, model digest, options,
+and input/artifact hashes. Reference answers never enter generation prompts.
+
+Measured required-phrase coverage is **0.84**, citation-label coverage **0.80**,
+and Recall@3 **0.84**. This is a completed observed run, not an accepted production
+baseline. One supported unit conversion is missed by the phrase check; real answer
+and citation failures also exist. A self-check against illustrative 0.90 floors
+fails. No candidate comparison or improvement claim is made by that self-check.
+
+See [local generation](docs/local-generation.md) for explicit opt-in recording.
+`scripts/record_ollama.py` is separate from offline CI replay, refuses existing
+output directories, verifies the installed digest, and never downloads models or
+automatically replaces baselines. The existing CI gate continues using synthetic
+fixtures; real recording integrity is tested offline without Ollama.
 
 ## Comparison and gate policy
 
@@ -267,8 +287,9 @@ help distinguish where the failure appeared. A metric change alone does not prov
 its cause. This is pre-release testing, not live traffic monitoring, and passing
 these narrow checks is not proof of general semantic correctness.
 
-Our command currently consumes recordings only. Candidate generation and real RAG
-integration remain future tasks; replay never makes model calls.
+Our comparison command consumes recordings only. Local RAG recording is a separate
+explicit script; automatic PR candidate generation remains future work. Replay
+never makes model calls.
 
 ## GitHub Actions
 

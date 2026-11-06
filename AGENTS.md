@@ -1,8 +1,9 @@
 # Working agreement
 
 - This is an independent LLM Reliability Platform, separate from the Databricks Enterprise AI Knowledge Copilot.
-- Current scope: recorded-response regression checking only. No web service, database, telemetry, containers, live providers, or paid APIs.
-- Use Python 3.12+, Pydantic, and pytest. Default to local fixtures; never make paid API calls.
+- Current scope: recorded-response regression checking plus explicitly invoked local RAG generation. No web service, database, telemetry, containers, hosted providers, or paid APIs.
+- Use Python 3.12+, Pydantic, and pytest. Default to offline local datasets and recordings; never make paid API calls.
+- Local Ollama generation is opt-in and separate from CI replay. Verify the installed model digest; never automatically download models or replace a baseline. Preserve raw run evidence and distinguish observations from release acceptance.
 - Keep versioned datasets separate from response recordings. Use stable case IDs and explicit dataset/configuration versions.
 - Reject missing cases, duplicate IDs, and incompatible comparisons. Never automatically replace the baseline.
 - Deterministic fact checks are limited assertions, not proof of general semantic correctness.

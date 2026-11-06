@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56be4db0acb8001400a502ec",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-06T19:00:12.394607Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"Denver Broncos\", \"cited_source_ids\": [\"squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f\", \"squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e\", \"squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5879316791,
+    "load_duration": 16945833,
+    "prompt_eval_count": 661,
+    "prompt_eval_cached_count": 660,
+    "prompt_eval_duration": 79618000,
+    "eval_count": 149,
+    "eval_duration": 5748704000
+  }
+}

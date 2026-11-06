@@ -8,8 +8,9 @@ reference answer spans, attribution, and checksums. It has a declared CC BY-SA 4
 license and stable upstream IDs. This supersedes the unmaterialized PubMedQA plan.
 
 The pinned source is imported by `scripts/prepare_squad.py`; tests verify the real
-artifacts offline. No generated baseline exists. A later local retrieval/generation
-adapter will consume only questions and corpus text, keeping reference answers
+artifacts offline. The [first local Ollama recording](../recordings/squad/llama3.2-bm25-v1/README.md)
+is now captured as an observed reference, not a release-approved baseline. Generation
+consumes only questions and retrieved corpus text, keeping reference answers
 out of retrieval and prompts. The existing synthetic cases remain unit-test and
 failure-injection examples, not the real integration dataset.
 

@@ -71,3 +71,9 @@ annotated span than our currently selected first span?
 Our real-data Recall@1 is 0.68 and Recall@5 is 0.88. Why might increasing K help
 retrieval but still hurt end-to-end answer quality or latency? Why must relevance
 labels be kept out of the retriever's inputs?
+
+## Local model baseline recording
+
+Why must we capture the model digest, prompt, generation settings, and corpus hash
+alongside a recording? Does temperature zero make baseline regeneration perfectly
+deterministic, and does a completed run mean the baseline is release-ready?

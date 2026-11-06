@@ -1,0 +1,7 @@
+{
+  "policy_version": "deterministic-gate-v1",
+  "require_critical_facts": true,
+  "fact_coverage": {"minimum": 0.9, "max_drop": 0.0},
+  "citation_label_coverage": {"minimum": 0.9, "max_drop": 0.0},
+  "retrieval_recall": {"minimum": 0.9, "max_drop": 0.0}
+}

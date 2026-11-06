@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-57339555d058e614000b5df4",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-06T19:00:54.37226Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"Warsaw University of Technology\", \"cited_source_ids\": [\"squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4302555375,
+    "load_duration": 3260333,
+    "prompt_eval_count": 685,
+    "prompt_eval_cached_count": 111,
+    "prompt_eval_duration": 2063638000,
+    "eval_count": 58,
+    "eval_duration": 2202856000
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56e17a7ccd28a01900c679a1",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-06T19:02:13.059621Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"problem instance\", \"cited_source_ids\": [\"squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20\", \"squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976\", \"squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7470199083,
+    "load_duration": 6540375,
+    "prompt_eval_count": 654,
+    "prompt_eval_cached_count": 111,
+    "prompt_eval_duration": 1970886000,
+    "eval_count": 136,
+    "eval_duration": 5438663000
+  }
+}

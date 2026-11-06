@@ -134,17 +134,33 @@
   hand calculation. The retriever formula did not require a change.
 - No generated answers, citation claims, accepted model baseline, or paid calls.
 
+## Completed: actual local generation and first observed recording
+
+- User explicitly authorized running the baseline, so connected generation and
+  recording in one bounded task. Started the local Ollama server; no model download.
+- Added loopback-only schema-constrained generation with pinned installed model
+  digest, prompt, seed/temperature/context/output limits, and explicit timeouts.
+- Completed a one-question smoke test, then all 25 actual SQuAD questions.
+- Preserved prompts/raw responses and hashes; omitted local path/tensor metadata.
+- Measured phrase coverage 0.84, citation-label coverage 0.80, Recall@3 0.84.
+- Reviewed four phrase failures, including a supported unit conversion, plus one
+  citation ID absent from the corpus. No observations or labels were repaired.
+- Recording is an observed reference, not release-approved. Self-check with
+  illustrative 0.90 absolute floors fails; no relative regression claim is made.
+- Verified 179 offline tests, including real recording/evidence/hash integrity.
+
 ## Next bounded task (not implemented)
 
-Choose and implement local answer generation consuming only retrieved passages and
-questions. Check local hardware/model requirements before a download. Then create
-and review baseline recordings in a separate task, preserving generation provenance.
+Choose a deliberate candidate change (prompt or retrieval) and record it separately
+against the same real dataset. Compare it with this fixed observed reference while
+keeping the metric limitations and uncalibrated release floors explicit.
 
 ## Current limitations
 
 Required-phrase, citation-ID, retrieval recall checks, a runner, gate, and reports
-exist with an offline CLI, exit codes, and an unexecuted hosted CI workflow. No RAG
-recording generator exists yet. Source checks use case labels, not a validated source registry.
+exist with an offline CLI, exit codes, local Ollama recording, and an unexecuted
+hosted CI workflow. PR-driven model generation is not wired. Source checks use
+case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between
 recordings. No paid APIs or external services are used.

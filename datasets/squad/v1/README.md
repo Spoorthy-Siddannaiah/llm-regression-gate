@@ -9,7 +9,8 @@ for our first real-data integration.
 - Human answer spans and offsets preserved in `references.json`.
 - First annotated answer used as one required phrase in `dataset.json`.
 - All cases are standard; no reviewed domain-critical labels are claimed.
-- No model has been run and no baseline/candidate recordings exist for this subset.
+- A separate [actual local model recording](../../../recordings/squad/llama3.2-bm25-v1/README.md)
+  is now available; it is an observed reference with known failures, not release-approved.
 
 ## Attribution and license
 
@@ -66,5 +67,5 @@ receive answer annotations. Actual citations must come from pipeline output.
 The current scorer checks only the first answer phrase. Other human answers are
 often equally valid but are not accepted as alternatives by that scorer yet. Its
 coverage score is not official SQuAD exact-match/F1 or semantic correctness.
-Do not copy references into a baseline and claim a model result. The next step is
-to produce genuine local retrieval/pipeline recordings against this corpus.
+Do not copy references into a baseline and claim a model result. Genuine local
+retrieval/pipeline outputs are stored separately from this dataset.
