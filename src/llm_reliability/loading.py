@@ -7,6 +7,7 @@ from pydantic import BaseModel, ValidationError
 from llm_reliability.gates import GatePolicy
 from llm_reliability.models import ComparisonInput, Dataset, Recording
 from llm_reliability.runner import EvaluationSettings
+from llm_reliability.retrieval import SourceCorpus
 
 
 class InputLoadError(ValueError):
@@ -39,6 +40,10 @@ def load_dataset(path: str | Path) -> Dataset:
 
 def load_recording(path: str | Path) -> Recording:
     return _load(path, Recording)
+
+
+def load_corpus(path: str | Path) -> SourceCorpus:
+    return _load(path, SourceCorpus)
 
 
 def load_gate_policy(path: str | Path) -> GatePolicy:

@@ -1,0 +1,780 @@
+{
+  "artifact_kind": "retrieval_only_measurement",
+  "schema_version": 1,
+  "dataset_id": "squad-v1.1-dev-slice",
+  "dataset_version": "1.0.0",
+  "input_sha256": {
+    "dataset": "5865872c8aedaae4413181f60b3640e108b7026fc629ea01fe23bfaa54ba9872",
+    "sources": "15e81912b4a0d7905af4277ecb017d17608ea9c31add340359f49afe5bda1cba"
+  },
+  "settings": {
+    "retriever_version": "bm25-v1",
+    "tokenizer_version": "unicode-word-casefold-v1",
+    "k1": 1.2,
+    "b": 0.75
+  },
+  "cutoffs": [
+    1,
+    3,
+    5
+  ],
+  "case_count": 25,
+  "mean_recall": {
+    "1": 0.68,
+    "3": 0.84,
+    "5": 0.88
+  },
+  "cases": [
+    {
+      "case_id": "squad-56be4db0acb8001400a502ec",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+          "score": 16.94735812901564
+        },
+        {
+          "source_id": "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+          "score": 10.55315011196841
+        },
+        {
+          "source_id": "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+          "score": 10.380908469970613
+        },
+        {
+          "source_id": "squad-context-415c638d7703cb5551ca9a2dde7f784ae0967aef75d4388bc9342ab90cbab94d",
+          "score": 10.290595601456651
+        },
+        {
+          "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+          "score": 9.955531961395021
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56be4e1facb8001400a502f6",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+          "score": 14.018116924899696
+        },
+        {
+          "source_id": "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9",
+          "score": 7.259950858345669
+        },
+        {
+          "source_id": "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+          "score": 7.018254428298207
+        },
+        {
+          "source_id": "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+          "score": 6.140999435038955
+        },
+        {
+          "source_id": "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52",
+          "score": 5.877694457567194
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56be4eafacb8001400a50302",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+          "score": 13.527688625264846
+        },
+        {
+          "source_id": "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+          "score": 13.294951310441233
+        },
+        {
+          "source_id": "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+          "score": 10.308959679724055
+        },
+        {
+          "source_id": "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+          "score": 9.421803000079915
+        },
+        {
+          "source_id": "squad-context-19080652b49baa4a83753bd1a5069adfb49ce7695db68c123e3463c704230dac",
+          "score": 8.84361743858891
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56be5333acb8001400a5030a",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+          "score": 16.739335483849526
+        },
+        {
+          "source_id": "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+          "score": 11.544836726573932
+        },
+        {
+          "source_id": "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+          "score": 11.180788816891315
+        },
+        {
+          "source_id": "squad-context-19080652b49baa4a83753bd1a5069adfb49ce7695db68c123e3463c704230dac",
+          "score": 9.003878685567173
+        },
+        {
+          "source_id": "squad-context-415c638d7703cb5551ca9a2dde7f784ae0967aef75d4388bc9342ab90cbab94d",
+          "score": 7.178905695214302
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56be53b8acb8001400a50314",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7",
+          "score": 16.135499542538856
+        },
+        {
+          "source_id": "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+          "score": 4.600129811214289
+        },
+        {
+          "source_id": "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17",
+          "score": 3.9123616509689754
+        },
+        {
+          "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+          "score": 3.7796304856884273
+        },
+        {
+          "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+          "score": 3.6983637124574336
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-5733a5f54776f41900660f45",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+          "score": 17.73968997646912
+        },
+        {
+          "source_id": "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+          "score": 6.456831849939525
+        },
+        {
+          "source_id": "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93",
+          "score": 4.10052428681606
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 3.658666824652686
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 3.6480912304981805
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-57336755d058e614000b5a3d",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702",
+          "score": 17.393363116150773
+        },
+        {
+          "source_id": "squad-context-5ef3de079d69dbfcbf3418f94ba50a6dbe082fa9d93ddac954bac3e8bdfae797",
+          "score": 8.148703755463405
+        },
+        {
+          "source_id": "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93",
+          "score": 6.663343994021805
+        },
+        {
+          "source_id": "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+          "score": 6.330806921721843
+        },
+        {
+          "source_id": "squad-context-0647d147367db34d8108a9fd785f9e4e6909853050082dd01b4b0f7d527e30c8",
+          "score": 6.112964092958423
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-57337ddc4776f41900660bbb",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a",
+          "score": 14.078381616640355
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 4.520396938302092
+        },
+        {
+          "source_id": "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93",
+          "score": 4.318722275092798
+        },
+        {
+          "source_id": "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086",
+          "score": 4.192514405357712
+        },
+        {
+          "source_id": "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702",
+          "score": 4.13757007624414
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-57337ea24776f41900660bd0",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+          "score": 11.294973836081317
+        },
+        {
+          "source_id": "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+          "score": 10.1738714219233
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 9.04058014054299
+        },
+        {
+          "source_id": "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+          "score": 6.92814503437891
+        },
+        {
+          "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+          "score": 5.8181068334751025
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-57339555d058e614000b5df4",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+          "score": 20.506065299941135
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 6.247142663279654
+        },
+        {
+          "source_id": "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+          "score": 5.423350819085368
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 5.2836122694121315
+        },
+        {
+          "source_id": "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702",
+          "score": 4.716800244186171
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56ddde6b9a695914005b9628",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+          "score": 5.5061522450726645
+        },
+        {
+          "source_id": "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+          "score": 5.205151576237563
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 4.88155189008215
+        },
+        {
+          "source_id": "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+          "score": 3.915077034927334
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 3.695910009174036
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    {
+      "case_id": "squad-56dddf4066d3e219004dad5f",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+          "score": 8.190343593307006
+        },
+        {
+          "source_id": "squad-context-752ba585d39a7752b7c594f34a86a677c9c25571b9136f5ca1b2bd3c846d86ed",
+          "score": 5.1494677130411635
+        },
+        {
+          "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+          "score": 4.18081143711833
+        },
+        {
+          "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+          "score": 3.9662394061747395
+        },
+        {
+          "source_id": "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df",
+          "score": 3.457326287050833
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56dde0379a695914005b9636",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 5.141171753751445
+        },
+        {
+          "source_id": "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+          "score": 4.210680424751847
+        },
+        {
+          "source_id": "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a",
+          "score": 3.925004904209525
+        },
+        {
+          "source_id": "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+          "score": 3.741880914272734
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 3.5545185568037816
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    {
+      "case_id": "squad-56dde0ba66d3e219004dad75",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+          "score": 8.105837079698947
+        },
+        {
+          "source_id": "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b",
+          "score": 7.88105590403378
+        },
+        {
+          "source_id": "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+          "score": 5.028641388695944
+        },
+        {
+          "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+          "score": 3.877442309960446
+        },
+        {
+          "source_id": "squad-context-0647d147367db34d8108a9fd785f9e4e6909853050082dd01b4b0f7d527e30c8",
+          "score": 3.8639454183220336
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56dde1d966d3e219004dad8d",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+          "score": 13.029208213758357
+        },
+        {
+          "source_id": "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+          "score": 9.776206873845222
+        },
+        {
+          "source_id": "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b",
+          "score": 3.4411939230022934
+        },
+        {
+          "source_id": "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908",
+          "score": 3.423013638650991
+        },
+        {
+          "source_id": "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+          "score": 2.6805536766349327
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56df9e2838dc4217001520f6",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+          "score": 9.63242518892002
+        },
+        {
+          "source_id": "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+          "score": 8.102987233036162
+        },
+        {
+          "source_id": "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+          "score": 7.666017205528681
+        },
+        {
+          "source_id": "squad-context-6728e74a97c38743df36b7626ed3e9af4f757d952f24bc674ff98a4548564b66",
+          "score": 6.918984932240926
+        },
+        {
+          "source_id": "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3",
+          "score": 6.7022843843137405
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56df9ee138dc421700152108",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df",
+          "score": 9.29110909133428
+        },
+        {
+          "source_id": "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+          "score": 8.514833890364855
+        },
+        {
+          "source_id": "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+          "score": 6.9729921853377395
+        },
+        {
+          "source_id": "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3",
+          "score": 5.8390125498507786
+        },
+        {
+          "source_id": "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+          "score": 5.833732033542756
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56dfa01738dc42170015211d",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17",
+          "score": 11.654577514641534
+        },
+        {
+          "source_id": "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+          "score": 7.231483965208013
+        },
+        {
+          "source_id": "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+          "score": 5.122817104927192
+        },
+        {
+          "source_id": "squad-context-8ecaa4a2c2498cbde30646f63bb592d5763754a5cd99b82bc4cf7bef8d396583",
+          "score": 4.571890067442253
+        },
+        {
+          "source_id": "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+          "score": 3.075799938743389
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56dfa0d84a1a83140091ebb7",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+          "score": 8.186105982449398
+        },
+        {
+          "source_id": "squad-context-6728e74a97c38743df36b7626ed3e9af4f757d952f24bc674ff98a4548564b66",
+          "score": 5.371792818075754
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 5.3292405569373615
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 3.2566064453227046
+        },
+        {
+          "source_id": "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+          "score": 2.826286214172929
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    {
+      "case_id": "squad-56dfa13d4a1a83140091ebc1",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+          "score": 11.653040959526997
+        },
+        {
+          "source_id": "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+          "score": 8.772309743523929
+        },
+        {
+          "source_id": "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3",
+          "score": 6.100550316090488
+        },
+        {
+          "source_id": "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+          "score": 5.916315432524435
+        },
+        {
+          "source_id": "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+          "score": 5.339913718795035
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56e16182e3433e1400422e28",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+          "score": 28.72209512208151
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 18.116986144175392
+        },
+        {
+          "source_id": "squad-context-6cc34106bc6b1deb652e610973c798faa2caaaed6b16c99c39c6f5b49df3a196",
+          "score": 9.58856143118795
+        },
+        {
+          "source_id": "squad-context-5ef3de079d69dbfcbf3418f94ba50a6dbe082fa9d93ddac954bac3e8bdfae797",
+          "score": 8.154137027908893
+        },
+        {
+          "source_id": "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+          "score": 7.514462803555272
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56e16839cd28a01900c67887",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+          "score": 14.19842420679065
+        },
+        {
+          "source_id": "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+          "score": 10.918457709317494
+        },
+        {
+          "source_id": "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+          "score": 9.608635748222726
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 8.566380426978217
+        },
+        {
+          "source_id": "squad-context-4ddd2ea4a2c377fbff94602ffde9e3feead6020c3937f8e6feda19f75b6fd619",
+          "score": 6.0916661066523545
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56e17644e3433e1400422f40",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 27.125168857773744
+        },
+        {
+          "source_id": "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+          "score": 19.303505928635424
+        },
+        {
+          "source_id": "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+          "score": 10.991828528855697
+        },
+        {
+          "source_id": "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+          "score": 6.694430162576061
+        },
+        {
+          "source_id": "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+          "score": 6.6270374901415
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56e17a7ccd28a01900c679a1",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+          "score": 17.263142107507285
+        },
+        {
+          "source_id": "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+          "score": 16.894695640086592
+        },
+        {
+          "source_id": "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086",
+          "score": 11.157892499190634
+        },
+        {
+          "source_id": "squad-context-4ddd2ea4a2c377fbff94602ffde9e3feead6020c3937f8e6feda19f75b6fd619",
+          "score": 10.912843587736832
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 10.239069521015065
+        }
+      ],
+      "recall": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    },
+    {
+      "case_id": "squad-56e17e6ee3433e1400422f7f",
+      "ranked_hits": [
+        {
+          "source_id": "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef",
+          "score": 27.2300792244692
+        },
+        {
+          "source_id": "squad-context-4ddd2ea4a2c377fbff94602ffde9e3feead6020c3937f8e6feda19f75b6fd619",
+          "score": 11.035781486499433
+        },
+        {
+          "source_id": "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "score": 9.30697030827781
+        },
+        {
+          "source_id": "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086",
+          "score": 7.5353983495711105
+        },
+        {
+          "source_id": "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+          "score": 6.642071905441164
+        }
+      ],
+      "recall": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      }
+    }
+  ],
+  "limits": "Small selected corpus; associated-context labels; no answer generation, latency benchmark, or accepted model baseline."
+}

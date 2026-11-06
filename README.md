@@ -120,6 +120,33 @@ and reproduces the committed subset. Data attribution and CC BY-SA 4.0 license
 information are in the dataset README. Unit/regression tests keep their existing
 synthetic fixtures; integration data now comes from the actual public dataset.
 
+## Local retrieval
+
+```python
+from llm_reliability.loading import load_corpus
+from llm_reliability.retrieval import BM25Retriever
+
+retriever = BM25Retriever(load_corpus("datasets/squad/v1/sources.json"))
+hits = retriever.retrieve("Which NFL team represented the AFC at Super Bowl 50?", top_k=3)
+for hit in hits:
+    print(hit.source_id, hit.score)
+```
+
+The in-memory retriever accepts only questions and corpus text. It returns ranked
+source IDs, paragraph text, and BM25 scores. It has no access to reference answers,
+required facts, or relevance labels. Corpus text is snapshotted; validated inputs
+must not be mutated before constructing the retriever. Empty or unmatched queries
+return no hits. K must be a positive integer. Ties sort by source ID.
+
+BM25 is a lexical baseline suitable for this 50-passage local example. It does
+not handle synonyms semantically; the implementation scans all paragraphs and
+is not intended as a large production search engine. No vector store, model
+download, or paid API is needed. Tokenizer and k1/b settings are explicit/versioned.
+
+Measured on the real slice: Recall@1 **0.68**, Recall@3 **0.84**, Recall@5 **0.88**.
+See [benchmark evidence and reproduction](benchmarks/README.md). These are retrieval
+measurements only: no answers or accepted model baseline have been generated.
+
 ## Comparison and gate policy
 
 ```python

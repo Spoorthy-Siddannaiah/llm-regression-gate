@@ -121,11 +121,24 @@
   reproduction from the real upstream file, and refusal to overwrite output.
 - No generation, paid calls, or real model baseline/candidate recordings were made.
 
+## Completed: local retrieval over real passages
+
+- Added a typed source-corpus loader and small in-memory BM25 retriever with stable
+  source-ID tie breaks, explicit settings/tokenizer versions, and no model dependencies.
+- Retriever input is only question text and corpus; no facts, labels, or references.
+- Added retrieval-only measurement script and committed actual rankings/input hashes.
+- Measured Recall@1=0.68, Recall@3=0.84, Recall@5=0.88 on 25 questions/50 passages.
+- Verified 166 tests on Python 3.12.13, including formula arithmetic, deterministic
+  ranking, input validation, real-corpus retrieval, and measurement reproduction.
+- Initial arithmetic test had an incorrect IDF denominator; corrected the expected
+  hand calculation. The retriever formula did not require a change.
+- No generated answers, citation claims, accepted model baseline, or paid calls.
+
 ## Next bounded task (not implemented)
 
-Add a local retrieval adapter over the real SQuAD corpus, producing ranked source
-IDs without access to reference answers. Then add actual local answer generation
-and reviewed baseline recording as separate bounded tasks.
+Choose and implement local answer generation consuming only retrieved passages and
+questions. Check local hardware/model requirements before a download. Then create
+and review baseline recordings in a separate task, preserving generation provenance.
 
 ## Current limitations
 

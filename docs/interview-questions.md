@@ -65,3 +65,9 @@ make a RAG evaluation misleading?
 Why must alternative human answers be treated differently from several required
 facts? What misleading failures could result if a correct answer uses a different
 annotated span than our currently selected first span?
+
+## Local BM25 retrieval
+
+Our real-data Recall@1 is 0.68 and Recall@5 is 0.88. Why might increasing K help
+retrieval but still hurt end-to-end answer quality or latency? Why must relevance
+labels be kept out of the retriever's inputs?
