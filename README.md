@@ -22,8 +22,9 @@ Configurations may differ intentionally between baseline and candidate; dataset 
 version, and exact case coverage must match. Empty answers and unknown cited sources remain
 valid observations so the future scorer can report them as quality failures.
 
-Versions are explicit labels, not content hashes. Authors must increment versions when
-changing datasets or configurations. No replay engine or full provenance verification exists yet.
+Versions are explicit labels. Authors must increment them when changing datasets
+or configurations. Real recording manifests now bind dataset/corpus and recording
+artifacts to byte hashes; this is integrity validation, not signed provenance.
 Models validate on construction; callers must not mutate validated inputs in place.
 
 ## Loading local inputs
@@ -293,6 +294,15 @@ development tools. `--help` exits 0; missing required arguments exit 2.
 `--policy` and `--settings` are optional; omitting them uses model defaults (including
 zero metric floors). The example's 0.9 floors are illustrative synthetic settings,
 not calibrated production requirements. Effective values are preserved in reports.
+
+For real recordings, manifests are checked before scoring. Supply `--sources`
+and `--require-manifests` explicitly in CI. Otherwise manifests are auto-detected
+beside recordings, and digest-bearing model versions still require them even if
+sidecars are missing. The default corpus path is `sources.json` beside the dataset.
+Stale dataset/corpus bytes, changed recording/evidence, incomplete metadata, or
+configuration mismatches produce **exit 2 before reports**, not a quality failure.
+Synthetic fixtures without manifests retain their original behaviour.
+See [provenance checks and a complete command](docs/provenance.md).
 
 ## How a RAG team would use it
 

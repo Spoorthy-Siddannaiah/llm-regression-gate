@@ -8,6 +8,7 @@ from llm_reliability.gates import GatePolicy
 from llm_reliability.models import ComparisonInput, Dataset, Recording
 from llm_reliability.runner import EvaluationSettings
 from llm_reliability.retrieval import SourceCorpus
+from llm_reliability.provenance import RecordingManifest, validate_recording_manifest
 
 
 class InputLoadError(ValueError):
@@ -58,14 +59,36 @@ def load_comparison(
     dataset_path: str | Path,
     baseline_path: str | Path,
     candidate_path: str | Path,
+    *, sources_path: str | Path | None = None, require_manifests: bool = False,
 ) -> ComparisonInput:
     dataset = load_dataset(dataset_path)
     baseline = load_recording(baseline_path)
     candidate = load_recording(candidate_path)
     try:
-        return ComparisonInput(dataset=dataset, baseline=baseline, candidate=candidate)
+        comparison = ComparisonInput(dataset=dataset, baseline=baseline, candidate=candidate)
     except ValidationError as error:
         raise InputLoadError(
             f"Comparison inputs (dataset={dataset_path}, baseline={baseline_path}, "
             f"candidate={candidate_path}): {_validation_details(error)}"
         ) from error
+    manifests = [Path(path).parent / "manifest.json" for path in (baseline_path, candidate_path)]
+    needs_manifests = (
+        require_manifests or sources_path is not None
+        or any(path.exists() for path in manifests)
+        or any("@sha256:" in item.configuration.model_version for item in (baseline, candidate))
+    )
+    if needs_manifests:
+        corpus_path = Path(sources_path) if sources_path is not None else Path(dataset_path).with_name("sources.json")
+        for role, path, manifest_path, recording in zip(
+            ("baseline", "candidate"), (baseline_path, candidate_path), manifests,
+            (baseline, candidate), strict=True,
+        ):
+            try:
+                manifest = _load(manifest_path, RecordingManifest)
+                validate_recording_manifest(
+                    manifest, manifest_path=manifest_path, recording_path=Path(path),
+                    dataset_path=Path(dataset_path), sources_path=corpus_path, recording=recording,
+                )
+            except (OSError, ValueError) as error:
+                raise InputLoadError(f"{role} provenance ({manifest_path}): {error}") from error
+    return comparison

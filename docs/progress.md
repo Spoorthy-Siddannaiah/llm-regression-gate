@@ -174,11 +174,24 @@
   missing-input scenarios. All step outcomes matched expectations. No model calls.
 - No hosted Actions run or artifact upload was performed; nothing was pushed.
 
+## Completed: recording manifest integrity validation
+
+- Added typed local-manifest v1 validation after existing ComparisonInput checks.
+- Checks completion/scope/identity/configuration, dataset/corpus hashes, and all
+  listed recording/evidence hashes. Required evidence pairs must be present.
+- Manifest paths stay inside the run directory, including through symlinks.
+- Real digest-bearing recordings require manifests automatically; synthetic inputs
+  remain supported. Added CLI `--sources` and `--require-manifests`, enabled in real CI.
+- Stale inputs exit 2 before scoring/reports; the known real candidate still exits 1.
+- Verified 212 offline tests and the updated real workflow command bodies locally.
+- Existing recordings and manifests were not changed. No model calls, pushes, or
+  hosted Actions runs. Hashes validate integrity, not signed authenticity/current PR code.
+
 ## Next bounded task (not implemented)
 
-Validate real recording manifests against dataset/corpus and recording hashes before
-comparison, so stale or incompatible recorded inputs fail explicitly. Automatic
-PR-driven candidate generation remains separate future work.
+Add explicit alternative-answer assertions without treating all alternatives as
+simultaneously required facts. Preserve the current scorer/version and existing
+recordings; evaluate the new checks separately before changing any gate policy.
 
 ## Current limitations
 
@@ -187,5 +200,5 @@ exist with an offline CLI, exit codes, local Ollama recording, and an unexecuted
 hosted CI workflow. PR-driven model generation is not wired. Source checks use
 case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
-labels, not content hashes. Configuration identity may intentionally differ between
-recordings. No paid APIs or external services are used.
+labels; real manifests additionally bind files to hashes. Configuration identity
+may intentionally differ between recordings. No paid APIs or hosted providers are used.

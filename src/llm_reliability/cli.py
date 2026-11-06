@@ -22,9 +22,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-dir", required=True, type=Path, help="New report directory")
     parser.add_argument("--policy", type=Path, help="Optional GatePolicy JSON file")
     parser.add_argument("--settings", type=Path, help="Optional EvaluationSettings JSON file")
+    parser.add_argument("--sources", type=Path, help="Corpus for manifest validation; defaults to sources.json beside dataset")
+    parser.add_argument("--require-manifests", action="store_true", help="Require completed manifests for both recordings")
     args = parser.parse_args(argv)
     try:
-        inputs = load_comparison(args.dataset, args.baseline, args.candidate)
+        inputs = load_comparison(
+            args.dataset, args.baseline, args.candidate,
+            sources_path=args.sources, require_manifests=args.require_manifests,
+        )
         policy = load_gate_policy(args.policy) if args.policy else None
         settings = load_evaluation_settings(args.settings) if args.settings else None
         result = compare_and_gate(inputs, policy=policy, settings=settings)

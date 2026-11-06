@@ -78,6 +78,7 @@ jobs:
         run: |
           uv run --python 3.12.13 --locked llm-reliability \
             --dataset datasets/squad/v1/dataset.json \
+            --sources datasets/squad/v1/sources.json --require-manifests \
             --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
             --candidate recordings/squad/llama3.2-bm25-v1/recording.json \
             --policy configs/gate.relative-only.v1.json \
@@ -89,6 +90,7 @@ jobs:
         run: |
           if uv run --python 3.12.13 --locked llm-reliability \
             --dataset datasets/squad/v1/dataset.json \
+            --sources datasets/squad/v1/sources.json --require-manifests \
             --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
             --candidate recordings/squad/llama3.2-bm25-top1-v1/recording.json \
             --policy configs/gate.relative-only.v1.json \

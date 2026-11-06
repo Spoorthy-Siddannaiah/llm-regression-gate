@@ -90,3 +90,14 @@ absolute quality requirements the baseline already misses?
 Why is CI green when its expected-rejection step observes a real candidate's exit 1?
 How does that differ from a production candidate gate that must return exit 0,
 and why does replaying committed recordings not evaluate new prompt code by itself?
+
+Simple answer: this is a test of the detector. It expects the known bad candidate
+to return exit 1; getting that expected rejection makes the test pass. A new
+production candidate instead needs exit 0 from its quality gate. Replaying saved
+answers does not run a changed prompt or produce fresh model responses.
+
+## Manifest integrity
+
+The dataset version label is unchanged, but the corpus bytes differ from the
+recording manifest. Should the CLI report a quality regression or an input error,
+and why must it stop before scoring?
