@@ -3,6 +3,12 @@
 Decision: adapt Haystack's official [Evaluating RAG Pipelines tutorial](https://haystack.deepset.ai/tutorials/35_evaluating_rag_pipelines).
 Selected on 2026-11-06; integration is not implemented.
 
+The source revisions and selection rules are now pinned in
+[pubmedqa-data-contract.md](pubmedqa-data-contract.md). The dataset card does not
+declare a license, so the tutorial remains our architecture reference while dataset
+materialization is pending clarification or an explicitly licensed replacement.
+This limitation was discovered during provenance inspection, after selection.
+
 ## Why this fits
 
 The tutorial builds an actual retrieval-and-generation pipeline using an in-memory

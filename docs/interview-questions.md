@@ -53,3 +53,9 @@ a deployment, and how would the team's response differ?
 Why must the intentionally degraded fixture return exactly exit 1, rather than
 just any nonzero exit? What would go wrong if CI used `continue-on-error` for the
 real candidate gate?
+
+## Dataset provenance
+
+Why is a reference answer not the same as a pipeline baseline? How could using
+reference answers or per-question relevant documents during candidate generation
+make a RAG evaluation misleading?

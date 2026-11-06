@@ -95,11 +95,24 @@
 - Hosted Actions execution and artifact upload remain unverified: repository has
   not been pushed. Required branch checks must be configured later on GitHub.
 
+## Completed: real-data provenance and selection plan
+
+- Pinned the Haystack notebook commit and SHA-256 plus the dataset repository commit.
+- Defined a deterministic test-shard corpus (1,000 planned rows) and 25 fixed
+  evaluation rows, ID rules, duplicate handling, and manual annotation requirements.
+- Added `configs/rag/pubmedqa-plan.v1.json` and `docs/pubmedqa-data-contract.md`.
+- Dataset card has no declared license; materialization/redistribution remains
+  pending clarification or an explicitly licensed replacement. No terms inferred.
+- No corpus/model download, notebook execution, provider call, or baseline creation.
+- Verified plan JSON, revision/hash formats, selection bounds, 25 unique planned
+  case IDs, and no-execution flags; Git whitespace checks passed. No runtime code
+  changed, so the previously passing 135-test suite was not rerun for this task.
+
 ## Next bounded task (not implemented)
 
-Prepare the selected real RAG example's dataset/provenance plan: pin source and
-dataset revisions, review labels and licensing, and define a small reproducible
-subset before adding a recording adapter. No paid provider is required.
+Implement a local-file dataset adapter against tiny invented fixtures, keeping
+reference answers separate and requiring explicit reviewed fact annotations. Resolve
+real-data terms or select an explicitly licensed replacement before materialization.
 
 ## Current limitations
 

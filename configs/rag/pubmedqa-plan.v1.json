@@ -1,0 +1,56 @@
+{
+  "artifact_kind": "dataset_preparation_plan",
+  "plan_version": "1.0.0",
+  "status": "planned_not_materialized",
+  "tutorial": {
+    "repository": "https://github.com/deepset-ai/haystack-tutorials",
+    "revision": "61213e2a8664e5137e9cc73d24d7458ae1ba0808",
+    "path": "tutorials/35_Evaluating_RAG_Pipelines.ipynb",
+    "sha256": "151f0fdd23bc79907f913162eccbf4189fcefb1bfb159a21f6bf3df69c1c4914",
+    "code_license": "Apache-2.0"
+  },
+  "upstream": {
+    "repository": "vblagoje/PubMedQA_instruction",
+    "revision": "2cd0ea2038adc766d6a71f37b278f9861418e9a2",
+    "config": "default",
+    "split": "test",
+    "file": "data/test-00000-of-00001.parquet",
+    "expected_rows": 1000,
+    "fields": ["instruction", "context", "response", "category"],
+    "dataset_license": null,
+    "license_status": "not_declared_in_pinned_card"
+  },
+  "selection": {
+    "order": "physical_row_order_in_pinned_parquet_file",
+    "corpus_row_range": {"start_inclusive": 0, "stop_exclusive": 1000},
+    "evaluation_row_range": {"start_inclusive": 0, "stop_exclusive": 25},
+    "invalid_row_policy": "error_no_silent_skipping",
+    "duplicate_question_policy": "error_requires_explicit_plan_revision",
+    "duplicate_context_policy": "deduplicate_exact_utf8_bytes_by_sha256",
+    "case_id_template": "pubmedqa-test-r{row_index:04d}",
+    "source_id_template": "pubmedqa-context-sha256-{context_sha256}"
+  },
+  "mapping": {
+    "question": "instruction",
+    "source_text": "context",
+    "reference_answer": "response",
+    "relevant_source_ids": "associated_context_source_id_only_nonexhaustive",
+    "required_facts": "manual_review_required",
+    "criticality": "manual_review_required"
+  },
+  "pending_artifacts": [
+    "upstream_file_sha256",
+    "selected_case_and_source_id_manifest",
+    "reviewed_fact_annotations",
+    "materialized_dataset_and_corpus_sha256",
+    "local_generator_model_revision_and_license",
+    "actual_pipeline_baseline_recording"
+  ],
+  "execution": {
+    "download_dataset_now": false,
+    "download_models_now": false,
+    "live_provider_calls": false,
+    "automatically_promote_baseline": false,
+    "redistribute_dataset_text": false
+  }
+}
