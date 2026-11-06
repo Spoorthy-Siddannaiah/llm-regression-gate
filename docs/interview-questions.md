@@ -18,3 +18,9 @@ behaviour, and how silently dropping cases could distort a comparison.
 An answer says: "The limit is not 30 days. No proof of purchase is required."
 It passes our required-phrase checks. Why does this happen, and what additional
 evidence would you need before treating it as a correct answer?
+
+## Citation IDs and retrieval Recall@K
+
+A candidate retrieves every relevant document and cites the expected source, but
+its answer gives the wrong refund window. Why can Recall@K and citation-ID checks
+still look good? Which separate check would expose this fixture's failure?

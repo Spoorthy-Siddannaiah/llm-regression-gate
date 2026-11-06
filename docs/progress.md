@@ -30,14 +30,26 @@
 - Tests explicitly demonstrate limitations for negation and paraphrases.
 - Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 56 passed.
 
+## Completed: citation IDs and retrieval Recall@K
+
+- Citation checks partition cited IDs into labelled relevant and unlabelled IDs,
+  and list relevant IDs not cited. They do not establish source existence or support.
+- Recall@K uses relevant IDs found in the first K results divided by all labelled
+  relevant IDs. K must be a positive integer; empty/short result lists are allowed.
+- Both synthetic recordings have Recall@1 of 1.0 and cite their labelled sources;
+  the candidate still fails required-phrase checks. Fixtures were not changed.
+- Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 72 passed.
+
 ## Next bounded task (not implemented)
 
-Add citation source-ID checks and retrieval Recall@K with clearly defined semantics.
-Comparison gates, report generation, and the CLI remain later tasks. Keep the baseline fixed.
+Combine the per-case checks into a recording evaluation runner, keeping dataset,
+configuration, and evaluator settings in its results. Comparison gates, report
+generation, and the CLI remain later tasks. Keep the baseline fixed.
 
 ## Current limitations
 
-Only required-phrase presence checks exist; no runner, CLI, reports, or CI gate.
+Required-phrase, citation-ID, and retrieval recall checks exist; no runner, CLI,
+reports, or CI gate. Source checks use case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between
 recordings. No paid APIs or external services are used.

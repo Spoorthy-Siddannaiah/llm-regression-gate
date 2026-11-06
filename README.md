@@ -1,7 +1,8 @@
 # LLM Reliability & Observability Platform
 
 Independent portfolio project, separate from the Databricks Enterprise AI Knowledge Copilot.
-Current scope: typed contracts, synthetic recordings, validated loading, and required-phrase checks.
+Current scope: typed contracts, synthetic recordings, validated loading, required-phrase
+checks, citation-ID checks, and retrieval Recall@K.
 
 Target milestone: one CLI command compares recorded baseline and candidate responses
 against a versioned dataset, writes JSON and Markdown reports, and exits nonzero
@@ -59,6 +60,31 @@ word boundaries at either end (so `130 days` does not satisfy `30 days`). It doe
 not understand negation or paraphrases and cannot establish semantic correctness.
 The synthetic candidate refund answer misses `30 days` and `proof of purchase`;
 no gate decision or report is generated yet.
+
+## Citation IDs and retrieval
+
+`check_citation_ids(case, response)` in `llm_reliability.source_checks` lists cited
+IDs labelled relevant for the case, cited IDs without relevance labels, and relevant
+IDs not cited. An unlabelled ID might exist and might be useful; this check does not
+validate it against a complete corpus. A matching ID does not prove citation support,
+and missing a labelled source is evidence for review, not an automatic gate decision.
+
+`check_retrieval_recall(case, response, k=3)` returns the ranked top-K IDs, found
+and missing relevant IDs, and a `recall_at_k` property:
+
+```text
+Recall@K = relevant source IDs in top K / all labelled relevant source IDs
+```
+
+K must be a positive integer; booleans are rejected. Empty retrieval gives zero
+recall. A short result list uses the same denominator. Dataset/response contracts
+already require nonempty relevance labels and unique retrieval IDs. IDs must use
+the same granularity (documents or chunks) on both sides.
+
+Both synthetic recordings have Recall@1 = 1.0 and cite their labelled sources.
+The candidate's wrong answer illustrates why these checks cannot replace answer
+evaluation. Computed recall is accessed as a Python property; report serialization
+is a later task.
 
 The fictional support policies have no relationship to any real company's policies.
 These phrase checks test narrow assertions, not general semantic correctness.
