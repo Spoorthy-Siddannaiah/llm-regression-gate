@@ -40,15 +40,25 @@
   the candidate still fails required-phrase checks. Fixtures were not changed.
 - Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 72 passed.
 
+## Completed: recording evaluation runner
+
+- Added `evaluate_comparison` to apply all three checks to validated recordings.
+- Results retain dataset/schema versions, recording IDs, configuration snapshots,
+  criticality, evaluator version, and retrieval K. Cases follow dataset order.
+- Both sides use identical settings; matching uses IDs rather than list positions.
+- No baseline writes, aggregate gate decisions, reports, or CLI were added.
+- Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 83 passed.
+- Selected Haystack's official PubMedQA RAG evaluation example for later adaptation;
+  see `docs/real-rag-example.md`. No integration, downloads, or live calls yet.
+
 ## Next bounded task (not implemented)
 
-Combine the per-case checks into a recording evaluation runner, keeping dataset,
-configuration, and evaluator settings in its results. Comparison gates, report
-generation, and the CLI remain later tasks. Keep the baseline fixed.
+Add baseline/candidate comparison and a small explicit regression gate policy.
+Report generation and the CLI remain later tasks. Keep the baseline fixed.
 
 ## Current limitations
 
-Required-phrase, citation-ID, and retrieval recall checks exist; no runner, CLI,
+Required-phrase, citation-ID, retrieval recall checks and a runner exist; no CLI,
 reports, or CI gate. Source checks use case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between

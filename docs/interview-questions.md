@@ -24,3 +24,8 @@ evidence would you need before treating it as a correct answer?
 A candidate retrieves every relevant document and cites the expected source, but
 its answer gives the wrong refund window. Why can Recall@K and citation-ID checks
 still look good? Which separate check would expose this fixture's failure?
+
+## Evaluation runner
+
+Why must baseline and candidate use the same evaluator version and retrieval K,
+even though their model, prompt, or retrieval configurations may differ?

@@ -2,7 +2,7 @@
 
 Independent portfolio project, separate from the Databricks Enterprise AI Knowledge Copilot.
 Current scope: typed contracts, synthetic recordings, validated loading, required-phrase
-checks, citation-ID checks, and retrieval Recall@K.
+checks, citation-ID checks, retrieval Recall@K, and a recording evaluation runner.
 
 Target milestone: one CLI command compares recorded baseline and candidate responses
 against a versioned dataset, writes JSON and Markdown reports, and exits nonzero
@@ -85,6 +85,32 @@ Both synthetic recordings have Recall@1 = 1.0 and cite their labelled sources.
 The candidate's wrong answer illustrates why these checks cannot replace answer
 evaluation. Computed recall is accessed as a Python property; report serialization
 is a later task.
+
+## Evaluation runner
+
+```python
+from llm_reliability.runner import EvaluationSettings, evaluate_comparison
+
+result = evaluate_comparison(
+    comparison, settings=EvaluationSettings(retrieval_k=1)
+)
+refund = result.candidate.cases[0]
+print(refund.required_facts.missing_facts)
+# ('30 days', 'proof of purchase')
+```
+
+The runner consumes the validated comparison loaded above and joins responses by
+case ID in dataset order. It applies identical evaluator settings to both sides.
+Results retain dataset identity/schema/version, recording IDs, model/prompt/retrieval
+configuration snapshots, case criticality, and evaluator settings/version.
+Computed phrase-presence and recall values are included in `result.model_dump()`.
+Inputs must remain unmodified after validation, as with the existing contracts.
+The runner does not write files, aggregate scores, decide release eligibility, or
+replace the baseline. Result models are output contracts; parsing serialized results
+back into models is not yet supported as a persistence API.
+
+The selected future real-data integration is documented in
+[docs/real-rag-example.md](docs/real-rag-example.md); it is not implemented yet.
 
 The fictional support policies have no relationship to any real company's policies.
 These phrase checks test narrow assertions, not general semantic correctness.
