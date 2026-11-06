@@ -72,16 +72,26 @@
 - Generated and inspected local synthetic reports under `reports/` (ignored by Git).
 - Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 119 passed.
 
+## Completed: offline CLI and distinct exit codes
+
+- Added `llm-reliability` and `python -m llm_reliability` entry points connecting
+  existing loading, evaluation, gates, and reports. No live calls are performed.
+- Exit 0 means pass, 1 means gate failure, 2 means invalid arguments/inputs or an
+  execution error. Reporting errors take precedence over quality failures.
+- Added optional typed JSON policy/settings loading and explicit example configs.
+- Both pass/fail write reports; existing output is refused. Baseline remains fixed.
+- Verified 133 tests on Python 3.12.13 and installed console command exits 0/1/2.
+
 ## Next bounded task (not implemented)
 
-Add the CLI to connect loading, gate evaluation, and report writing with explicit
-exit codes for pass, quality failure, and input/output errors. CI integration follows.
+Add GitHub Actions with deterministic tests and replay evaluation, retaining reports
+on failure. Separate the intentionally failing demo from the accepted passing gate.
 
 ## Current limitations
 
 Required-phrase, citation-ID, retrieval recall checks, a runner, gate, and reports
-exist; no CLI or CI integration. The gate does not yet block
-a build or set an exit code. Source checks use case labels, not a validated source registry.
+exist with an offline CLI and exit codes; no CI integration or RAG recording generator
+exists yet. Source checks use case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between
 recordings. No paid APIs or external services are used.

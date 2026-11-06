@@ -41,3 +41,9 @@ critical case, or if improvements elsewhere hide that failure in the average?
 Why should a regression report preserve the baseline identity, evaluator settings,
 and gate policy? If a baseline has known failures, can a passing comparison alone
 establish that the candidate is acceptable for release?
+
+## CLI and CI integration
+
+Why should a missing recording file or report-write failure return an execution
+error rather than a quality-regression exit code? Should either outcome allow
+a deployment, and how would the team's response differ?

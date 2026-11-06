@@ -15,6 +15,7 @@
 ```sh
 uv sync --python 3.12 --locked
 uv run --python 3.12 pytest
+uv run llm-reliability --help
 ```
 
 Use `uv lock --python 3.12` when intentionally updating dependencies; commit uv.lock.

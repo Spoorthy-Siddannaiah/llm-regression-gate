@@ -4,9 +4,10 @@ Independent portfolio project, separate from the Databricks Enterprise AI Knowle
 Current scope: typed contracts, synthetic recordings, validated loading, required-phrase
 checks, citation-ID checks, retrieval Recall@K, a runner, an in-process gate, and reports.
 
-Target milestone: one CLI command compares recorded baseline and candidate responses
-against a versioned dataset, writes JSON and Markdown reports, and exits nonzero
-for a critical regression. **The CLI and scoring are not implemented yet.**
+The first local milestone is implemented: one CLI command compares recorded baseline
+and candidate responses against a versioned dataset, writes JSON and Markdown
+reports, and exits nonzero for a critical regression. CI wiring and real RAG
+integration are not implemented yet.
 
 ## Development
 
@@ -149,7 +150,7 @@ the mean; general per-case regression policies are not implemented.
 
 Policy identity and values are preserved in the decision. These settings govern
 narrow assertions, not general correctness. The gate returns a Python result only;
-there are no CLI exit codes or CI integration yet. The baseline is
+CI integration is not implemented yet. The baseline is
 never replaced automatically.
 
 ## Reports
@@ -179,6 +180,61 @@ A real baseline must be deliberately recorded, reviewed, and accepted with pinne
 data and configuration. It can have known weaknesses, so use absolute candidate
 floors as well as relative regression limits. Our bundled baseline is synthetic
 and demonstrates evaluator behaviour, not measured real-pipeline quality.
+
+## Offline CLI
+
+After `uv sync --python 3.12 --locked`, run from the repository root:
+
+```sh
+uv run --python 3.12 llm-reliability \
+  --dataset datasets/support_policy/v1/dataset.json \
+  --baseline recordings/baseline.synthetic.v1.json \
+  --candidate recordings/candidate.synthetic.v2.json \
+  --policy configs/gate.synthetic.v1.json \
+  --settings configs/evaluator.v1.json \
+  --output-dir reports/cli-run-001
+```
+
+This deliberately failing synthetic example writes both reports and exits **1**.
+For a passing smoke test, use the baseline file as both baseline and candidate,
+and select a new output directory. That smoke test is not evidence of an improved
+pipeline. Each invocation needs a new output directory; output is never overwritten.
+
+| Exit code | Meaning | Reports |
+| --- | --- | --- |
+| 0 | Quality gate passed | JSON and Markdown written |
+| 1 | Quality gate failed | JSON and Markdown written |
+| 2 | Invalid arguments/inputs or execution failure | May be absent or partial |
+
+An output failure takes precedence over a gate decision and returns 2. Expected
+input/output errors identify the file/directory. Unexpected errors report the
+exception type without dumping response payloads; deeper debugging requires Python
+development tools. `--help` exits 0; missing required arguments exit 2.
+`python -m llm_reliability` and `python -m llm_reliability.cli` use the same CLI.
+`--policy` and `--settings` are optional; omitting them uses model defaults (including
+zero metric floors). The example's 0.9 floors are illustrative synthetic settings,
+not calibrated production requirements. Effective values are preserved in reports.
+
+## How a RAG team would use it
+
+1. Review a versioned test dataset and record an accepted pipeline's outputs as
+   the baseline. Review labels and critical cases; choose meaningful thresholds.
+2. A developer changes a prompt, retriever, reranker, model, or chunking setting.
+3. A recording job runs that candidate on the same questions/corpus snapshot and
+   writes answers, citations, ranked retrieval IDs, and configuration versions.
+4. CI invokes this CLI. Exit 0 permits the quality check to pass; exits 1 and 2
+   block it, distinguishing a quality failure from a broken evaluation run.
+5. Review report evidence, fix the change, and rerun. Any baseline promotion is a
+   separate deliberate review action; never automatically promote candidate output.
+
+For example, reducing retrieval from five chunks to one might omit a refund-policy
+document and cause the answer to omit proof of purchase. Retrieval and phrase checks
+help distinguish where the failure appeared. A metric change alone does not prove
+its cause. This is pre-release testing, not live traffic monitoring, and passing
+these narrow checks is not proof of general semantic correctness.
+
+Our command currently consumes recordings only. Candidate generation, GitHub Actions,
+and real RAG integration remain future tasks; replay never makes model calls.
 
 The fictional support policies have no relationship to any real company's policies.
 These phrase checks test narrow assertions, not general semantic correctness.

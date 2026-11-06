@@ -9,6 +9,9 @@ description = "Reproducible, local LLM regression checks"
 requires-python = ">=3.12"
 dependencies = ["pydantic>=2.10,<3"]
 
+[project.scripts]
+llm-reliability = "llm_reliability.cli:main"
+
 [dependency-groups]
 dev = ["pytest>=8,<10"]
 

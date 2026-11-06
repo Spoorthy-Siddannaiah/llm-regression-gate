@@ -4,7 +4,9 @@ from pathlib import Path
 
 from pydantic import BaseModel, ValidationError
 
+from llm_reliability.gates import GatePolicy
 from llm_reliability.models import ComparisonInput, Dataset, Recording
+from llm_reliability.runner import EvaluationSettings
 
 
 class InputLoadError(ValueError):
@@ -37,6 +39,14 @@ def load_dataset(path: str | Path) -> Dataset:
 
 def load_recording(path: str | Path) -> Recording:
     return _load(path, Recording)
+
+
+def load_gate_policy(path: str | Path) -> GatePolicy:
+    return _load(path, GatePolicy)
+
+
+def load_evaluation_settings(path: str | Path) -> EvaluationSettings:
+    return _load(path, EvaluationSettings)
 
 
 def load_comparison(
