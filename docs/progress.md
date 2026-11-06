@@ -51,15 +51,28 @@
 - Selected Haystack's official PubMedQA RAG evaluation example for later adaptation;
   see `docs/real-rag-example.md`. No integration, downloads, or live calls yet.
 
+## Completed: comparison and regression gate
+
+- Added `compare_and_gate` with a versioned, snapshotted policy and typed failures.
+- Compares case-weighted mean phrase coverage, citation-label coverage, and Recall@K.
+- Defaults allow no metric drops and reject missing phrases in critical candidate
+  cases, including failures already present in the baseline. Metric floors default
+  to zero and can be configured independently from permitted drops.
+- Synthetic fixture fails: phrase coverage 1.0 -> 0.5 plus a critical refund failure.
+- Tested passing/improved candidates, inclusive boundaries, invalid thresholds,
+  source metric drops, absolute floors, and unchanged input models.
+- Verified with Python 3.12.13: `.venv/bin/python -m pytest` — 110 passed.
+
 ## Next bounded task (not implemented)
 
-Add baseline/candidate comparison and a small explicit regression gate policy.
-Report generation and the CLI remain later tasks. Keep the baseline fixed.
+Render the evaluation and gate decision as JSON and Markdown reports.
+CLI process exit codes and GitHub Actions integration remain later tasks.
 
 ## Current limitations
 
 Required-phrase, citation-ID, retrieval recall checks and a runner exist; no CLI,
-reports, or CI gate. Source checks use case labels, not a validated source registry.
+reports, or CI integration. An in-process policy gate exists; it does not yet block
+a build or set an exit code. Source checks use case labels, not a validated source registry.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels, not content hashes. Configuration identity may intentionally differ between
 recordings. No paid APIs or external services are used.

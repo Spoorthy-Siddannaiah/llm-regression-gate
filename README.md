@@ -2,7 +2,7 @@
 
 Independent portfolio project, separate from the Databricks Enterprise AI Knowledge Copilot.
 Current scope: typed contracts, synthetic recordings, validated loading, required-phrase
-checks, citation-ID checks, retrieval Recall@K, and a recording evaluation runner.
+checks, citation-ID checks, retrieval Recall@K, a runner, and an in-process regression gate.
 
 Target milestone: one CLI command compares recorded baseline and candidate responses
 against a versioned dataset, writes JSON and Markdown reports, and exits nonzero
@@ -111,6 +111,46 @@ back into models is not yet supported as a persistence API.
 
 The selected future real-data integration is documented in
 [docs/real-rag-example.md](docs/real-rag-example.md); it is not implemented yet.
+
+## Comparison and gate policy
+
+```python
+from llm_reliability.gates import GatePolicy, MetricThreshold, compare_and_gate
+
+decision = compare_and_gate(
+    comparison,
+    policy=GatePolicy(fact_coverage=MetricThreshold(minimum=0.9, max_drop=0.02)),
+)
+print(decision.passed)  # False for the synthetic candidate
+for failure in decision.failures:
+    print(failure.code, failure.case_id, failure.message)
+```
+
+`compare_and_gate` calls the runner with shared settings, retains its detailed
+evaluation, and returns three mean metric comparisons with candidate-minus-baseline
+deltas. Each case has equal weight:
+
+- Fact coverage: matched required phrases / all required phrases, averaged over cases.
+- Citation-label coverage: relevant cited IDs / all labelled relevant IDs, averaged
+  over cases. Extra unlabelled citations remain in the detailed results and are not
+  penalized by this metric. This is not citation precision or semantic support.
+- Retrieval recall: mean per-case Recall@K.
+
+Each metric has a candidate `minimum` and an allowed absolute `max_drop` in [0, 1].
+A drop of 0.02 means two percentage points, not two percent relative to baseline.
+Equality passes; comparisons tolerate floating-point noise up to 1e-12. Thresholds
+must be finite. Defaults use minimum 0.0 and max_drop 0.0 for every metric.
+
+Independently, `require_critical_facts=True` rejects any critical candidate case
+with missing required phrases, even if its baseline also failed. Aggregate gains
+cannot override this rule. Setting it false is an explicit policy relaxation and
+is recorded in the result. Standard-case losses can be offset by other gains in
+the mean; general per-case regression policies are not implemented.
+
+Policy identity and values are preserved in the decision. These settings govern
+narrow assertions, not general correctness. The gate returns a Python result only;
+there are no report files, CLI exit codes, or CI integration yet. The baseline is
+never replaced automatically.
 
 The fictional support policies have no relationship to any real company's policies.
 These phrase checks test narrow assertions, not general semantic correctness.

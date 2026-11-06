@@ -29,3 +29,9 @@ still look good? Which separate check would expose this fixture's failure?
 
 Why must baseline and candidate use the same evaluator version and retrieval K,
 even though their model, prompt, or retrieval configurations may differ?
+
+## Regression gate
+
+Why do we need both a baseline-relative regression limit and an absolute candidate
+quality requirement? What happens if baseline and candidate both fail the same
+critical case, or if improvements elsewhere hide that failure in the average?
