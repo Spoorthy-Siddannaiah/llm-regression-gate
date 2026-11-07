@@ -79,3 +79,11 @@ and 1 unknown citation occurrence, with 3 cases lacking citations. Candidate: 20
 existing and 0 unknown occurrences, with 5 cases lacking citations. These are
 occurrence counts, not semantic-support scores, and they do not alter the gate.
 See [reproduction and interpretation](../docs/citation-existence.md).
+
+## Versioned citation-policy replay
+
+[`squad-citation-gate-v2.json`](squad-citation-gate-v2.json) preserves two offline
+schema-3 gate results and the selected policy hash. Baseline self-comparison fails
+the absolute zero-unknown-ID cap (1 observed, 0 increase). The top-one candidate
+passes the unknown-ID rules (0 observed, -1 change) but still fails all three prior
+relative quality checks. No recordings or v1 results were changed.

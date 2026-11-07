@@ -119,3 +119,9 @@ inspection" from "enforced as a release requirement" in the API and report?
 Why can a cited source exist in the corpus and still be an invalid citation for
 the answer? Why should an ID absent from the corpus be labelled unknown rather
 than automatically claimed to be deliberately fabricated?
+
+## Unknown-citation gate policy
+
+Baseline and candidate each contain one unknown citation. Why might an absolute
+limit reject the candidate while the regression limit passes? Why does having
+zero unknown IDs still fail to prove that citations support the answer?

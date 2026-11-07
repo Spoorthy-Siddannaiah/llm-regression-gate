@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import re
 
-from llm_reliability.gates import GateResult
+from llm_reliability.gates import GateResult, GateResultV2
 from llm_reliability.alternative_diagnostics import AlternativesDiagnostic
 from llm_reliability.citation_existence import CitationExistenceDiagnostic
 
@@ -27,6 +27,8 @@ def _validate_diagnostic(result: GateResult, diagnostic: AlternativesDiagnostic)
 
 
 def _validate_citation_diagnostic(result: GateResult, diagnostic: CitationExistenceDiagnostic) -> None:
+    if isinstance(result, GateResultV2) and diagnostic != result.citation_existence_gate.diagnostic:
+        raise ValueError("citation diagnostic disagrees with enforced v2 evidence")
     for role in ("baseline", "candidate"):
         evaluation = getattr(result.evaluation, role)
         summary = getattr(diagnostic, role)
@@ -44,14 +46,14 @@ def render_json(
     result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None,
     citation_existence: CitationExistenceDiagnostic | None = None,
 ) -> str:
-    payload = {"report_schema_version": 1, **result.model_dump(mode="json")}
+    payload = {"report_schema_version": 3 if isinstance(result, GateResultV2) else 1, **result.model_dump(mode="json")}
     if answer_alternatives is not None:
         _validate_diagnostic(result, answer_alternatives)
-        payload["report_schema_version"] = 2
+        payload["report_schema_version"] = max(2, payload["report_schema_version"])
         payload["diagnostics"] = {"answer_alternatives": answer_alternatives.model_dump(mode="json")}
     if citation_existence is not None:
         _validate_citation_diagnostic(result, citation_existence)
-        payload["report_schema_version"] = 2
+        payload["report_schema_version"] = max(2, payload["report_schema_version"])
         payload.setdefault("diagnostics", {})["citation_existence"] = citation_existence.model_dump(mode="json")
     return json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
 
@@ -79,7 +81,7 @@ def render_markdown(
     lines = [
         "# Regression evaluation report", "",
         f"**Gate: {'PASS' if result.passed else 'FAIL'}**", "",
-        f"Report schema: {2 if answer_alternatives is not None or citation_existence is not None else 1}", "",
+        f"Report schema: {3 if isinstance(result, GateResultV2) else 2 if answer_alternatives is not None or citation_existence is not None else 1}", "",
         f"Dataset: {_text(evaluation.dataset_id)} / {_text(evaluation.dataset_version)} "
         f"(schema {evaluation.dataset_schema_version})", "",
         f"Evaluator: {_text(evaluation.settings.evaluator_version)}; "
@@ -129,6 +131,27 @@ def render_markdown(
                 f"- Missing relevant retrieval IDs: {_items(case.retrieval.missing_relevant_source_ids)}",
                 f"- Recall@{case.retrieval.k}: {case.retrieval_recall_at_k:.6f}",
             ])
+    if isinstance(result, GateResultV2):
+        evidence = result.citation_existence_gate
+        limits = result.policy.unknown_citations
+        lines.extend([
+            "", "## Enforced unknown-citation gate", "",
+            "This v2 policy enforces corpus membership counts, not relevance or semantic support. "
+            "Counts are citation occurrences across cases. Missing citations are not unknown IDs.", "",
+            f"Maximum candidate unknown citations: {limits.max_candidate_unknown}; "
+            f"maximum increase: {limits.max_increase}", "",
+            f"Corpus SHA-256: {_text(evidence.diagnostic.corpus_sha256)}", "",
+            "| Baseline unknown | Candidate unknown | Candidate minus baseline |",
+            "| ---: | ---: | ---: |",
+            f"| {evidence.baseline_unknown_count} | {evidence.candidate_unknown_count} | {evidence.increase:+d} |", "",
+            "| Recording | Case | Unknown cited IDs |", "| --- | --- | --- |",
+        ])
+        for role in ("baseline", "candidate"):
+            unknown_cases = [case for case in getattr(evidence.diagnostic, role).cases if case.unknown_source_ids]
+            if not unknown_cases:
+                lines.append(f"| {role} | None | None |")
+            for case in unknown_cases:
+                lines.append(f"| {role} | {_text(case.case_id)} | {_items(case.unknown_source_ids)} |")
     if answer_alternatives is not None:
         lines.extend([
             "", "## Optional answer alternatives (diagnostic only)", "",
@@ -187,7 +210,7 @@ def render_markdown(
             "Required-phrase checks do not establish semantic correctness. Citation-ID "
             "checks do not establish source existence or support. Relevance labels may "
             "be incomplete. Displayed numbers are rounded; JSON preserves numeric values."
-            if citation_existence is None else
+            if citation_existence is None and not isinstance(result, GateResultV2) else
             "Required-phrase checks do not establish semantic correctness. Citation existence "
             "does not establish relevance or support. Relevance labels may be incomplete. "
             "Displayed numbers are rounded; JSON preserves numeric values."
@@ -197,7 +220,7 @@ def render_markdown(
             "outputs; consult recording provenance. The repository's bundled recordings "
             "are synthetic fixtures. Versions are manual labels, not content hashes. "
             "The baseline was not automatically replaced."
-            if answer_alternatives is None and citation_existence is None else
+            if answer_alternatives is None and citation_existence is None and not isinstance(result, GateResultV2) else
             "Consult recording provenance for the origin of recorded outputs. Diagnostic "
             "input hashes identify the files used; they do not establish semantic correctness "
             "or signed authenticity. The baseline was not automatically replaced."

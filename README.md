@@ -210,6 +210,11 @@ No model calls are added to CI.
 
 ## Comparison and gate policy
 
+An explicitly selected [v2 policy](docs/citation-gate-v2.md) can now enforce maximum
+candidate unknown-citation counts and maximum increases from baseline. V1 remains
+the default. V2 automatically requires corpus evidence and writes schema-3 reports;
+report-only diagnostic flags do not enable or disable this rule.
+
 ```python
 from llm_reliability.gates import GatePolicy, MetricThreshold, compare_and_gate
 

@@ -5,7 +5,7 @@ import hashlib
 from pathlib import Path
 import sys
 
-from llm_reliability.gates import compare_and_gate
+from llm_reliability.gates import GatePolicyV2, compare_and_gate
 from llm_reliability.loading import (
     InputLoadError, load_comparison, load_corpus, load_evaluation_settings, load_gate_policy,
 )
@@ -47,16 +47,20 @@ def main(argv: list[str] | None = None) -> int:
             except (OSError, ValueError) as error:
                 raise InputLoadError(f"answer alternatives ({args.answer_alternatives}): {error}") from error
         citation_diagnostic = None
-        if args.citation_existence:
+        corpus = None
+        corpus_sha256 = None
+        if args.citation_existence or isinstance(policy, GatePolicyV2):
             sources = args.sources or args.dataset.with_name("sources.json")
             try:
-                citation_diagnostic = build_citation_existence(
-                    inputs, load_corpus(sources),
-                    corpus_sha256=hashlib.sha256(sources.read_bytes()).hexdigest(),
-                )
+                corpus = load_corpus(sources)
+                corpus_sha256 = hashlib.sha256(sources.read_bytes()).hexdigest()
+                if args.citation_existence:
+                    citation_diagnostic = build_citation_existence(inputs, corpus, corpus_sha256=corpus_sha256)
             except (OSError, ValueError) as error:
                 raise InputLoadError(f"citation existence ({sources}): {error}") from error
-        result = compare_and_gate(inputs, policy=policy, settings=settings)
+        result = compare_and_gate(
+            inputs, policy=policy, settings=settings, corpus=corpus, corpus_sha256=corpus_sha256,
+        )
         json_path, markdown_path = write_reports(
             result, args.output_dir, answer_alternatives=diagnostic,
             citation_existence=citation_diagnostic,

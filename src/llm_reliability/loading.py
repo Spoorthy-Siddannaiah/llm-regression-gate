@@ -4,7 +4,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ValidationError
 
-from llm_reliability.gates import GatePolicy
+from llm_reliability.gates import GatePolicy, GatePolicyDocument, GatePolicyV2
 from llm_reliability.models import ComparisonInput, Dataset, Recording
 from llm_reliability.runner import EvaluationSettings
 from llm_reliability.retrieval import SourceCorpus
@@ -47,8 +47,8 @@ def load_corpus(path: str | Path) -> SourceCorpus:
     return _load(path, SourceCorpus)
 
 
-def load_gate_policy(path: str | Path) -> GatePolicy:
-    return _load(path, GatePolicy)
+def load_gate_policy(path: str | Path) -> GatePolicy | GatePolicyV2:
+    return _load(path, GatePolicyDocument).root
 
 
 def load_evaluation_settings(path: str | Path) -> EvaluationSettings:

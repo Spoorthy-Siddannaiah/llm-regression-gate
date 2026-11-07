@@ -1,0 +1,4582 @@
+{
+  "artifact_kind": "citation_gate_v2_review",
+  "schema_version": 1,
+  "policy_sha256": "4381c8bbb2e1108fdcc1249973ecc3f2d7979d06786e2a5d774457e1b889a06a",
+  "baseline_self_check": {
+    "report_schema_version": 3,
+    "evaluation": {
+      "dataset_id": "squad-v1.1-dev-slice",
+      "dataset_version": "1.0.0",
+      "dataset_schema_version": 1,
+      "settings": {
+        "evaluator_version": "deterministic-v1",
+        "retrieval_k": 3
+      },
+      "baseline": {
+        "recording_id": "squad-llama3.2-bm25-v1",
+        "configuration": {
+          "configuration_id": "ollama-llama3.2-bm25",
+          "configuration_version": "1.0.0",
+          "model_version": "llama3.2:latest@sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+          "prompt_version": "grounded-json-v1",
+          "retrieval_version": "bm25-v1-top3"
+        },
+        "cases": [
+          {
+            "case_id": "squad-56be4db0acb8001400a502ec",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "matched_facts": [
+                "Denver Broncos"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "relevant_cited_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4e1facb8001400a502f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "matched_facts": [
+                "Cam Newton"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "relevant_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4eafacb8001400a50302",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "matched_facts": [
+                "Von Miller"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "relevant_cited_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be5333acb8001400a5030a",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "matched_facts": [
+                "CBS"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "relevant_cited_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be53b8acb8001400a50314",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "matched_facts": [
+                "Roger Goodell"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "relevant_cited_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-5733a5f54776f41900660f45",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "matched_facts": [
+                "Nobel Prize"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "relevant_cited_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57336755d058e614000b5a3d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "matched_facts": [
+                "100"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "relevant_cited_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702",
+                "squad-context-5ef3de079d69dbfcbf3418f94ba50a6dbe082fa9d93ddac954bac3e8bdfae797",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ddc4776f41900660bbb",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "matched_facts": [],
+              "missing_facts": [
+                "15 kilometres"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "relevant_cited_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ea24776f41900660bd0",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "matched_facts": [
+                "city"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "relevant_cited_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57339555d058e614000b5df4",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "matched_facts": [
+                "Warsaw University of Technology"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "relevant_cited_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56ddde6b9a695914005b9628",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "matched_facts": [
+                "France"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dddf4066d3e219004dad5f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "matched_facts": [
+                "William the Conqueror"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "relevant_cited_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+                "squad-context-752ba585d39a7752b7c594f34a86a677c9c25571b9136f5ca1b2bd3c846d86ed",
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde0379a695914005b9636",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "matched_facts": [],
+              "missing_facts": [
+                "Viking"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dde0ba66d3e219004dad75",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "matched_facts": [
+                "911"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "relevant_cited_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b",
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde1d966d3e219004dad8d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "matched_facts": [
+                "Rollo"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "relevant_cited_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56df9e2838dc4217001520f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "matched_facts": [
+                "1856"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56df9ee138dc421700152108",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "matched_facts": [
+                "1884"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "relevant_cited_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa01738dc42170015211d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "matched_facts": [
+                "1893"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "relevant_cited_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa0d84a1a83140091ebb7",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "matched_facts": [],
+              "missing_facts": [
+                "1943"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-6728e74a97c38743df36b7626ed3e9af4f757d952f24bc674ff98a4548564b66",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dfa13d4a1a83140091ebc1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "matched_facts": [
+                "Croatia"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16182e3433e1400422e28",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "matched_facts": [
+                "Computational complexity theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "relevant_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6cc34106bc6b1deb652e610973c798faa2caaaed6b16c99c39c6f5b49df3a196"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16839cd28a01900c67887",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "matched_facts": [],
+              "missing_facts": [
+                "if its solution requires significant resources"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "relevant_cited_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17644e3433e1400422f40",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "matched_facts": [
+                "analysis of algorithms and computability theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "relevant_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17a7ccd28a01900c679a1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "matched_facts": [
+                "problem instance"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "relevant_cited_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17e6ee3433e1400422f7f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "matched_facts": [
+                "2000"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "relevant_cited_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef",
+                "squad-context-4ddd2ea4a2c377fbff94602ffde9e3feead6020c3937f8e6feda19f75b6fd619",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          }
+        ]
+      },
+      "candidate": {
+        "recording_id": "squad-llama3.2-bm25-v1",
+        "configuration": {
+          "configuration_id": "ollama-llama3.2-bm25",
+          "configuration_version": "1.0.0",
+          "model_version": "llama3.2:latest@sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+          "prompt_version": "grounded-json-v1",
+          "retrieval_version": "bm25-v1-top3"
+        },
+        "cases": [
+          {
+            "case_id": "squad-56be4db0acb8001400a502ec",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "matched_facts": [
+                "Denver Broncos"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "relevant_cited_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4e1facb8001400a502f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "matched_facts": [
+                "Cam Newton"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "relevant_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4eafacb8001400a50302",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "matched_facts": [
+                "Von Miller"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "relevant_cited_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be5333acb8001400a5030a",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "matched_facts": [
+                "CBS"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "relevant_cited_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be53b8acb8001400a50314",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "matched_facts": [
+                "Roger Goodell"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "relevant_cited_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-5733a5f54776f41900660f45",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "matched_facts": [
+                "Nobel Prize"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "relevant_cited_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57336755d058e614000b5a3d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "matched_facts": [
+                "100"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "relevant_cited_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702",
+                "squad-context-5ef3de079d69dbfcbf3418f94ba50a6dbe082fa9d93ddac954bac3e8bdfae797",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ddc4776f41900660bbb",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "matched_facts": [],
+              "missing_facts": [
+                "15 kilometres"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "relevant_cited_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ea24776f41900660bd0",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "matched_facts": [
+                "city"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "relevant_cited_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57339555d058e614000b5df4",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "matched_facts": [
+                "Warsaw University of Technology"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "relevant_cited_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56ddde6b9a695914005b9628",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "matched_facts": [
+                "France"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dddf4066d3e219004dad5f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "matched_facts": [
+                "William the Conqueror"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "relevant_cited_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+                "squad-context-752ba585d39a7752b7c594f34a86a677c9c25571b9136f5ca1b2bd3c846d86ed",
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde0379a695914005b9636",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "matched_facts": [],
+              "missing_facts": [
+                "Viking"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dde0ba66d3e219004dad75",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "matched_facts": [
+                "911"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "relevant_cited_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b",
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde1d966d3e219004dad8d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "matched_facts": [
+                "Rollo"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "relevant_cited_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56df9e2838dc4217001520f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "matched_facts": [
+                "1856"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56df9ee138dc421700152108",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "matched_facts": [
+                "1884"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "relevant_cited_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa01738dc42170015211d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "matched_facts": [
+                "1893"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "relevant_cited_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa0d84a1a83140091ebb7",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "matched_facts": [],
+              "missing_facts": [
+                "1943"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-6728e74a97c38743df36b7626ed3e9af4f757d952f24bc674ff98a4548564b66",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dfa13d4a1a83140091ebc1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "matched_facts": [
+                "Croatia"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16182e3433e1400422e28",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "matched_facts": [
+                "Computational complexity theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "relevant_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6cc34106bc6b1deb652e610973c798faa2caaaed6b16c99c39c6f5b49df3a196"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16839cd28a01900c67887",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "matched_facts": [],
+              "missing_facts": [
+                "if its solution requires significant resources"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "relevant_cited_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17644e3433e1400422f40",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "matched_facts": [
+                "analysis of algorithms and computability theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "relevant_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17a7ccd28a01900c679a1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "matched_facts": [
+                "problem instance"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "relevant_cited_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17e6ee3433e1400422f7f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "matched_facts": [
+                "2000"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "relevant_cited_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef",
+                "squad-context-4ddd2ea4a2c377fbff94602ffde9e3feead6020c3937f8e6feda19f75b6fd619",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          }
+        ]
+      }
+    },
+    "policy": {
+      "policy_version": "deterministic-gate-v2",
+      "require_critical_facts": true,
+      "fact_coverage": {
+        "minimum": 0.0,
+        "max_drop": 0.0
+      },
+      "citation_label_coverage": {
+        "minimum": 0.0,
+        "max_drop": 0.0
+      },
+      "retrieval_recall": {
+        "minimum": 0.0,
+        "max_drop": 0.0
+      },
+      "unknown_citations": {
+        "max_candidate_unknown": 0,
+        "max_increase": 0
+      }
+    },
+    "metrics": [
+      {
+        "metric": "fact_coverage",
+        "baseline": 0.84,
+        "candidate": 0.84,
+        "delta": 0.0
+      },
+      {
+        "metric": "citation_label_coverage",
+        "baseline": 0.8,
+        "candidate": 0.8,
+        "delta": 0.0
+      },
+      {
+        "metric": "retrieval_recall",
+        "baseline": 0.84,
+        "candidate": 0.84,
+        "delta": 0.0
+      }
+    ],
+    "failures": [
+      {
+        "code": "unknown_citation_limit",
+        "metric": "unknown_citation_count",
+        "case_id": null,
+        "message": "candidate unknown citation count 1 exceeds maximum 0; cases=['squad-56e17644e3433e1400422f40']"
+      }
+    ],
+    "citation_existence_gate": {
+      "diagnostic": {
+        "evaluator_version": "citation-existence-v1",
+        "corpus_sha256": "15e81912b4a0d7905af4277ecb017d17608ea9c31add340359f49afe5bda1cba",
+        "source_count": 50,
+        "baseline": {
+          "recording_id": "squad-llama3.2-bm25-v1",
+          "cases": [
+            {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "existing_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "existing_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "existing_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "existing_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "existing_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "existing_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "existing_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "existing_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "existing_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "existing_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "existing_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "existing_source_ids": [
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "existing_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "existing_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "existing_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "existing_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "existing_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "existing_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unknown_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99"
+              ],
+              "has_citations": true,
+              "all_cited_ids_exist": false
+            },
+            {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "existing_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "existing_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            }
+          ],
+          "unknown_citation_count": 1,
+          "cases_without_citations": 3,
+          "existing_citation_count": 34
+        },
+        "candidate": {
+          "recording_id": "squad-llama3.2-bm25-v1",
+          "cases": [
+            {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "existing_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "existing_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "existing_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "existing_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "existing_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "existing_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "existing_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "existing_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "existing_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "existing_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "existing_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "existing_source_ids": [
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "existing_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "existing_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "existing_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "existing_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "existing_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "existing_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unknown_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99"
+              ],
+              "has_citations": true,
+              "all_cited_ids_exist": false
+            },
+            {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "existing_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "existing_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            }
+          ],
+          "unknown_citation_count": 1,
+          "cases_without_citations": 3,
+          "existing_citation_count": 34
+        }
+      },
+      "baseline_unknown_count": 1,
+      "candidate_unknown_count": 1,
+      "increase": 0
+    },
+    "passed": false
+  },
+  "candidate_comparison": {
+    "report_schema_version": 3,
+    "evaluation": {
+      "dataset_id": "squad-v1.1-dev-slice",
+      "dataset_version": "1.0.0",
+      "dataset_schema_version": 1,
+      "settings": {
+        "evaluator_version": "deterministic-v1",
+        "retrieval_k": 3
+      },
+      "baseline": {
+        "recording_id": "squad-llama3.2-bm25-v1",
+        "configuration": {
+          "configuration_id": "ollama-llama3.2-bm25",
+          "configuration_version": "1.0.0",
+          "model_version": "llama3.2:latest@sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+          "prompt_version": "grounded-json-v1",
+          "retrieval_version": "bm25-v1-top3"
+        },
+        "cases": [
+          {
+            "case_id": "squad-56be4db0acb8001400a502ec",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "matched_facts": [
+                "Denver Broncos"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "relevant_cited_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4e1facb8001400a502f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "matched_facts": [
+                "Cam Newton"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "relevant_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4eafacb8001400a50302",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "matched_facts": [
+                "Von Miller"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "relevant_cited_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be5333acb8001400a5030a",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "matched_facts": [
+                "CBS"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "relevant_cited_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be53b8acb8001400a50314",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "matched_facts": [
+                "Roger Goodell"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "relevant_cited_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86",
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-5733a5f54776f41900660f45",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "matched_facts": [
+                "Nobel Prize"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "relevant_cited_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57336755d058e614000b5a3d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "matched_facts": [
+                "100"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "relevant_cited_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702",
+                "squad-context-5ef3de079d69dbfcbf3418f94ba50a6dbe082fa9d93ddac954bac3e8bdfae797",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ddc4776f41900660bbb",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "matched_facts": [],
+              "missing_facts": [
+                "15 kilometres"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "relevant_cited_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+                "squad-context-e7faaf2c519b308d025174f8c0530ff4e7bc8f19239b53428fef406411025b93"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ea24776f41900660bd0",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "matched_facts": [
+                "city"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "relevant_cited_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57339555d058e614000b5df4",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "matched_facts": [
+                "Warsaw University of Technology"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "relevant_cited_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56ddde6b9a695914005b9628",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "matched_facts": [
+                "France"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9",
+                "squad-context-1b6b54e8c8b9ed8a8cd2a8ba1a4fecc7094aad721964a7ddb65b5eb788d029ec",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dddf4066d3e219004dad5f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "matched_facts": [
+                "William the Conqueror"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "relevant_cited_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+                "squad-context-752ba585d39a7752b7c594f34a86a677c9c25571b9136f5ca1b2bd3c846d86ed",
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde0379a695914005b9636",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "matched_facts": [],
+              "missing_facts": [
+                "Viking"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b",
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dde0ba66d3e219004dad75",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "matched_facts": [
+                "911"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "relevant_cited_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b",
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde1d966d3e219004dad8d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "matched_facts": [
+                "Rollo"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "relevant_cited_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56df9e2838dc4217001520f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "matched_facts": [
+                "1856"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56df9ee138dc421700152108",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "matched_facts": [
+                "1884"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "relevant_cited_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa01738dc42170015211d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "matched_facts": [
+                "1893"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "relevant_cited_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa0d84a1a83140091ebb7",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "matched_facts": [],
+              "missing_facts": [
+                "1943"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42",
+                "squad-context-6728e74a97c38743df36b7626ed3e9af4f757d952f24bc674ff98a4548564b66",
+                "squad-context-184d8e2bfbbe465d571014652c9207a041ec5654986198ec457160d7a42c77dc"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dfa13d4a1a83140091ebc1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "matched_facts": [
+                "Croatia"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de",
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16182e3433e1400422e28",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "matched_facts": [
+                "Computational complexity theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "relevant_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6cc34106bc6b1deb652e610973c798faa2caaaed6b16c99c39c6f5b49df3a196"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16839cd28a01900c67887",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "matched_facts": [],
+              "missing_facts": [
+                "if its solution requires significant resources"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "relevant_cited_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17644e3433e1400422f40",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "matched_facts": [
+                "analysis of algorithms and computability theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "relevant_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17a7ccd28a01900c679a1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "matched_facts": [
+                "problem instance"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "relevant_cited_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17e6ee3433e1400422f7f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "matched_facts": [
+                "2000"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "relevant_cited_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef",
+                "squad-context-4ddd2ea4a2c377fbff94602ffde9e3feead6020c3937f8e6feda19f75b6fd619",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          }
+        ]
+      },
+      "candidate": {
+        "recording_id": "squad-llama3.2-bm25-top1-v1",
+        "configuration": {
+          "configuration_id": "ollama-llama3.2-bm25",
+          "configuration_version": "1.0.0-top1",
+          "model_version": "llama3.2:latest@sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+          "prompt_version": "grounded-json-v1",
+          "retrieval_version": "bm25-v1-top1"
+        },
+        "cases": [
+          {
+            "case_id": "squad-56be4db0acb8001400a502ec",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "matched_facts": [
+                "Denver Broncos"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "relevant_cited_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4e1facb8001400a502f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "matched_facts": [
+                "Cam Newton"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "relevant_cited_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be4eafacb8001400a50302",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "matched_facts": [],
+              "missing_facts": [
+                "Von Miller"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56be5333acb8001400a5030a",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "matched_facts": [
+                "CBS"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "relevant_cited_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56be53b8acb8001400a50314",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "matched_facts": [
+                "Roger Goodell"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "relevant_cited_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-5733a5f54776f41900660f45",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "matched_facts": [
+                "Nobel Prize"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "relevant_cited_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57336755d058e614000b5a3d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "matched_facts": [
+                "100"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "relevant_cited_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ddc4776f41900660bbb",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "matched_facts": [
+                "15 kilometres"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "relevant_cited_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57337ea24776f41900660bd0",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "matched_facts": [],
+              "missing_facts": [
+                "city"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "relevant_cited_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-57339555d058e614000b5df4",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "matched_facts": [
+                "Warsaw University of Technology"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "relevant_cited_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56ddde6b9a695914005b9628",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "matched_facts": [],
+              "missing_facts": [
+                "France"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dddf4066d3e219004dad5f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "matched_facts": [
+                "William the Conqueror"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "relevant_cited_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dde0379a695914005b9636",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "matched_facts": [],
+              "missing_facts": [
+                "Viking"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-72457fa0c9150fb2a7fed021650358b9295b523f55397d61363a047683297908"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dde0ba66d3e219004dad75",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "matched_facts": [],
+              "missing_facts": [
+                "911"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dde1d966d3e219004dad8d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "matched_facts": [
+                "Rollo"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "relevant_cited_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56df9e2838dc4217001520f6",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "matched_facts": [
+                "1856"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-18fb66889bd625c49662834ea441b66eb3a9e9ae157e57615623f27186d7c1f3"
+              ]
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56df9ee138dc421700152108",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "matched_facts": [
+                "1884"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "relevant_cited_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa01738dc42170015211d",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "matched_facts": [
+                "1893"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "relevant_cited_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56dfa0d84a1a83140091ebb7",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "matched_facts": [],
+              "missing_facts": [
+                "1943"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-b3e0e537ca340e8779e4b1c3fa7f766b0c8f85f0062756e63df43cc2c8118c52"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56dfa13d4a1a83140091ebc1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "matched_facts": [
+                "Croatia"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "relevant_cited_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16182e3433e1400422e28",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "matched_facts": [
+                "Computational complexity theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "relevant_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e16839cd28a01900c67887",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "matched_facts": [],
+              "missing_facts": [
+                "if its solution requires significant resources"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56e17644e3433e1400422f40",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "matched_facts": [
+                "analysis of algorithms and computability theory"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "relevant_cited_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          },
+          {
+            "case_id": "squad-56e17a7ccd28a01900c679a1",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "matched_facts": [],
+              "missing_facts": [
+                "problem instance"
+              ]
+            },
+            "citations": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "relevant_cited_source_ids": [],
+              "unlabelled_cited_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20"
+              ],
+              "missing_relevant_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ]
+            },
+            "retrieval": {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20"
+              ],
+              "found_relevant_source_ids": [],
+              "missing_relevant_source_ids": [
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976"
+              ]
+            },
+            "all_required_facts_present": false,
+            "retrieval_recall_at_k": 0.0
+          },
+          {
+            "case_id": "squad-56e17e6ee3433e1400422f7f",
+            "criticality": "standard",
+            "required_facts": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "matched_facts": [
+                "2000"
+              ],
+              "missing_facts": []
+            },
+            "citations": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "relevant_cited_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unlabelled_cited_source_ids": [],
+              "missing_relevant_source_ids": []
+            },
+            "retrieval": {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "k": 3,
+              "retrieved_source_ids_at_k": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "found_relevant_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "missing_relevant_source_ids": []
+            },
+            "all_required_facts_present": true,
+            "retrieval_recall_at_k": 1.0
+          }
+        ]
+      }
+    },
+    "policy": {
+      "policy_version": "deterministic-gate-v2",
+      "require_critical_facts": true,
+      "fact_coverage": {
+        "minimum": 0.0,
+        "max_drop": 0.0
+      },
+      "citation_label_coverage": {
+        "minimum": 0.0,
+        "max_drop": 0.0
+      },
+      "retrieval_recall": {
+        "minimum": 0.0,
+        "max_drop": 0.0
+      },
+      "unknown_citations": {
+        "max_candidate_unknown": 0,
+        "max_increase": 0
+      }
+    },
+    "metrics": [
+      {
+        "metric": "fact_coverage",
+        "baseline": 0.84,
+        "candidate": 0.68,
+        "delta": -0.15999999999999992
+      },
+      {
+        "metric": "citation_label_coverage",
+        "baseline": 0.8,
+        "candidate": 0.68,
+        "delta": -0.12
+      },
+      {
+        "metric": "retrieval_recall",
+        "baseline": 0.84,
+        "candidate": 0.68,
+        "delta": -0.15999999999999992
+      }
+    ],
+    "failures": [
+      {
+        "code": "excessive_drop",
+        "metric": "fact_coverage",
+        "case_id": null,
+        "message": "fact_coverage: drop 0.160000 exceeds allowed 0.000000"
+      },
+      {
+        "code": "excessive_drop",
+        "metric": "citation_label_coverage",
+        "case_id": null,
+        "message": "citation_label_coverage: drop 0.120000 exceeds allowed 0.000000"
+      },
+      {
+        "code": "excessive_drop",
+        "metric": "retrieval_recall",
+        "case_id": null,
+        "message": "retrieval_recall: drop 0.160000 exceeds allowed 0.000000"
+      }
+    ],
+    "citation_existence_gate": {
+      "diagnostic": {
+        "evaluator_version": "citation-existence-v1",
+        "corpus_sha256": "15e81912b4a0d7905af4277ecb017d17608ea9c31add340359f49afe5bda1cba",
+        "source_count": 50,
+        "baseline": {
+          "recording_id": "squad-llama3.2-bm25-v1",
+          "cases": [
+            {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "existing_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "existing_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+                "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "existing_source_ids": [
+                "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "existing_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "existing_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "existing_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "existing_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "existing_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "existing_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "existing_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "existing_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "existing_source_ids": [
+                "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "existing_source_ids": [
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "existing_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+                "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+                "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "existing_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+                "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+                "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "existing_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "existing_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "existing_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+                "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+              ],
+              "unknown_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99"
+              ],
+              "has_citations": true,
+              "all_cited_ids_exist": false
+            },
+            {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "existing_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+                "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+                "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "existing_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            }
+          ],
+          "unknown_citation_count": 1,
+          "cases_without_citations": 3,
+          "existing_citation_count": 34
+        },
+        "candidate": {
+          "recording_id": "squad-llama3.2-bm25-top1-v1",
+          "cases": [
+            {
+              "case_id": "squad-56be4db0acb8001400a502ec",
+              "existing_source_ids": [
+                "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4e1facb8001400a502f6",
+              "existing_source_ids": [
+                "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be4eafacb8001400a50302",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56be5333acb8001400a5030a",
+              "existing_source_ids": [
+                "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56be53b8acb8001400a50314",
+              "existing_source_ids": [
+                "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-5733a5f54776f41900660f45",
+              "existing_source_ids": [
+                "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57336755d058e614000b5a3d",
+              "existing_source_ids": [
+                "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ddc4776f41900660bbb",
+              "existing_source_ids": [
+                "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57337ea24776f41900660bd0",
+              "existing_source_ids": [
+                "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-57339555d058e614000b5df4",
+              "existing_source_ids": [
+                "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56ddde6b9a695914005b9628",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dddf4066d3e219004dad5f",
+              "existing_source_ids": [
+                "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dde0379a695914005b9636",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dde0ba66d3e219004dad75",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dde1d966d3e219004dad8d",
+              "existing_source_ids": [
+                "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9e2838dc4217001520f6",
+              "existing_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56df9ee138dc421700152108",
+              "existing_source_ids": [
+                "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa01738dc42170015211d",
+              "existing_source_ids": [
+                "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56dfa0d84a1a83140091ebb7",
+              "existing_source_ids": [],
+              "unknown_source_ids": [],
+              "has_citations": false,
+              "all_cited_ids_exist": null
+            },
+            {
+              "case_id": "squad-56dfa13d4a1a83140091ebc1",
+              "existing_source_ids": [
+                "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e16182e3433e1400422e28",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e16839cd28a01900c67887",
+              "existing_source_ids": [
+                "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17644e3433e1400422f40",
+              "existing_source_ids": [
+                "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17a7ccd28a01900c679a1",
+              "existing_source_ids": [
+                "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            },
+            {
+              "case_id": "squad-56e17e6ee3433e1400422f7f",
+              "existing_source_ids": [
+                "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+              ],
+              "unknown_source_ids": [],
+              "has_citations": true,
+              "all_cited_ids_exist": true
+            }
+          ],
+          "unknown_citation_count": 0,
+          "cases_without_citations": 5,
+          "existing_citation_count": 20
+        }
+      },
+      "baseline_unknown_count": 1,
+      "candidate_unknown_count": 0,
+      "increase": -1
+    },
+    "passed": false
+  },
+  "limits": "Offline policy replay only. Baseline self-check fails absolute unknown-ID cap; top-one candidate fails existing quality regressions, not unknown-ID rules. No new model generation, release approval, semantic support claim, or default-policy change."
+}

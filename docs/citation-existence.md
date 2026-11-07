@@ -47,6 +47,8 @@ Real recording provenance binds this supplied corpus to the generation run. Plai
 synthetic fixtures lack that historical guarantee. A missing/invalid requested
 corpus is an input error (exit 2); no diagnostic is silently dropped.
 No model calls are made. The diagnostic does not change the gate or exit 0/1 decision.
+An independently selected [v2 policy](citation-gate-v2.md) can enforce this same
+membership evidence; the report-only flag itself still does not change enforcement.
 
 ## Measured real recording results
 

@@ -225,10 +225,23 @@
 - Default and alternatives-only historical reports remain byte-for-byte unchanged.
 - Verified 256 offline tests. No model calls or dataset/recording/policy changes.
 
+## Completed: opt-in versioned unknown-citation enforcement
+
+- Added explicit deterministic-gate-v2 policy with integer absolute candidate cap
+  and permitted count increase; equality passes and counts represent occurrences.
+- Recomputes membership against corpus input and requires corpus/hash for v2.
+  No citation flag is needed to enforce the policy; missing corpus exits 2.
+- Added schema-3 enforced-rule evidence/reasons without changing v1 output/defaults.
+- Real baseline self-check fails unknown-ID cap (1 vs 0); top-one candidate has 0
+  unknowns but still fails the three existing relative quality checks.
+- Saved both policy replay results and verified 280 tests on Python 3.12.13.
+- Historical default/optional reports remain byte-for-byte unchanged. No model
+  calls, recording changes, policy rollout to Actions, pushes, or deployments.
+
 ## Next bounded task (not implemented)
 
-Introduce a separately versioned, opt-in gate rule for unknown cited IDs after
-defining its policy semantics; preserve the current default gate and historical reports.
+Add explicit v2 policy replay steps to CI with passing and expected-failing examples,
+leaving existing v1 checks intact and distinguishing absolute failures from regressions.
 
 ## Current limitations
 
