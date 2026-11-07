@@ -101,3 +101,9 @@ answers does not run a changed prompt or produce fresh model responses.
 The dataset version label is unchanged, but the corpus bytes differ from the
 recording manifest. Should the CLI report a quality regression or an input error,
 and why must it stop before scoring?
+
+## Alternative answers
+
+Why should "Norseman OR Viking" be represented differently from "30 days AND proof
+of purchase"? Why would automatically adding a model's answer as a new accepted
+alias undermine regression testing?

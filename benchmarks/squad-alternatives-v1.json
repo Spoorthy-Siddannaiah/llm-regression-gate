@@ -1,0 +1,865 @@
+{
+  "artifact_kind": "alternative_answer_diagnostic",
+  "schema_version": 1,
+  "evaluator_version": "alternative-phrases-v1",
+  "case_count": 25,
+  "input_sha256": {
+    "dataset": "5865872c8aedaae4413181f60b3640e108b7026fc629ea01fe23bfaa54ba9872",
+    "sources": "15e81912b4a0d7905af4277ecb017d17608ea9c31add340359f49afe5bda1cba",
+    "references": "0e8e2381782875bc334088fcf81f1e970d342ee4feeec4e1a51fb4d809891cad",
+    "baseline": "70be80822b2873e1ae11caa605d98f851439b498e4dbf3702abd3c1cad05779b",
+    "candidate": "28e0cc58a6479403d8db3561ac60c73093ec687154e422582fdb87c34c842320"
+  },
+  "results": {
+    "baseline": {
+      "recording_id": "squad-llama3.2-bm25-v1",
+      "required_fact_case_coverage_v1": 0.84,
+      "alternative_case_coverage": 0.84,
+      "cases": [
+        {
+          "case_id": "squad-56be4db0acb8001400a502ec",
+          "alternatives": [
+            "Denver Broncos"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be4db0acb8001400a502ec",
+            "matched_alternatives": [
+              "Denver Broncos"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be4e1facb8001400a502f6",
+          "alternatives": [
+            "Cam Newton"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be4e1facb8001400a502f6",
+            "matched_alternatives": [
+              "Cam Newton"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be4eafacb8001400a50302",
+          "alternatives": [
+            "Von Miller",
+            "Miller"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be4eafacb8001400a50302",
+            "matched_alternatives": [
+              "Von Miller",
+              "Miller"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be5333acb8001400a5030a",
+          "alternatives": [
+            "CBS"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be5333acb8001400a5030a",
+            "matched_alternatives": [
+              "CBS"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be53b8acb8001400a50314",
+          "alternatives": [
+            "Roger Goodell",
+            "Goodell"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be53b8acb8001400a50314",
+            "matched_alternatives": [
+              "Roger Goodell",
+              "Goodell"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-5733a5f54776f41900660f45",
+          "alternatives": [
+            "Nobel Prize"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-5733a5f54776f41900660f45",
+            "matched_alternatives": [
+              "Nobel Prize"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-57336755d058e614000b5a3d",
+          "alternatives": [
+            "100",
+            "over 100"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57336755d058e614000b5a3d",
+            "matched_alternatives": [
+              "100",
+              "over 100"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-57337ddc4776f41900660bbb",
+          "alternatives": [
+            "15 kilometres",
+            "About 15 kilometres"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57337ddc4776f41900660bbb",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "15 kilometres",
+              "About 15 kilometres"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-57337ea24776f41900660bd0",
+          "alternatives": [
+            "city",
+            "Demographically"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57337ea24776f41900660bd0",
+            "matched_alternatives": [
+              "city"
+            ],
+            "unmatched_alternatives": [
+              "Demographically"
+            ],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-57339555d058e614000b5df4",
+          "alternatives": [
+            "Warsaw University of Technology"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57339555d058e614000b5df4",
+            "matched_alternatives": [
+              "Warsaw University of Technology"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56ddde6b9a695914005b9628",
+          "alternatives": [
+            "France"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56ddde6b9a695914005b9628",
+            "matched_alternatives": [
+              "France"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dddf4066d3e219004dad5f",
+          "alternatives": [
+            "William the Conqueror"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dddf4066d3e219004dad5f",
+            "matched_alternatives": [
+              "William the Conqueror"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dde0379a695914005b9636",
+          "alternatives": [
+            "Viking",
+            "Norseman, Viking"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dde0379a695914005b9636",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "Viking",
+              "Norseman, Viking"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56dde0ba66d3e219004dad75",
+          "alternatives": [
+            "911"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dde0ba66d3e219004dad75",
+            "matched_alternatives": [
+              "911"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dde1d966d3e219004dad8d",
+          "alternatives": [
+            "Rollo"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dde1d966d3e219004dad8d",
+            "matched_alternatives": [
+              "Rollo"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56df9e2838dc4217001520f6",
+          "alternatives": [
+            "1856"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56df9e2838dc4217001520f6",
+            "matched_alternatives": [
+              "1856"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56df9ee138dc421700152108",
+          "alternatives": [
+            "1884"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56df9ee138dc421700152108",
+            "matched_alternatives": [
+              "1884"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dfa01738dc42170015211d",
+          "alternatives": [
+            "1893"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dfa01738dc42170015211d",
+            "matched_alternatives": [
+              "1893"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dfa0d84a1a83140091ebb7",
+          "alternatives": [
+            "1943"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dfa0d84a1a83140091ebb7",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "1943"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56dfa13d4a1a83140091ebc1",
+          "alternatives": [
+            "Croatia"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dfa13d4a1a83140091ebc1",
+            "matched_alternatives": [
+              "Croatia"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e16182e3433e1400422e28",
+          "alternatives": [
+            "Computational complexity theory"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e16182e3433e1400422e28",
+            "matched_alternatives": [
+              "Computational complexity theory"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e16839cd28a01900c67887",
+          "alternatives": [
+            "if its solution requires significant resources",
+            "its solution requires significant resources"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e16839cd28a01900c67887",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "if its solution requires significant resources",
+              "its solution requires significant resources"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56e17644e3433e1400422f40",
+          "alternatives": [
+            "analysis of algorithms and computability theory"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e17644e3433e1400422f40",
+            "matched_alternatives": [
+              "analysis of algorithms and computability theory"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e17a7ccd28a01900c679a1",
+          "alternatives": [
+            "problem instance",
+            "a problem instance"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e17a7ccd28a01900c679a1",
+            "matched_alternatives": [
+              "problem instance"
+            ],
+            "unmatched_alternatives": [
+              "a problem instance"
+            ],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e17e6ee3433e1400422f7f",
+          "alternatives": [
+            "2000"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e17e6ee3433e1400422f7f",
+            "matched_alternatives": [
+              "2000"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "recording_id": "squad-llama3.2-bm25-top1-v1",
+      "required_fact_case_coverage_v1": 0.68,
+      "alternative_case_coverage": 0.68,
+      "cases": [
+        {
+          "case_id": "squad-56be4db0acb8001400a502ec",
+          "alternatives": [
+            "Denver Broncos"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be4db0acb8001400a502ec",
+            "matched_alternatives": [
+              "Denver Broncos"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be4e1facb8001400a502f6",
+          "alternatives": [
+            "Cam Newton"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be4e1facb8001400a502f6",
+            "matched_alternatives": [
+              "Cam Newton"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be4eafacb8001400a50302",
+          "alternatives": [
+            "Von Miller",
+            "Miller"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be4eafacb8001400a50302",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "Von Miller",
+              "Miller"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56be5333acb8001400a5030a",
+          "alternatives": [
+            "CBS"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be5333acb8001400a5030a",
+            "matched_alternatives": [
+              "CBS"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56be53b8acb8001400a50314",
+          "alternatives": [
+            "Roger Goodell",
+            "Goodell"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56be53b8acb8001400a50314",
+            "matched_alternatives": [
+              "Roger Goodell",
+              "Goodell"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-5733a5f54776f41900660f45",
+          "alternatives": [
+            "Nobel Prize"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-5733a5f54776f41900660f45",
+            "matched_alternatives": [
+              "Nobel Prize"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-57336755d058e614000b5a3d",
+          "alternatives": [
+            "100",
+            "over 100"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57336755d058e614000b5a3d",
+            "matched_alternatives": [
+              "100",
+              "over 100"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-57337ddc4776f41900660bbb",
+          "alternatives": [
+            "15 kilometres",
+            "About 15 kilometres"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57337ddc4776f41900660bbb",
+            "matched_alternatives": [
+              "15 kilometres"
+            ],
+            "unmatched_alternatives": [
+              "About 15 kilometres"
+            ],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-57337ea24776f41900660bd0",
+          "alternatives": [
+            "city",
+            "Demographically"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57337ea24776f41900660bd0",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "city",
+              "Demographically"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-57339555d058e614000b5df4",
+          "alternatives": [
+            "Warsaw University of Technology"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-57339555d058e614000b5df4",
+            "matched_alternatives": [
+              "Warsaw University of Technology"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56ddde6b9a695914005b9628",
+          "alternatives": [
+            "France"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56ddde6b9a695914005b9628",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "France"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56dddf4066d3e219004dad5f",
+          "alternatives": [
+            "William the Conqueror"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dddf4066d3e219004dad5f",
+            "matched_alternatives": [
+              "William the Conqueror"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dde0379a695914005b9636",
+          "alternatives": [
+            "Viking",
+            "Norseman, Viking"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dde0379a695914005b9636",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "Viking",
+              "Norseman, Viking"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56dde0ba66d3e219004dad75",
+          "alternatives": [
+            "911"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dde0ba66d3e219004dad75",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "911"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56dde1d966d3e219004dad8d",
+          "alternatives": [
+            "Rollo"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dde1d966d3e219004dad8d",
+            "matched_alternatives": [
+              "Rollo"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56df9e2838dc4217001520f6",
+          "alternatives": [
+            "1856"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56df9e2838dc4217001520f6",
+            "matched_alternatives": [
+              "1856"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56df9ee138dc421700152108",
+          "alternatives": [
+            "1884"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56df9ee138dc421700152108",
+            "matched_alternatives": [
+              "1884"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dfa01738dc42170015211d",
+          "alternatives": [
+            "1893"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dfa01738dc42170015211d",
+            "matched_alternatives": [
+              "1893"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56dfa0d84a1a83140091ebb7",
+          "alternatives": [
+            "1943"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dfa0d84a1a83140091ebb7",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "1943"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56dfa13d4a1a83140091ebc1",
+          "alternatives": [
+            "Croatia"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56dfa13d4a1a83140091ebc1",
+            "matched_alternatives": [
+              "Croatia"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e16182e3433e1400422e28",
+          "alternatives": [
+            "Computational complexity theory"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e16182e3433e1400422e28",
+            "matched_alternatives": [
+              "Computational complexity theory"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e16839cd28a01900c67887",
+          "alternatives": [
+            "if its solution requires significant resources",
+            "its solution requires significant resources"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e16839cd28a01900c67887",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "if its solution requires significant resources",
+              "its solution requires significant resources"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56e17644e3433e1400422f40",
+          "alternatives": [
+            "analysis of algorithms and computability theory"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e17644e3433e1400422f40",
+            "matched_alternatives": [
+              "analysis of algorithms and computability theory"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        },
+        {
+          "case_id": "squad-56e17a7ccd28a01900c679a1",
+          "alternatives": [
+            "problem instance",
+            "a problem instance"
+          ],
+          "required_facts_present_v1": false,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e17a7ccd28a01900c679a1",
+            "matched_alternatives": [],
+            "unmatched_alternatives": [
+              "problem instance",
+              "a problem instance"
+            ],
+            "any_alternative_present": false
+          }
+        },
+        {
+          "case_id": "squad-56e17e6ee3433e1400422f7f",
+          "alternatives": [
+            "2000"
+          ],
+          "required_facts_present_v1": true,
+          "alternative_result": {
+            "evaluator_version": "alternative-phrases-v1",
+            "case_id": "squad-56e17e6ee3433e1400422f7f",
+            "matched_alternatives": [
+              "2000"
+            ],
+            "unmatched_alternatives": [],
+            "any_alternative_present": true
+          }
+        }
+      ]
+    }
+  },
+  "limits": "OR of literal annotated phrases only, not semantic correctness. No invented aliases, unit conversion, negation handling, gate changes, or baseline promotion."
+}

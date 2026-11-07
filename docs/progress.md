@@ -187,11 +187,23 @@
 - Existing recordings and manifests were not changed. No model calls, pushes, or
   hosted Actions runs. Hashes validate integrity, not signed authenticity/current PR code.
 
+## Completed: isolated alternative-answer assertions
+
+- Added typed `AnswerAlternatives` and `alternative-phrases-v1` results: any variant
+  may match, while existing required-fact checks retain AND semantics unchanged.
+- Deduplicates repeated reference annotations without inventing/splitting aliases;
+  authored duplicate/blank alternatives and mismatched case IDs are errors.
+- Added an offline diagnostic script validating reference coverage/source spans
+  after recording provenance checks, with input hashes and a new output artifact.
+- Measured real annotated-alternative coverage unchanged at baseline 0.84/candidate
+  0.68. "9 miles" remains unmatched because it is not an annotated alternative.
+- Verified 234 offline tests, including diagnostic reproduction and bad references.
+- No model calls, dataset/recording changes, old scorer changes, or gate migration.
+
 ## Next bounded task (not implemented)
 
-Add explicit alternative-answer assertions without treating all alternatives as
-simultaneously required facts. Preserve the current scorer/version and existing
-recordings; evaluate the new checks separately before changing any gate policy.
+Expose alternative-answer evidence in reports as an explicit optional diagnostic,
+keeping the existing deterministic-v1 gate policy and historical results reproducible.
 
 ## Current limitations
 

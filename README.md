@@ -52,6 +52,12 @@ never written or used to replace the baseline by the loader.
 
 ## Required-fact checks
 
+An isolated [alternative-answer diagnostic](docs/answer-alternatives.md) now
+supports **any one** explicitly listed answer phrase, separately from required
+facts which still require **all** phrases. It does not change `deterministic-v1`
+gates. On the real recordings, annotated-alternative coverage remains 0.84 for the
+baseline and 0.68 for the candidate. It is not semantic correctness scoring.
+
 `check_required_facts(case, response)` in `llm_reliability.fact_checks` returns
 the original required phrases partitioned into `matched_facts` and `missing_facts`.
 `all_required_facts_present` means only that no required phrases were missing.

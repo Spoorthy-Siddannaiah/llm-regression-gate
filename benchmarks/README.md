@@ -62,3 +62,11 @@ No latency or cost improvement was measured or claimed. Raw timing/token fields
 are preserved in each run's evidence for inspection only.
 
 See [candidate recording and replay command](../recordings/squad/llama3.2-bm25-top1-v1/README.md).
+
+## Alternative-answer diagnostic
+
+[`squad-alternatives-v1.json`](squad-alternatives-v1.json) measures a separate OR
+check over deduplicated human answer annotations. Coverage stays 0.84/0.68 for
+baseline/candidate; no score improvement is claimed. Source spans and case coverage
+are validated, and input hashes/per-case evidence are preserved. Existing v1 gates
+and recordings are unchanged. See [semantics and reproduction](../docs/answer-alternatives.md).
