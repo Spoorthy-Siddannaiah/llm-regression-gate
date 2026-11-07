@@ -131,3 +131,9 @@ zero unknown IDs still fail to prove that citations support the answer?
 Why should an expected-rejection test verify the failure code and evidence, rather
 than accepting any exit 1? How could it otherwise stay green while testing the
 wrong policy behaviour?
+
+## Architecture and demo defence
+
+A reviewer asks whether a green CI run proves the changed RAG prompt is safe.
+Which parts of this demo are actually verified, and what additional generation
+step would be needed before making that claim?

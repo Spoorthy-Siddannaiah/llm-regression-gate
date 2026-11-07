@@ -1,13 +1,16 @@
 # LLM Reliability & Observability Platform
 
 Independent portfolio project, separate from the Databricks Enterprise AI Knowledge Copilot.
-Current scope: typed contracts, synthetic recordings, validated loading, required-phrase
-checks, citation-ID checks, retrieval Recall@K, a runner, an in-process gate, and reports.
+Current scope: offline regression evaluation, opt-in local RAG recording, manifest
+integrity checks, versioned policies, reports, and configured CI replay.
 
 The first local milestone is implemented: one CLI command compares recorded baseline
 and candidate responses against a versioned dataset, writes JSON and Markdown
 reports, and exits nonzero for a critical regression. A GitHub Actions workflow
-is included; hosted execution and real RAG integration are not verified yet.
+is included. Actual local RAG runs are recorded; hosted Actions execution and fresh
+PR-driven candidate generation remain unverified/unimplemented, respectively.
+
+Start with the [architecture](docs/architecture.md) and [offline demo runbook](docs/demo.md).
 
 ## Development
 
@@ -20,7 +23,7 @@ Datasets contain expectations; recordings contain observed answers and ranked re
 results. Pydantic validates their structure and comparison compatibility before scoring.
 Configurations may differ intentionally between baseline and candidate; dataset identity,
 version, and exact case coverage must match. Empty answers and unknown cited sources remain
-valid observations so the future scorer can report them as quality failures.
+valid observations for quality checks; malformed or incompatible inputs stop evaluation.
 
 Versions are explicit labels. Authors must increment them when changing datasets
 or configurations. Real recording manifests now bind dataset/corpus and recording
@@ -278,8 +281,9 @@ Generated `reports/` artifacts are excluded from Git. Reports do not promote bas
 
 A real baseline must be deliberately recorded, reviewed, and accepted with pinned
 data and configuration. It can have known weaknesses, so use absolute candidate
-floors as well as relative regression limits. Our bundled baseline is synthetic
-and demonstrates evaluator behaviour, not measured real-pipeline quality.
+floors as well as relative regression limits. The support-policy fixture baseline
+is synthetic. The separate real SQuAD reference has measured results and known
+failures; it is not release-approved.
 
 ## Offline CLI
 

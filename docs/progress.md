@@ -249,11 +249,21 @@
   seven replay bodies, and four injected pass/error/wrong-reason scenarios locally.
 - No hosted run or artifact upload was performed; nothing pushed or deployed.
 
+## Completed: regression architecture and demo runbook
+
+- Added `docs/architecture.md` with Mermaid flow, module boundaries, schema/policy
+  versions, generation/evaluation separation, evidence, and known limitations.
+- Added `docs/demo.md` with setup and verified pass, actual regression, absolute
+  quality failure, and invalid-input cases (exit codes 0/1/1/2).
+- Executed all documented shell blocks; reports/reasons/schema versions matched.
+  Setup ran 280 passing tests. Protected data, recordings, and configs were unchanged.
+- Linked docs from README and clarified actual local generation versus unverified
+  hosted Actions/future fresh PR generation. No model calls, pushes, or deployment.
+
 ## Next bounded task (not implemented)
 
-Prepare a concise architecture/demo runbook for the regression component, showing
-the real pass/fail evidence and clearly distinguishing offline replay from future
-PR-driven generation. Keep new infrastructure outside this milestone.
+Capture code revision and generation-source hashes in future run manifests, with
+backward-compatible validation. Do not rewrite or regenerate existing recordings.
 
 ## Current limitations
 
