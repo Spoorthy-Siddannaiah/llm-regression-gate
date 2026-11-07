@@ -7,6 +7,7 @@ import re
 
 from llm_reliability.gates import GateResult
 from llm_reliability.alternative_diagnostics import AlternativesDiagnostic
+from llm_reliability.citation_existence import CitationExistenceDiagnostic
 
 
 class ReportWriteError(OSError):
@@ -25,12 +26,33 @@ def _validate_diagnostic(result: GateResult, diagnostic: AlternativesDiagnostic)
             raise ValueError(f"{role}: alternative diagnostic case count mismatch")
 
 
-def render_json(result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None) -> str:
+def _validate_citation_diagnostic(result: GateResult, diagnostic: CitationExistenceDiagnostic) -> None:
+    for role in ("baseline", "candidate"):
+        evaluation = getattr(result.evaluation, role)
+        summary = getattr(diagnostic, role)
+        if summary.recording_id != evaluation.recording_id:
+            raise ValueError(f"{role}: citation diagnostic recording mismatch")
+        if [case.case_id for case in summary.cases] != [case.case_id for case in evaluation.cases]:
+            raise ValueError(f"{role}: citation diagnostic case mismatch")
+        for case, evidence in zip(evaluation.cases, summary.cases, strict=True):
+            cited = set(case.citations.relevant_cited_source_ids + case.citations.unlabelled_cited_source_ids)
+            if cited != set(evidence.existing_source_ids + evidence.unknown_source_ids):
+                raise ValueError(f"{role}/{case.case_id}: citation diagnostic ID mismatch")
+
+
+def render_json(
+    result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None,
+    citation_existence: CitationExistenceDiagnostic | None = None,
+) -> str:
     payload = {"report_schema_version": 1, **result.model_dump(mode="json")}
     if answer_alternatives is not None:
         _validate_diagnostic(result, answer_alternatives)
         payload["report_schema_version"] = 2
         payload["diagnostics"] = {"answer_alternatives": answer_alternatives.model_dump(mode="json")}
+    if citation_existence is not None:
+        _validate_citation_diagnostic(result, citation_existence)
+        payload["report_schema_version"] = 2
+        payload.setdefault("diagnostics", {})["citation_existence"] = citation_existence.model_dump(mode="json")
     return json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
 
 
@@ -45,14 +67,19 @@ def _items(values: tuple[str, ...]) -> str:
     return "; ".join(_text(value) for value in values) if values else "None"
 
 
-def render_markdown(result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None) -> str:
+def render_markdown(
+    result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None,
+    citation_existence: CitationExistenceDiagnostic | None = None,
+) -> str:
     if answer_alternatives is not None:
         _validate_diagnostic(result, answer_alternatives)
+    if citation_existence is not None:
+        _validate_citation_diagnostic(result, citation_existence)
     evaluation = result.evaluation
     lines = [
         "# Regression evaluation report", "",
         f"**Gate: {'PASS' if result.passed else 'FAIL'}**", "",
-        f"Report schema: {2 if answer_alternatives is not None else 1}", "",
+        f"Report schema: {2 if answer_alternatives is not None or citation_existence is not None else 1}", "",
         f"Dataset: {_text(evaluation.dataset_id)} / {_text(evaluation.dataset_version)} "
         f"(schema {evaluation.dataset_schema_version})", "",
         f"Evaluator: {_text(evaluation.settings.evaluator_version)}; "
@@ -131,17 +158,46 @@ def render_markdown(result: GateResult, *, answer_alternatives: AlternativesDiag
         lines.extend(["", "Diagnostic input SHA-256:", ""])
         for name, digest in answer_alternatives.input_sha256.items():
             lines.append(f"- {_text(name)}: {_text(digest)}")
+    if citation_existence is not None:
+        lines.extend([
+            "", "## Optional citation existence (diagnostic only)", "",
+            "Existence is exact ID membership in the supplied corpus snapshot, not relevance "
+            "or support for the answer. Unknown IDs may be invented, mistyped, or external "
+            "to this corpus; the cause is not established. This does not change the gate.", "",
+            f"Evaluator: {_text(citation_existence.evaluator_version)}; sources: {citation_existence.source_count}", "",
+            f"Corpus SHA-256: {_text(citation_existence.corpus_sha256)}", "",
+            "| Recording | Existing citations | Unknown citations | Cases without citations |",
+            "| --- | ---: | ---: | ---: |",
+        ])
+        for role in ("baseline", "candidate"):
+            summary = getattr(citation_existence, role)
+            lines.append(f"| {role} | {summary.existing_citation_count} | {summary.unknown_citation_count} | {summary.cases_without_citations} |")
+        for role in ("baseline", "candidate"):
+            lines.extend([
+                "", f"### {role.capitalize()} citation existence evidence", "",
+                "| Case | Existing IDs | Unknown IDs | All cited IDs exist |",
+                "| --- | --- | --- | --- |",
+            ])
+            for case in getattr(citation_existence, role).cases:
+                state = str(case.all_cited_ids_exist) if case.has_citations else "N/A (no citations)"
+                lines.append(f"| {_text(case.case_id)} | {_items(case.existing_source_ids)} | {_items(case.unknown_source_ids)} | {_text(state)} |")
     lines.extend([
         "", "## Interpretation and limits", "",
-        "Required-phrase checks do not establish semantic correctness. Citation-ID "
-        "checks do not establish source existence or support. Relevance labels may "
-        "be incomplete. Displayed numbers are rounded; JSON preserves numeric values.", "",
+        (
+            "Required-phrase checks do not establish semantic correctness. Citation-ID "
+            "checks do not establish source existence or support. Relevance labels may "
+            "be incomplete. Displayed numbers are rounded; JSON preserves numeric values."
+            if citation_existence is None else
+            "Required-phrase checks do not establish semantic correctness. Citation existence "
+            "does not establish relevance or support. Relevance labels may be incomplete. "
+            "Displayed numbers are rounded; JSON preserves numeric values."
+        ), "",
         (
             "This report does not establish whether recordings are synthetic or real model "
             "outputs; consult recording provenance. The repository's bundled recordings "
             "are synthetic fixtures. Versions are manual labels, not content hashes. "
             "The baseline was not automatically replaced."
-            if answer_alternatives is None else
+            if answer_alternatives is None and citation_existence is None else
             "Consult recording provenance for the origin of recorded outputs. Diagnostic "
             "input hashes identify the files used; they do not establish semantic correctness "
             "or signed authenticity. The baseline was not automatically replaced."
@@ -153,14 +209,15 @@ def render_markdown(result: GateResult, *, answer_alternatives: AlternativesDiag
 def write_reports(
     result: GateResult, output_directory: str | Path,
     *, answer_alternatives: AlternativesDiagnostic | None = None,
+    citation_existence: CitationExistenceDiagnostic | None = None,
 ) -> tuple[Path, Path]:
     """Write into a NEW directory; refuse existing directories to prevent overwrites.
 
     Render before touching disk. The two-file write is not atomic; a disk error may
     leave partial output. Errors name the directory; choose a new directory to retry.
     """
-    json_content = render_json(result, answer_alternatives=answer_alternatives)
-    markdown_content = render_markdown(result, answer_alternatives=answer_alternatives)
+    json_content = render_json(result, answer_alternatives=answer_alternatives, citation_existence=citation_existence)
+    markdown_content = render_markdown(result, answer_alternatives=answer_alternatives, citation_existence=citation_existence)
     directory = Path(output_directory)
     json_path = directory / "report.json"
     markdown_path = directory / "report.md"

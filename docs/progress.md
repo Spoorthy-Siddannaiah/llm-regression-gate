@@ -213,11 +213,22 @@
 - Verified 241 tests on Python 3.12.13, including both pass/fail CLI paths, old
   diagnostic reproduction, extended rendering, escaping, and non-mutation.
 
+## Completed: optional corpus-aware citation existence
+
+- Added `citation-existence-v1`: exact, case-sensitive lookup in the supplied corpus,
+  independent of relevance labels or retrieval presence. Unknown cause is not inferred.
+- Empty citations are N/A rather than a successful existence check; counts show absences.
+- Added `--citation-existence` and schema-2 JSON/Markdown evidence, compatible with
+  answer-alternative diagnostics. Gate decisions/policies remain unchanged.
+- Measured baseline: 34 existing/1 unknown occurrences, 3 no-citation cases; candidate:
+  20 existing/0 unknown occurrences, 5 no-citation cases. Saved reproducible evidence.
+- Default and alternatives-only historical reports remain byte-for-byte unchanged.
+- Verified 256 offline tests. No model calls or dataset/recording/policy changes.
+
 ## Next bounded task (not implemented)
 
-Add a separate corpus-aware citation-existence diagnostic so citations absent from
-the corpus are distinguished from valid but unlabelled sources. Keep semantic
-support claims and gate changes out of that bounded task.
+Introduce a separately versioned, opt-in gate rule for unknown cited IDs after
+defining its policy semantics; preserve the current default gate and historical reports.
 
 ## Current limitations
 

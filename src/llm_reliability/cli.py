@@ -1,15 +1,17 @@
 """One offline comparison command with explicit process outcomes."""
 
 import argparse
+import hashlib
 from pathlib import Path
 import sys
 
 from llm_reliability.gates import compare_and_gate
 from llm_reliability.loading import (
-    InputLoadError, load_comparison, load_evaluation_settings, load_gate_policy,
+    InputLoadError, load_comparison, load_corpus, load_evaluation_settings, load_gate_policy,
 )
 from llm_reliability.reports import ReportWriteError, write_reports
 from llm_reliability.alternative_diagnostics import build_diagnostic
+from llm_reliability.citation_existence import build_citation_existence
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -26,6 +28,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--sources", type=Path, help="Corpus for manifest validation; defaults to sources.json beside dataset")
     parser.add_argument("--require-manifests", action="store_true", help="Require completed manifests for both recordings")
     parser.add_argument("--answer-alternatives", type=Path, help="Optional SQuAD reference JSON for report-only alternative-answer evidence")
+    parser.add_argument("--citation-existence", action="store_true", help="Report cited-ID membership in the supplied corpus; does not affect the gate")
     args = parser.parse_args(argv)
     try:
         inputs = load_comparison(
@@ -43,8 +46,21 @@ def main(argv: list[str] | None = None) -> int:
                 )
             except (OSError, ValueError) as error:
                 raise InputLoadError(f"answer alternatives ({args.answer_alternatives}): {error}") from error
+        citation_diagnostic = None
+        if args.citation_existence:
+            sources = args.sources or args.dataset.with_name("sources.json")
+            try:
+                citation_diagnostic = build_citation_existence(
+                    inputs, load_corpus(sources),
+                    corpus_sha256=hashlib.sha256(sources.read_bytes()).hexdigest(),
+                )
+            except (OSError, ValueError) as error:
+                raise InputLoadError(f"citation existence ({sources}): {error}") from error
         result = compare_and_gate(inputs, policy=policy, settings=settings)
-        json_path, markdown_path = write_reports(result, args.output_dir, answer_alternatives=diagnostic)
+        json_path, markdown_path = write_reports(
+            result, args.output_dir, answer_alternatives=diagnostic,
+            citation_existence=citation_diagnostic,
+        )
         print(f"{'PASS' if result.passed else 'FAIL'}: {len(result.failures)} gate failure(s)")
         for failure in result.failures:
             print(f"- {failure.code}: {failure.message}")

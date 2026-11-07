@@ -1,0 +1,469 @@
+{
+  "evaluator_version": "citation-existence-v1",
+  "corpus_sha256": "15e81912b4a0d7905af4277ecb017d17608ea9c31add340359f49afe5bda1cba",
+  "source_count": 50,
+  "baseline": {
+    "recording_id": "squad-llama3.2-bm25-v1",
+    "cases": [
+      {
+        "case_id": "squad-56be4db0acb8001400a502ec",
+        "existing_source_ids": [
+          "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f",
+          "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+          "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be4e1facb8001400a502f6",
+        "existing_source_ids": [
+          "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e",
+          "squad-context-327e5aac317a5630882f2b8eab0f4d59710bd0145e317e6b2cf9cdd13dec9ef9"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be4eafacb8001400a50302",
+        "existing_source_ids": [
+          "squad-context-0fc4e54e36ca9a7e7bcc6307e06678b838dfe2a7345f8724167d8c070764fd86"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be5333acb8001400a5030a",
+        "existing_source_ids": [
+          "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be53b8acb8001400a50314",
+        "existing_source_ids": [
+          "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-5733a5f54776f41900660f45",
+        "existing_source_ids": [
+          "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57336755d058e614000b5a3d",
+        "existing_source_ids": [
+          "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57337ddc4776f41900660bbb",
+        "existing_source_ids": [
+          "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57337ea24776f41900660bd0",
+        "existing_source_ids": [
+          "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57339555d058e614000b5df4",
+        "existing_source_ids": [
+          "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56ddde6b9a695914005b9628",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56dddf4066d3e219004dad5f",
+        "existing_source_ids": [
+          "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dde0379a695914005b9636",
+        "existing_source_ids": [
+          "squad-context-27749618f729fa62e79b34e0666fb6ce7980b9e0e582584b2a78d0294543512a"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dde0ba66d3e219004dad75",
+        "existing_source_ids": [
+          "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dde1d966d3e219004dad8d",
+        "existing_source_ids": [
+          "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b",
+          "squad-context-dd5c8526091ce0e937a062da23833808b4e54d9ce41cdc101173265b6a718bbd",
+          "squad-context-231a015181e1e06c442f571a8baa25ce2ec844e939e02b2955b0aee6945c648b"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56df9e2838dc4217001520f6",
+        "existing_source_ids": [
+          "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272",
+          "squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970",
+          "squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56df9ee138dc421700152108",
+        "existing_source_ids": [
+          "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dfa01738dc42170015211d",
+        "existing_source_ids": [
+          "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dfa0d84a1a83140091ebb7",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56dfa13d4a1a83140091ebc1",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56e16182e3433e1400422e28",
+        "existing_source_ids": [
+          "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+          "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e16839cd28a01900c67887",
+        "existing_source_ids": [
+          "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99",
+          "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e17644e3433e1400422f40",
+        "existing_source_ids": [
+          "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0",
+          "squad-context-6fd6522d4ecd5fc13437e466b8409c90aeecf62508493d6cd828ec6d82cec94b"
+        ],
+        "unknown_source_ids": [
+          "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99"
+        ],
+        "has_citations": true,
+        "all_cited_ids_exist": false
+      },
+      {
+        "case_id": "squad-56e17a7ccd28a01900c679a1",
+        "existing_source_ids": [
+          "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20",
+          "squad-context-29fcf6218856cfd64395c81351e873a0769b0f291577dd5933cc1ac378f40976",
+          "squad-context-6233f5ff4a063a8401e5bbc7f802133992c089ea6b276dbbe6462d513f33c086"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e17e6ee3433e1400422f7f",
+        "existing_source_ids": [
+          "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      }
+    ],
+    "unknown_citation_count": 1,
+    "cases_without_citations": 3,
+    "existing_citation_count": 34
+  },
+  "candidate": {
+    "recording_id": "squad-llama3.2-bm25-top1-v1",
+    "cases": [
+      {
+        "case_id": "squad-56be4db0acb8001400a502ec",
+        "existing_source_ids": [
+          "squad-context-d1f67cf3860b30a2088925ccbeb8c14a8c5994a2addb85d021a89c76abe9bb2f"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be4e1facb8001400a502f6",
+        "existing_source_ids": [
+          "squad-context-52fbc22814d5e0927293ce7252e5ea0603f0b7c68a9b96a575a92e96bddb1d7e"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be4eafacb8001400a50302",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56be5333acb8001400a5030a",
+        "existing_source_ids": [
+          "squad-context-24a811fb9878c8e663b0d3ec8b7828cf7bb059f07e78dc6c544e243f9c3dbf4d"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56be53b8acb8001400a50314",
+        "existing_source_ids": [
+          "squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-5733a5f54776f41900660f45",
+        "existing_source_ids": [
+          "squad-context-6e7b592cac442aff8533dcb815531150fd8f7ff20eea5c4d508cad74b96bf249"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57336755d058e614000b5a3d",
+        "existing_source_ids": [
+          "squad-context-a86d2424a5df24a99c61d4702f1677a30fe23436db4cc91717d6bc2a4e8eb702"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57337ddc4776f41900660bbb",
+        "existing_source_ids": [
+          "squad-context-642222e452cce1e39c0eb8188e89a14d975ebc4c4ff837d19560868bd871042a"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57337ea24776f41900660bd0",
+        "existing_source_ids": [
+          "squad-context-c206679cc4afbecc5d61f9d8ed6a31b94b426372acc9d19298e47a403405d9de"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-57339555d058e614000b5df4",
+        "existing_source_ids": [
+          "squad-context-ca0bb7cbca98ddf47c2746553de4009e05c52aa03b5153c84527be6cb17a88a9"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56ddde6b9a695914005b9628",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56dddf4066d3e219004dad5f",
+        "existing_source_ids": [
+          "squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dde0379a695914005b9636",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56dde0ba66d3e219004dad75",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56dde1d966d3e219004dad8d",
+        "existing_source_ids": [
+          "squad-context-92cbfe0adf7c07d3dee4f0e9ccfab845d9dcdc504748be9b51256859cd1a2a6b"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56df9e2838dc4217001520f6",
+        "existing_source_ids": [
+          "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56df9ee138dc421700152108",
+        "existing_source_ids": [
+          "squad-context-40f65b7ca50e1a5310c7a4d7e768c2c1f3bafb2fea2a4aed4d5f50f6db0a98df"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dfa01738dc42170015211d",
+        "existing_source_ids": [
+          "squad-context-e4eb85a6a9a4d75863d591c947ab4564662ade5a84d5bf5272cf3c2f84abdf17"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56dfa0d84a1a83140091ebb7",
+        "existing_source_ids": [],
+        "unknown_source_ids": [],
+        "has_citations": false,
+        "all_cited_ids_exist": null
+      },
+      {
+        "case_id": "squad-56dfa13d4a1a83140091ebc1",
+        "existing_source_ids": [
+          "squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e16182e3433e1400422e28",
+        "existing_source_ids": [
+          "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e16839cd28a01900c67887",
+        "existing_source_ids": [
+          "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e17644e3433e1400422f40",
+        "existing_source_ids": [
+          "squad-context-c14cb52e0d8ca7b881d0d20570d1ad267d085b79af6bdbfb72715ac665d264d0"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e17a7ccd28a01900c679a1",
+        "existing_source_ids": [
+          "squad-context-c1eb0d23a5536b9229cc206f583ba22b35e941f0b5315019f5f51be28bbacb20"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      },
+      {
+        "case_id": "squad-56e17e6ee3433e1400422f7f",
+        "existing_source_ids": [
+          "squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef"
+        ],
+        "unknown_source_ids": [],
+        "has_citations": true,
+        "all_cited_ids_exist": true
+      }
+    ],
+    "unknown_citation_count": 0,
+    "cases_without_citations": 5,
+    "existing_citation_count": 20
+  }
+}

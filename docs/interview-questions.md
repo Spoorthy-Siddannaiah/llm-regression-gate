@@ -113,3 +113,9 @@ alias undermine regression testing?
 Why should enabling a new diagnostic leave the existing release gate unchanged
 until its behaviour has been reviewed? How would you distinguish "reported for
 inspection" from "enforced as a release requirement" in the API and report?
+
+## Citation existence versus support
+
+Why can a cited source exist in the corpus and still be an invalid citation for
+the answer? Why should an ID absent from the corpus be labelled unknown rather
+than automatically claimed to be deliberately fabricated?

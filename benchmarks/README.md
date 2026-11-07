@@ -70,3 +70,12 @@ check over deduplicated human answer annotations. Coverage stays 0.84/0.68 for
 baseline/candidate; no score improvement is claimed. Source spans and case coverage
 are validated, and input hashes/per-case evidence are preserved. Existing v1 gates
 and recordings are unchanged. See [semantics and reproduction](../docs/answer-alternatives.md).
+
+## Citation existence diagnostic
+
+[`squad-citation-existence-v1.json`](squad-citation-existence-v1.json) records exact
+cited-ID membership against the same pinned 50-source corpus. Baseline: 34 existing
+and 1 unknown citation occurrence, with 3 cases lacking citations. Candidate: 20
+existing and 0 unknown occurrences, with 5 cases lacking citations. These are
+occurrence counts, not semantic-support scores, and they do not alter the gate.
+See [reproduction and interpretation](../docs/citation-existence.md).

@@ -74,6 +74,12 @@ no gate decision or report is generated yet.
 
 ## Citation IDs and retrieval
 
+An optional [corpus-aware existence diagnostic](docs/citation-existence.md) is now
+available via `--citation-existence`. It distinguishes cited IDs present in the
+supplied corpus from unknown IDs, independently of relevance labels. It reports
+no-citation cases separately and does not affect the gate. Real baseline/candidate
+unknown counts are 1/0; fewer unknown IDs do not override other regressions.
+
 `check_citation_ids(case, response)` in `llm_reliability.source_checks` lists cited
 IDs labelled relevant for the case, cited IDs without relevance labels, and relevant
 IDs not cited. An unlabelled ID might exist and might be useful; this check does not
