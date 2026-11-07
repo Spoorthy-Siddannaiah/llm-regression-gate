@@ -107,3 +107,9 @@ and why must it stop before scoring?
 Why should "Norseman OR Viking" be represented differently from "30 days AND proof
 of purchase"? Why would automatically adding a model's answer as a new accepted
 alias undermine regression testing?
+
+## Optional diagnostics in reports
+
+Why should enabling a new diagnostic leave the existing release gate unchanged
+until its behaviour has been reviewed? How would you distinguish "reported for
+inspection" from "enforced as a release requirement" in the API and report?

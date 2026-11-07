@@ -60,3 +60,36 @@ The result did not improve. In particular, “9 miles” is supported by the pas
 but absent from the stored reference alternatives, so it still does not match.
 Any new accepted alias needs explicit annotation review and versioning rather than
 silently changing labels to fit generated responses.
+
+## Optional evidence in comparison reports
+
+The main comparison CLI can compute this same diagnostic and attach it to both
+reports in one invocation:
+
+```sh
+uv run --python 3.12 llm-reliability \
+  --dataset datasets/squad/v1/dataset.json \
+  --sources datasets/squad/v1/sources.json --require-manifests \
+  --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+  --candidate recordings/squad/llama3.2-bm25-top1-v1/recording.json \
+  --policy configs/gate.relative-only.v1.json \
+  --settings configs/evaluator.v1.json \
+  --answer-alternatives datasets/squad/v1/references.json \
+  --output-dir reports/squad-alternatives-new
+```
+
+Without the flag, schema-1 JSON/Markdown output is unchanged. With the flag, reports
+use schema 2 and add `diagnostics.answer_alternatives` to JSON plus a clearly labelled
+Markdown section containing aggregate coverage, allowed/matched/unmatched phrases,
+and diagnostic input hashes. The original gate result, thresholds, metrics, and
+failures stay identical. For the regressed candidate above, both modes exit 1.
+An unchanged-baseline comparison still exits 0 under the relative-only policy,
+even when some diagnostic checks fail. Bad requested references instead exit 2
+before report writing; they are not silently omitted.
+
+Both the standalone script and CLI use shared typed diagnostic code. Programmatic
+rendering accepts `answer_alternatives=diagnostic` built by `build_diagnostic` in
+`llm_reliability.alternative_diagnostics`. Use the same input files as the gate
+evaluation; renderers reject mismatched recording IDs, case ordering/counts, or v1
+case outcomes. Computed result models are output objects, not a persistence input API.
+This feature is report-only: no alternative metric is used to approve a release.

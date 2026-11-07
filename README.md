@@ -57,6 +57,9 @@ supports **any one** explicitly listed answer phrase, separately from required
 facts which still require **all** phrases. It does not change `deterministic-v1`
 gates. On the real recordings, annotated-alternative coverage remains 0.84 for the
 baseline and 0.68 for the candidate. It is not semantic correctness scoring.
+Pass `--answer-alternatives datasets/squad/v1/references.json` to the real comparison
+command to include per-case evidence in JSON and Markdown. This opt-in uses report
+schema 2; without it, schema 1 output is unchanged. Gate outcomes stay identical.
 
 `check_required_facts(case, response)` in `llm_reliability.fact_checks` returns
 the original required phrases partitioned into `matched_facts` and `missing_facts`.
@@ -249,7 +252,7 @@ markdown_text = render_markdown(decision)
 json_path, markdown_path = write_reports(decision, "reports/my-run-001")
 ```
 
-JSON contains report schema version 1 plus the complete gate result, including
+Default JSON contains report schema version 1 plus the complete gate result, including
 computed metrics, configuration snapshots, evaluator settings, and policy. It is
 an output artifact, not a supported input format for the existing result models.
 Markdown presents the decision, aggregate changes, thresholds, gate failures, and

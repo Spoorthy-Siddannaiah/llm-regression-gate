@@ -200,10 +200,24 @@
 - Verified 234 offline tests, including diagnostic reproduction and bad references.
 - No model calls, dataset/recording changes, old scorer changes, or gate migration.
 
+## Completed: optional answer-alternative report evidence
+
+- Moved standalone diagnostic logic into shared typed models/builders; old diagnostic
+  artifacts remain reproducible and matching/validation logic is reused.
+- Added CLI `--answer-alternatives` and optional report API arguments. Extended reports
+  use schema 2 with aggregate/per-case evidence, hashes, and diagnostic-only labels.
+- Default schema-1 JSON/Markdown was checked byte-for-byte against historical output.
+- Gate decisions, thresholds, metrics, and failures remain unchanged with the flag.
+- Bad references exit 2 without reports; mismatch checks prevent attaching another
+  recording/case set. No model calls or recording/dataset/policy changes.
+- Verified 241 tests on Python 3.12.13, including both pass/fail CLI paths, old
+  diagnostic reproduction, extended rendering, escaping, and non-mutation.
+
 ## Next bounded task (not implemented)
 
-Expose alternative-answer evidence in reports as an explicit optional diagnostic,
-keeping the existing deterministic-v1 gate policy and historical results reproducible.
+Add a separate corpus-aware citation-existence diagnostic so citations absent from
+the corpus are distinguished from valid but unlabelled sources. Keep semantic
+support claims and gate changes out of that bounded task.
 
 ## Current limitations
 

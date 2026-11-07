@@ -9,6 +9,7 @@ from llm_reliability.loading import (
     InputLoadError, load_comparison, load_evaluation_settings, load_gate_policy,
 )
 from llm_reliability.reports import ReportWriteError, write_reports
+from llm_reliability.alternative_diagnostics import build_diagnostic
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -24,6 +25,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--settings", type=Path, help="Optional EvaluationSettings JSON file")
     parser.add_argument("--sources", type=Path, help="Corpus for manifest validation; defaults to sources.json beside dataset")
     parser.add_argument("--require-manifests", action="store_true", help="Require completed manifests for both recordings")
+    parser.add_argument("--answer-alternatives", type=Path, help="Optional SQuAD reference JSON for report-only alternative-answer evidence")
     args = parser.parse_args(argv)
     try:
         inputs = load_comparison(
@@ -32,8 +34,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         policy = load_gate_policy(args.policy) if args.policy else None
         settings = load_evaluation_settings(args.settings) if args.settings else None
+        diagnostic = None
+        if args.answer_alternatives is not None:
+            try:
+                diagnostic = build_diagnostic(
+                    args.dataset, args.sources or args.dataset.with_name("sources.json"),
+                    args.answer_alternatives, args.baseline, args.candidate,
+                )
+            except (OSError, ValueError) as error:
+                raise InputLoadError(f"answer alternatives ({args.answer_alternatives}): {error}") from error
         result = compare_and_gate(inputs, policy=policy, settings=settings)
-        json_path, markdown_path = write_reports(result, args.output_dir)
+        json_path, markdown_path = write_reports(result, args.output_dir, answer_alternatives=diagnostic)
         print(f"{'PASS' if result.passed else 'FAIL'}: {len(result.failures)} gate failure(s)")
         for failure in result.failures:
             print(f"- {failure.code}: {failure.message}")
