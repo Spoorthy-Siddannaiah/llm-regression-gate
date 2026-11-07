@@ -105,6 +105,80 @@ jobs:
             exit 1
           fi
 
+      - name: Gate accepted synthetic candidate with v2
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/support_policy/v1/dataset.json \
+            --baseline recordings/baseline.synthetic.v1.json \
+            --candidate recordings/candidate.synthetic.v1.json \
+            --policy configs/gate.citation-v2.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-v2-accepted
+
+      - name: Verify v2 absolute unknown-citation failure
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          if uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/squad/v1/dataset.json \
+            --sources datasets/squad/v1/sources.json --require-manifests \
+            --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+            --candidate recordings/squad/llama3.2-bm25-v1/recording.json \
+            --policy configs/gate.citation-v2.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-v2-absolute-failure; then
+            gate_status=0
+          else
+            gate_status=$?
+          fi
+          if [ "$gate_status" -ne 1 ]; then
+            echo "Expected v2 absolute-quality exit 1; got $gate_status" >&2
+            exit 1
+          fi
+          uv run --python 3.12.13 --locked python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("reports/ci-v2-absolute-failure/report.json").read_text())
+          assert report["report_schema_version"] == 3
+          assert report["policy"]["policy_version"] == "deterministic-gate-v2"
+          assert {failure["code"] for failure in report["failures"]} == {"unknown_citation_limit"}
+          evidence = report["citation_existence_gate"]
+          assert evidence["candidate_unknown_count"] == 1
+          assert evidence["increase"] == 0
+          PY
+
+      - name: Verify v2 real candidate quality regression
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          if uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/squad/v1/dataset.json \
+            --sources datasets/squad/v1/sources.json --require-manifests \
+            --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+            --candidate recordings/squad/llama3.2-bm25-top1-v1/recording.json \
+            --policy configs/gate.citation-v2.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-v2-real-regression; then
+            gate_status=0
+          else
+            gate_status=$?
+          fi
+          if [ "$gate_status" -ne 1 ]; then
+            echo "Expected v2 quality-regression exit 1; got $gate_status" >&2
+            exit 1
+          fi
+          uv run --python 3.12.13 --locked python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("reports/ci-v2-real-regression/report.json").read_text())
+          assert report["report_schema_version"] == 3
+          assert report["policy"]["policy_version"] == "deterministic-gate-v2"
+          assert {failure["code"] for failure in report["failures"]} == {"excessive_drop"}
+          assert {failure["metric"] for failure in report["failures"]} == {"fact_coverage", "citation_label_coverage", "retrieval_recall"}
+          evidence = report["citation_existence_gate"]
+          assert evidence["candidate_unknown_count"] == 0
+          assert evidence["increase"] == -1
+          PY
+
       - name: Upload available evaluation reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
@@ -119,5 +193,11 @@ jobs:
             reports/ci-squad-baseline/report.md
             reports/ci-squad-regression/report.json
             reports/ci-squad-regression/report.md
+            reports/ci-v2-accepted/report.json
+            reports/ci-v2-accepted/report.md
+            reports/ci-v2-absolute-failure/report.json
+            reports/ci-v2-absolute-failure/report.md
+            reports/ci-v2-real-regression/report.json
+            reports/ci-v2-real-regression/report.md
           if-no-files-found: warn
           retention-days: 7

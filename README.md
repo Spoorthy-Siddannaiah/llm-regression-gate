@@ -361,10 +361,15 @@ pushes, and manual dispatch. It installs Python 3.12.13 and dependencies from
    This must pass as a stability check; it does not approve the baseline's quality.
 5. Replay of the actual top-one SQuAD candidate against that fixed baseline.
    It must return exactly 1; an unexpected pass or execution error fails the step.
+6. The accepted synthetic candidate under v2 must pass with zero unknown IDs.
+7. The real baseline self-check under v2 must fail specifically with
+   `unknown_citation_limit`, count 1, and increase 0.
+8. The real top-one candidate under v2 must fail specifically on the three prior
+   relative metrics, with zero unknown IDs and count change -1.
 
 Replay steps still run after test failures when installation succeeded. The
 workflow never suppresses the accepted gate's failure. Available reports from
-all four evaluations are uploaded as `regression-reports` with seven-day retention,
+all seven evaluations (14 files) are uploaded as `regression-reports` with seven-day retention,
 even when earlier checks fail. Setup failures may produce no reports.
 
 The workflow uses read-only repository permissions, no persisted checkout
@@ -377,11 +382,16 @@ thresholds still require deliberate review; this workflow does not enforce
 approval or protect baseline contents from edits in a pull request.
 
 Local verification covered YAML parsing, shell syntax, replay step execution
-(including unexpected-pass/error scenarios), and 187 passing tests. No hosted
+(including unexpected-pass/error/wrong-failure-reason scenarios), and 280 passing tests. No hosted
 Actions run or artifact upload has been verified; nothing has been pushed.
 After publishing, select `Tests and recorded-response gate` as a required status
 check in GitHub branch protection/rulesets to prevent merging failed checks.
 This workflow does not deploy anything.
+
+V2 checks inspect the report's policy/schema versions, failure codes, and enforced
+counts after checking exit 1. Rejecting a case for the wrong reason is a test failure.
+Existing v1 replay steps remain unchanged. These are policy-behaviour tests over
+known recordings, not approval of the observed baseline for production.
 
 A green workflow means the evaluator passed its tests and correctly accepted or
 rejected these known recordings. It does not mean the intentionally degraded

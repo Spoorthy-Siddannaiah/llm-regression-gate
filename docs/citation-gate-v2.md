@@ -69,8 +69,14 @@ an error. V2 requires an explicit `unknown_citations` block. Optional report fla
 can coexist with v2 but cannot enable, disable, or weaken its enforcement. Any
 separately supplied citation diagnostic must match the enforced evidence.
 
-Existing Actions replay steps still select v1. This task does not roll out v2
-as a required production policy. The example zero limits are explicit engineering
+Existing v1 Actions steps are retained. Additional v2 replay steps exercise a
+passing synthetic case, the baseline's absolute-limit failure, and the real
+candidate's relative failures. Expected-rejection steps require exit 1 and inspect
+schema/policy versions, exact failure codes, and count evidence. Wrong reasons,
+unexpected passes, and execution errors fail CI. Reports from all cases are retained.
+Hosted execution remains unverified; local checks passed without model calls.
+These tests do not adopt v2 as a required production release policy.
+The example zero limits are explicit engineering
 choices for demonstrating membership enforcement, not calibrated overall quality
 requirements. Unknown means absent from this corpus, not proven fabrication;
 membership says nothing about relevance, claim support, or truthfulness.

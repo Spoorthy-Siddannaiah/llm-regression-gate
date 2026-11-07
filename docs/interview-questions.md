@@ -125,3 +125,9 @@ than automatically claimed to be deliberately fabricated?
 Baseline and candidate each contain one unknown citation. Why might an absolute
 limit reject the candidate while the regression limit passes? Why does having
 zero unknown IDs still fail to prove that citations support the answer?
+
+## V2 replay checks in CI
+
+Why should an expected-rejection test verify the failure code and evidence, rather
+than accepting any exit 1? How could it otherwise stay green while testing the
+wrong policy behaviour?

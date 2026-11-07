@@ -238,10 +238,22 @@
 - Historical default/optional reports remain byte-for-byte unchanged. No model
   calls, recording changes, policy rollout to Actions, pushes, or deployments.
 
+## Completed: explicit v2 policy replay in CI
+
+- Retained all v1 workflow steps and added v2 accepted-fixture, absolute-limit,
+  and real-candidate relative-regression checks. No model or paid calls.
+- Rejection steps require exit 1 plus the correct schema/policy, failure codes,
+  and counts; a rejection for the wrong reason is not accepted as success.
+- Added all six v2 report paths to always-upload artifacts (14 files total).
+- Verified 280 tests, YAML parsing, shell syntax, unchanged original steps, all
+  seven replay bodies, and four injected pass/error/wrong-reason scenarios locally.
+- No hosted run or artifact upload was performed; nothing pushed or deployed.
+
 ## Next bounded task (not implemented)
 
-Add explicit v2 policy replay steps to CI with passing and expected-failing examples,
-leaving existing v1 checks intact and distinguishing absolute failures from regressions.
+Prepare a concise architecture/demo runbook for the regression component, showing
+the real pass/fail evidence and clearly distinguishing offline replay from future
+PR-driven generation. Keep new infrastructure outside this milestone.
 
 ## Current limitations
 
