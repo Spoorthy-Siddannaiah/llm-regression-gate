@@ -11,6 +11,7 @@ is included. Actual local RAG runs are recorded; hosted Actions execution and fr
 PR-driven candidate generation remain unverified/unimplemented, respectively.
 
 Start with the [architecture](docs/architecture.md) and [offline demo runbook](docs/demo.md).
+For explicit local inference, use the [generate-and-compare workflow](docs/local-candidate-workflow.md).
 
 ## Development
 

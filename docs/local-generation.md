@@ -1,5 +1,8 @@
 # Local Ollama recording
 
+For a single opt-in command that captures a target, records a separate candidate,
+and compares it, see the [local candidate workflow](local-candidate-workflow.md).
+
 This path makes actual local model calls only when explicitly invoked. CI and the
 comparison CLI still consume recordings without a running Ollama server. There is
 no automatic model download, fallback provider, or baseline replacement.
@@ -73,7 +76,7 @@ read-only; no remote URL, credentials, status filenames, or diff content are sav
 If Git metadata cannot be read, its status is `unavailable` and commit/dirty fields
 are null, never an invented revision or a false clean state.
 
-The snapshot hashes the recorder script, every Python file under
+The snapshot hashes the recorder script, the local workflow wrapper when present, every Python file under
 `src/llm_reliability`, `pyproject.toml`, and `uv.lock`, using project-relative paths.
 Hashing the whole package avoids overlooking imported helpers. The trade-off is
 that even an unrelated package edit can stop a long generation run. Source paths

@@ -283,11 +283,24 @@
   Matching metadata preserves the quality outcome and report bytes.
 - No model calls, historical recording changes, pushes, or hosted execution.
 
+## Completed: opt-in local generate-and-compare workflow
+
+- Added `scripts/run_local_candidate.py`: preflight, expected code capture, separate
+  recorder subprocess, source/input stability checks, and freshness-enforced comparison.
+- Explicit policy required; existing output and output nested within baseline are
+  refused. Dataset/corpus/baseline/policy/settings hashes are checked across stages.
+- Preserves 0/1 quality outcomes; generation, freshness, drift, timeout, and report
+  errors return 2. Completion metadata validates report identities and records hashes.
+- Included wrapper code in future source snapshots; historical recordings unchanged.
+- Verified 328 offline tests, including actual recorder + actual comparison CLI with
+  mocked model responses for pass/fail. No real model run, paid calls, CI inference,
+  baseline promotion, push, or deployment occurred.
+
 ## Next bounded task (not implemented)
 
-Build an opt-in local generate-and-compare wrapper that captures the expected code
-target, records a separate candidate, and invokes strict comparison. Verify it with
-mocked generation before any new real model run; do not add default CI inference.
+Run the new wrapper against the installed local model in a new directory when
+explicitly requested, then inspect the generated provenance and quality outcome.
+Do not assume the new run passes or replace the reference automatically.
 
 ## Current limitations
 

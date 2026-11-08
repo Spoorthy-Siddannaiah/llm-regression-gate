@@ -149,3 +149,9 @@ source hashes to match the current checkout?
 Why should candidate freshness check the expected revision and source hashes while
 allowing the baseline to reference older code? Why is comparing a candidate to its
 own saved snapshot insufficient to prove that it came from a new PR?
+
+## Local generation orchestration
+
+Why should a generation failure stop comparison and return exit 2, while a complete
+candidate that fails quality returns exit 1? Which artifacts would you inspect
+before accepting a run as completed?

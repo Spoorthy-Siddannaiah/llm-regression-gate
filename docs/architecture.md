@@ -62,6 +62,9 @@ database, hosted provider, or monitoring stack is needed for this component.
 Future runs also capture Git revision/dirty state and generation-package/config
 hashes, with a source-drift check around generation. Historical recordings remain
 unchanged; missing legacy code snapshots are not evidence of current PR execution.
+An [opt-in local wrapper](local-candidate-workflow.md) now connects target capture,
+new recording, and freshness-checked comparison. It is tested with mocked generation
+and remains separate from the Actions replay workflow.
 
 Actions runs tests and known pass/rejection examples without Ollama. A successful
 negative test means the detector rejected the expected failure for the right reason.

@@ -1,5 +1,9 @@
 # Opt-in candidate code freshness
 
+The [local candidate workflow](local-candidate-workflow.md) now performs capture,
+separate recording, and strict comparison in one explicitly invoked local command.
+It is not enabled as default CI inference.
+
 `--expected-candidate-code expected.json` requires the candidate's saved code
 provenance to match an explicitly supplied target. It applies only to the candidate;
 the fixed baseline may have older code metadata or no code snapshot at all.

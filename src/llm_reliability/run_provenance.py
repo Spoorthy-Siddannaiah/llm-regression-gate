@@ -35,6 +35,9 @@ def _source_hashes(root: Path) -> dict[str, str]:
     root = root.resolve()
     package = root / "src/llm_reliability"
     files = [root / "scripts/record_ollama.py", root / "pyproject.toml", root / "uv.lock"]
+    wrapper = root / "scripts/run_local_candidate.py"
+    if wrapper.exists():
+        files.append(wrapper)
     sources = sorted(package.rglob("*.py"))
     if not sources:
         raise ValueError("generation source package is missing")
