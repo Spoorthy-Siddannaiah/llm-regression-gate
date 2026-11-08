@@ -272,11 +272,22 @@
 - Verified 299 offline tests and a metadata-only local capture. No Ollama calls,
   new model recordings, changes to historical evidence, pushes, or deployment.
 
+## Completed: opt-in candidate code freshness
+
+- Added explicit target capture script and `--expected-candidate-code` CLI/API option.
+- Requires candidate commit and full covered source hashes/file set to match the
+  supplied snapshot. Git must be available; dirty state is informational.
+- Baseline code is not matched to the target. Legacy replay stays valid, but a
+  legacy candidate without code metadata fails an explicitly requested freshness check.
+- Verified 314 tests and a local capture/legacy-rejection demo (exit 2, no reports).
+  Matching metadata preserves the quality outcome and report bytes.
+- No model calls, historical recording changes, pushes, or hosted execution.
+
 ## Next bounded task (not implemented)
 
-Add an opt-in freshness check against an explicitly requested candidate code snapshot,
-so callers can reject stale candidate provenance without applying current-code
-requirements to the fixed baseline. Keep default replay backward compatible.
+Build an opt-in local generate-and-compare wrapper that captures the expected code
+target, records a separate candidate, and invokes strict comparison. Verify it with
+mocked generation before any new real model run; do not add default CI inference.
 
 ## Current limitations
 

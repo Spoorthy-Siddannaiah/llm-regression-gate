@@ -27,6 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--settings", type=Path, help="Optional EvaluationSettings JSON file")
     parser.add_argument("--sources", type=Path, help="Corpus for manifest validation; defaults to sources.json beside dataset")
     parser.add_argument("--require-manifests", action="store_true", help="Require completed manifests for both recordings")
+    parser.add_argument("--expected-candidate-code", type=Path, help="Opt-in candidate commit/source-hash check against a captured code snapshot")
     parser.add_argument("--answer-alternatives", type=Path, help="Optional SQuAD reference JSON for report-only alternative-answer evidence")
     parser.add_argument("--citation-existence", action="store_true", help="Report cited-ID membership in the supplied corpus; does not affect the gate")
     args = parser.parse_args(argv)
@@ -34,7 +35,10 @@ def main(argv: list[str] | None = None) -> int:
         inputs = load_comparison(
             args.dataset, args.baseline, args.candidate,
             sources_path=args.sources, require_manifests=args.require_manifests,
+            expected_candidate_code=args.expected_candidate_code,
         )
+        if args.expected_candidate_code is not None:
+            print(f"Candidate code freshness verified against: {args.expected_candidate_code}")
         policy = load_gate_policy(args.policy) if args.policy else None
         settings = load_evaluation_settings(args.settings) if args.settings else None
         diagnostic = None

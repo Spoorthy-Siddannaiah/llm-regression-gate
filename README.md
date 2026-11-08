@@ -188,6 +188,10 @@ recordings, and checks their integrity without Ollama.
 Future recordings also include Git revision/dirty-state metadata and source/config
 hashes, with a drift check before completion. Existing recordings are not backfilled.
 See [code provenance details](docs/local-generation.md#code-provenance-for-future-recordings).
+An optional [candidate freshness check](docs/candidate-freshness.md) can now require
+the candidate's commit and source hashes to match an explicitly captured target,
+without requiring the baseline to match current code. Legacy recordings still
+replay, but cannot satisfy the new requirement without code metadata.
 
 ## Real candidate regression caught
 

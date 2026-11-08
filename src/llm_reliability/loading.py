@@ -9,6 +9,7 @@ from llm_reliability.models import ComparisonInput, Dataset, Recording
 from llm_reliability.runner import EvaluationSettings
 from llm_reliability.retrieval import SourceCorpus
 from llm_reliability.provenance import RecordingManifest, validate_recording_manifest
+from llm_reliability.run_provenance import CodeProvenance, verify_candidate_code
 
 
 class InputLoadError(ValueError):
@@ -60,6 +61,7 @@ def load_comparison(
     baseline_path: str | Path,
     candidate_path: str | Path,
     *, sources_path: str | Path | None = None, require_manifests: bool = False,
+    expected_candidate_code: str | Path | None = None,
 ) -> ComparisonInput:
     dataset = load_dataset(dataset_path)
     baseline = load_recording(baseline_path)
@@ -73,11 +75,12 @@ def load_comparison(
         ) from error
     manifests = [Path(path).parent / "manifest.json" for path in (baseline_path, candidate_path)]
     needs_manifests = (
-        require_manifests or sources_path is not None
+        require_manifests or sources_path is not None or expected_candidate_code is not None
         or any(path.exists() for path in manifests)
         or any("@sha256:" in item.configuration.model_version for item in (baseline, candidate))
     )
     if needs_manifests:
+        expected_code = _load(expected_candidate_code, CodeProvenance) if expected_candidate_code is not None else None
         corpus_path = Path(sources_path) if sources_path is not None else Path(dataset_path).with_name("sources.json")
         for role, path, manifest_path, recording in zip(
             ("baseline", "candidate"), (baseline_path, candidate_path), manifests,
@@ -89,6 +92,13 @@ def load_comparison(
                     manifest, manifest_path=manifest_path, recording_path=Path(path),
                     dataset_path=Path(dataset_path), sources_path=corpus_path, recording=recording,
                 )
+                if role == "candidate" and expected_code is not None:
+                    if manifest.code_provenance is None:
+                        raise ValueError("candidate has no code_provenance; cannot verify requested freshness")
+                    try:
+                        verify_candidate_code(manifest.code_provenance, expected_code)
+                    except ValueError as error:
+                        raise ValueError(f"expected candidate code ({expected_candidate_code}): {error}") from error
             except (OSError, ValueError) as error:
                 raise InputLoadError(f"{role} provenance ({manifest_path}): {error}") from error
     return comparison

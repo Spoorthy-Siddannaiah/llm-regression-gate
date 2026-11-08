@@ -143,3 +143,9 @@ step would be needed before making that claim?
 Why is a Git commit insufficient to reproduce a run from a dirty working tree?
 Why should replay validate an old baseline's saved metadata without requiring its
 source hashes to match the current checkout?
+
+## Candidate freshness
+
+Why should candidate freshness check the expected revision and source hashes while
+allowing the baseline to reference older code? Why is comparing a candidate to its
+own saved snapshot insufficient to prove that it came from a new PR?

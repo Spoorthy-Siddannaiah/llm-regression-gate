@@ -73,3 +73,24 @@ def verify_generation_sources(snapshot: CodeProvenance, root: Path) -> None:
     """Prevent completion if covered source files change, appear, or disappear mid-run."""
     if _source_hashes(root) != snapshot.source_sha256:
         raise ValueError("generation source files changed during run; recording not completed")
+
+
+def verify_candidate_code(observed: CodeProvenance, expected: CodeProvenance) -> None:
+    """Opt-in equality against a caller-selected revision/source snapshot, not current HEAD.
+
+    Dirty flags are informational: writing run artifacts may change Git status
+    without changing covered code. Full covered hashes must still match exactly.
+    """
+    if expected.git_status != "available" or observed.git_status != "available":
+        raise ValueError("candidate freshness requires available Git revisions in both snapshots")
+    if observed.git_commit != expected.git_commit:
+        raise ValueError("candidate git_commit does not match expected code snapshot")
+    expected_names, observed_names = set(expected.source_sha256), set(observed.source_sha256)
+    if expected_names != observed_names:
+        raise ValueError(
+            f"candidate source file set mismatch: missing={sorted(expected_names - observed_names)}, "
+            f"unexpected={sorted(observed_names - expected_names)}"
+        )
+    changed = sorted(name for name in expected_names if observed.source_sha256[name] != expected.source_sha256[name])
+    if changed:
+        raise ValueError(f"candidate source SHA-256 mismatch: {changed}")

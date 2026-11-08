@@ -47,6 +47,8 @@ metadata. A sidecar without its manifest metadata is rejected rather than silent
 treated as a legacy recording. Existing manifests without either remain valid.
 The reader checks metadata consistency, not current-checkout source files, so old
 baselines remain replayable. See [capture semantics and limits](local-generation.md#code-provenance-for-future-recordings).
+For an explicit target, `--expected-candidate-code` adds commit/source-hash equality
+for the candidate only; see [freshness semantics](candidate-freshness.md).
 
 ## CLI example
 
