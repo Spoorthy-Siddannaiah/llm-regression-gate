@@ -260,10 +260,23 @@
 - Linked docs from README and clarified actual local generation versus unverified
   hosted Actions/future fresh PR generation. No model calls, pushes, or deployment.
 
+## Completed: future-run code provenance
+
+- Added read-only Git revision/dirty-state capture and project-relative SHA-256
+  hashes for package Python files, recorder script, pyproject, and lockfile.
+- Future runs save a hashed code-provenance sidecar plus typed manifest metadata;
+  source edits/additions/deletions prevent completion while preserving raw evidence.
+- Missing Git metadata is explicitly unavailable, not clean or fabricated.
+- Replay validates optional metadata/sidecar consistency without requiring old
+  source hashes to match today's checkout. Legacy manifests remain valid unchanged.
+- Verified 299 offline tests and a metadata-only local capture. No Ollama calls,
+  new model recordings, changes to historical evidence, pushes, or deployment.
+
 ## Next bounded task (not implemented)
 
-Capture code revision and generation-source hashes in future run manifests, with
-backward-compatible validation. Do not rewrite or regenerate existing recordings.
+Add an opt-in freshness check against an explicitly requested candidate code snapshot,
+so callers can reject stale candidate provenance without applying current-code
+requirements to the fixed baseline. Keep default replay backward compatible.
 
 ## Current limitations
 

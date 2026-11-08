@@ -41,6 +41,13 @@ The typed manifest reader ignores additional metadata fields while validating al
 fields it consumes. Existing complete manifests remain unchanged. Reformatting an
 input JSON file changes its byte hash and therefore invalidates the old recording.
 
+New recordings may include typed `code_provenance` metadata. If present, the
+manifest must hash `code-provenance.json`, and that sidecar must exactly match the
+metadata. A sidecar without its manifest metadata is rejected rather than silently
+treated as a legacy recording. Existing manifests without either remain valid.
+The reader checks metadata consistency, not current-checkout source files, so old
+baselines remain replayable. See [capture semantics and limits](local-generation.md#code-provenance-for-future-recordings).
+
 ## CLI example
 
 ```sh

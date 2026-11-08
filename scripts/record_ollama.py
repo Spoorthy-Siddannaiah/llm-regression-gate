@@ -14,6 +14,7 @@ from llm_reliability.generation import (
 from llm_reliability.loading import load_corpus, load_dataset
 from llm_reliability.models import Configuration, RecordedResponse, Recording
 from llm_reliability.retrieval import BM25Retriever
+from llm_reliability.run_provenance import capture_code_provenance, verify_generation_sources
 
 
 def write_json(path: Path, payload: dict) -> None:
@@ -38,6 +39,8 @@ def main() -> None:
             raise ValueError("limit must be between 1 and dataset case count")
         if args.top_k <= 0:
             raise ValueError("top-k must be a positive integer")
+        project_root = Path(__file__).resolve().parents[1]
+        code_provenance = capture_code_provenance(project_root)
         client = LocalOllama()
         model = client.verify_model()
         server = client.request("/api/version")
@@ -49,6 +52,7 @@ def main() -> None:
         args.output_dir.mkdir(parents=True, exist_ok=False)
         evidence = args.output_dir / "evidence"
         evidence.mkdir()
+        write_json(args.output_dir / "code-provenance.json", code_provenance.model_dump(mode="json"))
         started = datetime.now(timezone.utc).isoformat()
         write_json(args.output_dir / "started.json", {
             "started_at": started, "status": "incomplete_until_manifest_written",
@@ -72,6 +76,7 @@ def main() -> None:
             ))
             print(f"[{number}/{len(cases)}] recorded {case.case_id}", flush=True)
         client.verify_model()  # Reject a tag changed during this run.
+        verify_generation_sources(code_provenance, project_root)
         recording = Recording(
             recording_id=args.recording_id, dataset_id=dataset.dataset_id,
             dataset_version=dataset.dataset_version,
@@ -85,6 +90,7 @@ def main() -> None:
         write_json(args.output_dir / "recording.json", recording.model_dump(mode="json"))
         write_json(args.output_dir / "manifest.json", {
             "manifest_version": 1, "status": "completed_not_promoted",
+            "code_provenance": code_provenance.model_dump(mode="json"),
             "scope": "smoke_subset" if args.limit is not None else "full_dataset",
             "started_at": started, "finished_at": datetime.now(timezone.utc).isoformat(),
             "recording_id": recording.recording_id, "case_count": len(observations),

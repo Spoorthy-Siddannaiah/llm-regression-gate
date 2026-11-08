@@ -185,6 +185,9 @@ See [local generation](docs/local-generation.md) for explicit opt-in recording.
 output directories, verifies the installed digest, and never downloads models or
 automatically replaces baselines. CI replays both synthetic fixtures and real
 recordings, and checks their integrity without Ollama.
+Future recordings also include Git revision/dirty-state metadata and source/config
+hashes, with a drift check before completion. Existing recordings are not backfilled.
+See [code provenance details](docs/local-generation.md#code-provenance-for-future-recordings).
 
 ## Real candidate regression caught
 

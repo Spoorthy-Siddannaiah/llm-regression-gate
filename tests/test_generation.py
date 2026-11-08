@@ -108,6 +108,9 @@ def test_recorder_writes_evidence_and_never_overwrites(tmp_path, monkeypatch, to
     assert manifest["scope"] == "smoke_subset"
     assert manifest["status"] == "completed_not_promoted"
     assert manifest["retrieval_top_k"] == top_k
+    assert manifest["code_provenance"]["source_sha256"]["scripts/record_ollama.py"]
+    assert "code-provenance.json" in manifest["artifact_sha256"]
+    assert json.loads((output / "code-provenance.json").read_text()) == manifest["code_provenance"]
     assert len(verified) == 2
     assert (output / "evidence/001.request.json").exists()
     assert (output / "evidence/001.response.json").exists()
@@ -136,3 +139,32 @@ def test_invalid_retrieval_budget_rejected_before_model_call(tmp_path, monkeypat
         runpy.run_path(str(root / "scripts/record_ollama.py"), run_name="__main__")
     assert caught.value.code == 2
     assert not output.exists()
+
+
+def test_source_drift_leaves_evidence_without_completed_recording(tmp_path, monkeypatch):
+    root = Path(__file__).resolve().parents[1]
+
+    class FakeLocalOllama:
+        def verify_model(self):
+            return {"name": "llama3.2:latest", "digest": MODEL_DIGEST}
+
+        def request(self, path, payload=None):
+            return envelope() if path == "/api/chat" else {"version": "unit-test"}
+
+    def source_changed(*args):
+        raise ValueError("generation source files changed during run")
+
+    monkeypatch.setattr("llm_reliability.generation.LocalOllama", FakeLocalOllama)
+    monkeypatch.setattr("llm_reliability.run_provenance.verify_generation_sources", source_changed)
+    output = tmp_path / "incomplete"
+    monkeypatch.setattr(sys, "argv", [
+        "record_ollama.py", "--dataset", str(root / "datasets/squad/v1/dataset.json"),
+        "--sources", str(root / "datasets/squad/v1/sources.json"), "--output-dir", str(output),
+        "--recording-id", "incomplete-unit-test", "--limit", "1",
+    ])
+    with pytest.raises(SystemExit) as caught:
+        runpy.run_path(str(root / "scripts/record_ollama.py"), run_name="__main__")
+    assert caught.value.code == 2
+    assert (output / "evidence/001.response.json").exists()
+    assert not (output / "recording.json").exists()
+    assert not (output / "manifest.json").exists()

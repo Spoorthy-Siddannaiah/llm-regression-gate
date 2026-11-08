@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 from llm_reliability.models import Identifier, Recording
 from llm_reliability.retrieval import RetrievalSettings
+from llm_reliability.run_provenance import CodeProvenance
 
 
 SHA256 = Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{64}$")]
@@ -40,6 +41,7 @@ class RecordingManifest(ManifestFields):
     retrieval_settings: RetrievalSettings
     input_sha256: InputHashes
     artifact_sha256: dict[Identifier, SHA256] = Field(min_length=1)
+    code_provenance: CodeProvenance | None = None
 
 
 def _check_hash(path: Path, expected: str, label: str) -> None:
@@ -69,8 +71,14 @@ def validate_recording_manifest(
     _check_hash(dataset_path, manifest.input_sha256.dataset, "input_sha256.dataset")
     _check_hash(sources_path, manifest.input_sha256.sources, "input_sha256.sources")
     root = manifest_path.parent.resolve()
+    if manifest.code_provenance is None and (
+        "code-provenance.json" in manifest.artifact_sha256 or (root / "code-provenance.json").exists()
+    ):
+        raise ValueError("code_provenance metadata missing for code-provenance.json")
     relative_recording = recording_path.resolve().relative_to(root).as_posix()
     required = {relative_recording, "started.json"}
+    if manifest.code_provenance is not None:
+        required.add("code-provenance.json")
     for index in range(1, manifest.case_count + 1):
         required.update({f"evidence/{index:03d}.request.json", f"evidence/{index:03d}.response.json"})
     missing = required - manifest.artifact_sha256.keys()
@@ -84,3 +92,8 @@ def validate_recording_manifest(
         if not target.is_relative_to(root) or target == root:
             raise ValueError(f"artifact_sha256 path escapes recording directory: {name!r}")
         _check_hash(target, digest, f"artifact_sha256[{name!r}]")
+    if manifest.code_provenance is not None:
+        snapshot_path = root / "code-provenance.json"
+        snapshot = CodeProvenance.model_validate_json(snapshot_path.read_text(encoding="utf-8"))
+        if snapshot != manifest.code_provenance:
+            raise ValueError("code_provenance does not match code-provenance.json")

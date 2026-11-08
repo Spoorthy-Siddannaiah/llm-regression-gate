@@ -60,9 +60,37 @@ Each successful run stores:
   and Ollama-reported timing/token counts. These are run evidence, not controlled
   performance benchmarks.
 - `started.json`: original run marker; completion is determined by `manifest.json`.
+- `code-provenance.json`: Git commit/dirty status at capture and source/config hashes.
 - `manifest.json`: model/server metadata, input/artifact hashes, options, runtime
   information, and `completed_not_promoted` status. Local model filesystem paths
   and unnecessary tensor listings are omitted from portable model metadata.
+
+## Code provenance for future recordings
+
+Before contacting Ollama or creating the output directory, the recorder captures
+the current Git HEAD and whether the working tree is dirty. Git commands are
+read-only; no remote URL, credentials, status filenames, or diff content are saved.
+If Git metadata cannot be read, its status is `unavailable` and commit/dirty fields
+are null, never an invented revision or a false clean state.
+
+The snapshot hashes the recorder script, every Python file under
+`src/llm_reliability`, `pyproject.toml`, and `uv.lock`, using project-relative paths.
+Hashing the whole package avoids overlooking imported helpers. The trade-off is
+that even an unrelated package edit can stop a long generation run. Source paths
+cannot escape the project through symlinks. No secrets/environment files are read.
+
+The recorder checks that file hashes and the covered file set remain unchanged
+after generation and before writing the completed recording/manifest. Drift leaves
+raw evidence for inspection but no completed recording. `code-provenance.json`
+is hashed in the manifest and its content is also stored under `code_provenance`.
+
+Historical recordings are not backfilled. Replay validates this optional metadata
+and its sidecar when present, but does not compare historical hashes with today's
+checkout: a baseline must remain replayable after code changes. Dirty source
+contents are not bundled, so a Git revision alone cannot reconstruct a dirty run.
+This is a source-tree snapshot, not signed attestation of executed code or proof
+that candidate outputs belong to the current PR. It does not guarantee deterministic
+generation or install dependencies to match the saved lockfile automatically.
 
 ## Review before acceptance
 

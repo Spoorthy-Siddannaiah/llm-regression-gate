@@ -137,3 +137,9 @@ wrong policy behaviour?
 A reviewer asks whether a green CI run proves the changed RAG prompt is safe.
 Which parts of this demo are actually verified, and what additional generation
 step would be needed before making that claim?
+
+## Code provenance
+
+Why is a Git commit insufficient to reproduce a run from a dirty working tree?
+Why should replay validate an old baseline's saved metadata without requiring its
+source hashes to match the current checkout?

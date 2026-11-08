@@ -59,6 +59,9 @@ Replaying fixed outputs is fast, cheap, and repeatable; local generation is slow
 and not guaranteed deterministic across runtimes. Raw prompts, outputs, model digest,
 generation settings, and file hashes make each recorded run inspectable. No queue,
 database, hosted provider, or monitoring stack is needed for this component.
+Future runs also capture Git revision/dirty state and generation-package/config
+hashes, with a source-drift check around generation. Historical recordings remain
+unchanged; missing legacy code snapshots are not evidence of current PR execution.
 
 Actions runs tests and known pass/rejection examples without Ollama. A successful
 negative test means the detector rejected the expected failure for the right reason.
