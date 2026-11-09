@@ -236,7 +236,7 @@ not statistical evidence of generalization, latency reduction or clinical safety
 | Validation/schemas | Pydantic 2; locked version 2.14.3 and generated JSON schemas |
 | Inference/recording | Optional loopback-only Ollama client, pinned Llama 3.2, standard-library HTTP/JSON |
 | Evaluation/testing | Custom deterministic checks, local BM25 and pytest; locked pytest 9.2.0 |
-| Build/dependencies | uv 0.7.12 in CI, `uv.lock`, Hatchling 1.27.0 and explicitly pinned build dependencies |
+| Build/dependencies | uv 0.13.7 in CI, `uv.lock`, Hatchling 1.27.0 and explicitly pinned build dependencies |
 | CI integration | GitHub Actions on Ubuntu 24.04, immutable action SHA references and report artifact upload configuration |
 
 No hosted LLM provider, vector database, application server or telemetry backend is

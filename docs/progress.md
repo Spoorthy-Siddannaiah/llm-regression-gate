@@ -403,7 +403,13 @@ calls and adding a license; those restrictions override the earlier commit workf
 
 ## Remaining release actions
 
-Review the uncommitted diff and authorize any later commit/publication separately.
-Then verify hosted CI and artifacts before claiming hosted success. Semantic
+The repository was published after owner authorization. The first hosted CI run
+failed during Python installation: uv 0.7.12 lacks a download entry for Python
+3.12.13 on Linux x86_64. A local fix pins uv 0.13.7, whose catalog includes that
+exact interpreter. Python, dependencies, policies and evaluation evidence remain
+unchanged. The owner approved committing and pushing this fix; verify the new
+hosted run and report artifacts before claiming success. Local release verification passed all
+356 tests, eight replay scenarios, package builds and an isolated source snapshot.
+All 54 baseline hashes matched. Semantic
 correctness, representative clinical labels, privacy compliance, fresh PR inference,
 latency/cost gates and production deployment remain outside this release's claims.

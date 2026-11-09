@@ -48,7 +48,9 @@ Verified via official GitHub release endpoints and peeled tag refs on 2026-11-09
 
 The workflow selects supported `ubuntu-24.04`; the image still receives updates.
 Read-only contents permission and `persist-credentials: false` are retained.
-Python 3.12.13 and uv 0.7.12 remain explicit. Eight offline scenarios are retained;
+Python 3.12.13 and uv 0.13.7 are explicit. The first hosted run showed that the
+previous uv 0.7.12 pin lacked this Python version's Linux download; the updated
+pin recognizes the required Linux x86_64 build. Eight offline scenarios are retained;
 no fresh inference, deployment or hosted verification is claimed.
 
 `pyproject.toml` pins Hatchling 1.27.0 and its Python-3.12+ build dependency closure:
