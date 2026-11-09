@@ -46,9 +46,11 @@ retrieved ID. The new enum is intended to prevent that decoding choice, rather
 than rewriting the model's output afterward. The parser still preserves unknown
 IDs if a provider returns them; the independent corpus-membership gate remains.
 This constraint does not establish relevance or factual support and may affect
-answer quality or latency. Offline tests verify request construction, not actual
-runtime enforcement or an improved benchmark result. A fresh full candidate run
-is still needed before claiming the observed failure is fixed.
+answer quality or latency. A subsequent
+[actual 25-case candidate](../recordings/squad/llama3.2-bm25-citation-enum-v2/README.md)
+produced zero unknown IDs, retained the aggregate metrics, and passed the unchanged
+v2 policy. That verifies the observed run's result, not universal runtime compliance
+or correctness on other inputs. The parser still preserves invalid IDs if returned.
 
 ## Run
 

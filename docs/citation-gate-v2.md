@@ -75,6 +75,9 @@ candidate's relative failures. Expected-rejection steps require exit 1 and inspe
 schema/policy versions, exact failure codes, and count evidence. Wrong reasons,
 unexpected passes, and execution errors fail CI. Reports from all cases are retained.
 Hosted execution remains unverified; local checks passed without model calls.
+An additional actual [constrained-citation candidate](../recordings/squad/llama3.2-bm25-citation-enum-v2/README.md)
+now passes v2 with zero unknown IDs and unchanged aggregate scores; CI replays it
+without inference and verifies its saved code target.
 These tests do not adopt v2 as a required production release policy.
 The example zero limits are explicit engineering
 choices for demonstrating membership enforcement, not calibrated overall quality

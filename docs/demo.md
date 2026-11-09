@@ -3,8 +3,8 @@
 Run from the repository root in the same interactive shell. No Ollama server,
 provider key, model download, or paid inference is needed. Initial dependency
 installation may need internet access. Every command writes to a new directory.
-Setup and all four cases were verified locally with 280 passing tests; this does
-not verify hosted Actions execution or deployment.
+The original four cases and the constrained-citation replay below are verified
+locally. Hosted Actions execution and deployment remain separate.
 
 ## Setup
 
@@ -103,6 +103,26 @@ echo "exit=$?"
 
 Expected: **exit 2**, an error naming the missing file, and no report directory.
 The evaluator cannot make a trustworthy quality decision from invalid inputs.
+
+## 5. Replay the actual controlled fix
+
+```sh
+uv run --python 3.12 --locked llm-reliability \
+  --dataset datasets/squad/v1/dataset.json \
+  --sources datasets/squad/v1/sources.json --require-manifests \
+  --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+  --candidate recordings/squad/llama3.2-bm25-citation-enum-v2/recording.json \
+  --expected-candidate-code recordings/squad/llama3.2-bm25-citation-enum-v2/expected-code.json \
+  --policy configs/gate.citation-v2.json \
+  --settings configs/evaluator.v1.json \
+  --output-dir "$LLM_DEMO_DIR/controlled-fix"
+echo "exit=$?"
+```
+
+Expected: **exit 0**, schema-3 reports. Unknown citations fall from 1 to 0 with
+unchanged .84/.80/.84 aggregate metrics. The new generator's citation enum is
+the only saved request difference; neither baseline nor policy was changed.
+The saved expected-code target verifies historical provenance, not current-PR inference.
 
 ## Explain the result in an interview
 

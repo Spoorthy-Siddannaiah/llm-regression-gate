@@ -167,3 +167,9 @@ an absolute quality requirement, a regression, and an execution error.
 Why constrain citation choices to retrieved IDs during generation while preserving
 unknown IDs in the recording parser? Can a valid source ID still support a wrong
 answer, and how would you evaluate that separately?
+
+## Release demonstration
+
+How does a failing candidate experiment strengthen a regression-testing portfolio?
+Explain why a green known-outcome CI replay still does not approve every new PR's
+model outputs for deployment.

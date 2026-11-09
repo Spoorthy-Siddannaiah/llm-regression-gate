@@ -311,12 +311,6 @@
   instructions. Raw evidence/reports remain local; `/runs/` is now ignored by Git.
 - No paid calls, baseline promotion, hosted generation, push, or deployment.
 
-## Next bounded task (not implemented)
-
-Run one fresh full candidate with the citation-enum schema against the unchanged
-baseline and policy; inspect all metric deltas, not just unknown citations. Dataset
-adoption remains a separate bounded task after the documented recommendation.
-
 ## Completed: constrained citation request and role-aligned dataset research
 
 - Inspected the actual failing case: its citation ID has one extra character
@@ -334,6 +328,36 @@ adoption remains a separate bounded task after the documented recommendation.
   ACI-Bench for a separate simulated clinical-documentation benchmark; documented
   license, fit, limitations, leakage boundaries, and a small adoption plan in
   `docs/voize-dataset-plan.md`. No new dataset or clinical evaluator imported.
+
+## Completed: v0.1.0 local release preparation
+
+- Ran the new citation-enum request on all 25 real cases: wrapper exit 0,
+  unknown citation occurrences 1 → 0, with .84/.80/.84 aggregate scores unchanged.
+  Only the affected case's citations changed. All 54 baseline files stayed intact.
+- Verified candidate artifact and completion-report hashes, code-target freshness,
+  and actual saved requests: enum choices were the only request difference.
+- Preserved the actual candidate, raw evidence, manifest, and expected code target
+  under `recordings/squad/llama3.2-bm25-citation-enum-v2/`; no generated reports
+  committed. Added exact-evidence/integrity tests and an eighth offline CI replay.
+- Verified 334 tests, all eight replay bodies and 16 reports, README quickstart,
+  and five demo outcomes 0/1/1/2/0 using the installed environment. Hosted setup,
+  artifact upload, and branch rules remain unverified until publication.
+- Rewrote the README around the implemented release; added changelog and publication
+  handoff. Code remains unlicensed at the owner's explicit choice; SQuAD retains
+  its separate attribution/license notice. Clinical dataset adoption is future work.
+- Local Markdown links and whitespace checks passed. Targeted scans of proposed
+  files/textual Git history flagged no credential patterns; tracked/proposed files
+  contained no home-directory paths or files over 10 MB. These scans are limited checks.
+- GitHub authentication verified; proposed destination is the public
+  `Spoorthy-Siddannaiah/llm-regression-gate`. No remote, push, or publication yet.
+
+## Publication remains
+
+Confirm destination/visibility before creating or pushing the repository, respecting
+the current “do not push or publish” working agreement. Then verify the first hosted
+Actions run and artifacts. The implemented regression-catching MVP is complete;
+automatic PR inference, clinical evaluation, observability, and deployment remain
+future scope rather than unfinished release requirements.
 
 ## Current limitations
 

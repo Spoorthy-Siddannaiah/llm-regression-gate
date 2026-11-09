@@ -64,7 +64,10 @@ hashes, with a source-drift check around generation. Historical recordings remai
 unchanged; missing legacy code snapshots are not evidence of current PR execution.
 An [opt-in local wrapper](local-candidate-workflow.md) now connects target capture,
 new recording, and freshness-checked comparison. It is tested with mocked generation
-and remains separate from the Actions replay workflow.
+and actual local runs and remains separate from the Actions replay workflow.
+The [controlled citation fix](../recordings/squad/llama3.2-bm25-citation-enum-v2/README.md)
+uses a request-specific enum of retrieved IDs. Parsing still preserves unknown IDs;
+the evaluator independently checks corpus membership.
 
 Actions runs tests and known pass/rejection examples without Ollama. A successful
 negative test means the detector rejected the expected failure for the right reason.
