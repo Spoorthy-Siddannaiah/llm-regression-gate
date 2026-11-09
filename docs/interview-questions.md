@@ -161,3 +161,9 @@ before accepting a run as completed?
 The candidate matches the baseline's aggregate scores and unknown-citation count,
 but the gate returns exit 1. Why can this be correct? Explain the difference between
 an absolute quality requirement, a regression, and an execution error.
+
+## Constrained citation generation
+
+Why constrain citation choices to retrieved IDs during generation while preserving
+unknown IDs in the recording parser? Can a valid source ID still support a wrong
+answer, and how would you evaluate that separately?

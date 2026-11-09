@@ -82,7 +82,7 @@ def main() -> None:
             dataset_version=dataset.dataset_version,
             configuration=Configuration(
                 configuration_id="ollama-llama3.2-bm25",
-                configuration_version="1.0.0" if args.top_k == 3 else f"1.0.0-top{args.top_k}",
+                configuration_version="1.1.0" if args.top_k == 3 else f"1.1.0-top{args.top_k}",
                 model_version=f"{MODEL}@sha256:{MODEL_DIGEST}",
                 prompt_version=PROMPT_VERSION, retrieval_version=f"bm25-v1-top{args.top_k}",
             ), responses=observations,

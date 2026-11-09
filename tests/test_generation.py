@@ -7,7 +7,7 @@ import pytest
 from pydantic import ValidationError
 
 from llm_reliability.generation import (
-    LocalOllama, MODEL_DIGEST, build_request, parse_answer,
+    LocalOllama, MODEL_DIGEST, PROMPT_VERSION, build_request, parse_answer,
 )
 from llm_reliability.loading import load_recording
 from llm_reliability.retrieval import RetrievalHit
@@ -39,6 +39,28 @@ def test_unknown_citations_and_empty_answers_are_preserved():
     answer = parse_answer(envelope(answer="", citations=["unknown-source"]))
     assert answer.answer == ""
     assert answer.cited_source_ids == ["unknown-source"]
+
+
+def test_citation_choices_are_exact_and_isolated_to_each_request():
+    # Reproduce the observed one-character corruption without changing old evidence.
+    source_id = "squad-context-4d3f905eee7981da9b9da72fa2e46d6de1701497204d573cd2b11c15b077ad99"
+    typo = "squad-context-4d3f905eee7981da9b9da72fa2e46d6dde1701497204d573cd2b11c15b077ad99"
+    hit = RetrievalHit(source_id=source_id, text="Evidence", score=1.0)
+    first = build_request("Question?", (hit,))
+    second = build_request("Other?", (RetrievalHit(source_id="other", text="Other", score=1.0),))
+    choices = first["format"]["properties"]["cited_source_ids"]["items"]["enum"]
+    assert choices == [source_id]
+    assert typo not in choices
+    assert second["format"]["properties"]["cited_source_ids"]["items"]["enum"] == ["other"]
+    assert first["format"]["properties"]["cited_source_ids"]["items"]["enum"] == [source_id]
+    assert PROMPT_VERSION == "grounded-json-v2-citation-enum"
+
+
+def test_no_retrieved_passages_allows_only_empty_citation_array():
+    citations = build_request("Unsupported?", ())["format"]["properties"]["cited_source_ids"]
+    assert citations["type"] == "array"
+    assert citations["maxItems"] == 0
+    assert "enum" not in citations["items"]
 
 
 @pytest.mark.parametrize("problem", ["truncated", "unfinished", "malformed", "duplicate", "wrong_role"])
@@ -104,6 +126,8 @@ def test_recorder_writes_evidence_and_never_overwrites(tmp_path, monkeypatch, to
     assert recording.responses[0].answer == "unit answer"
     assert len(recording.responses[0].retrieved_source_ids) == top_k
     assert recording.configuration.retrieval_version == f"bm25-v1-top{top_k}"
+    assert recording.configuration.prompt_version == PROMPT_VERSION
+    assert recording.configuration.configuration_version == ("1.1.0" if top_k == 3 else "1.1.0-top1")
     manifest = json.loads((output / "manifest.json").read_text())
     assert manifest["scope"] == "smoke_subset"
     assert manifest["status"] == "completed_not_promoted"

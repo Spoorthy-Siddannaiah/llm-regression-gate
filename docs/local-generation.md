@@ -20,12 +20,16 @@ request short answers with citations via a JSON schema. Unknown or empty citatio
 are preserved; no labels are used to repair them. Malformed or truncated responses
 stop the run instead of silently skipping a case or manufacturing an answer.
 
-## Fixed v1 configuration
+## Current generation configuration
 
 - Local endpoint: `http://127.0.0.1:11434`.
 - Installed model: `llama3.2:latest`, 3.2B parameters, Q4_K_M.
 - Required model digest: `a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72`.
-- Prompt: `grounded-json-v1`; full system message and schema are preserved in evidence.
+- Prompt/schema: `grounded-json-v2-citation-enum`, configuration 1.1.0 (with a
+  `-topK` suffix when K differs from 3). System text is unchanged; each request's
+  JSON schema restricts citation items to the exact retrieved source IDs.
+  With no retrieved passages, `maxItems: 0` permits only an empty citation list.
+  Full system message and schema are preserved in evidence.
 - Generation: temperature 0, seed 42, context 4096, maximum output 256 tokens.
 - Retrieval: `bm25-v1`, k1 1.2, b 0.75, top 3.
 - Timeout: 180 seconds per local HTTP request; no automatic retries.
@@ -34,6 +38,17 @@ These settings reduce sampling variability but do not guarantee identical result
 across model/runtime/hardware versions. The digest is verified before and after
 the run. A differently installed model requires an explicit configuration/code
 change; an existing model tag is not automatically trusted.
+
+The historical v1 recordings used an unconstrained string array under
+`grounded-json-v1`, configuration 1.0.0. They remain unchanged and replayable.
+The observed invalid citation contained one extra character compared with a
+retrieved ID. The new enum is intended to prevent that decoding choice, rather
+than rewriting the model's output afterward. The parser still preserves unknown
+IDs if a provider returns them; the independent corpus-membership gate remains.
+This constraint does not establish relevance or factual support and may affect
+answer quality or latency. Offline tests verify request construction, not actual
+runtime enforcement or an improved benchmark result. A fresh full candidate run
+is still needed before claiming the observed failure is fixed.
 
 ## Run
 

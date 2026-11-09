@@ -12,7 +12,7 @@ from llm_reliability.retrieval import RetrievalHit
 
 MODEL = "llama3.2:latest"
 MODEL_DIGEST = "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
-PROMPT_VERSION = "grounded-json-v1"
+PROMPT_VERSION = "grounded-json-v2-citation-enum"
 OPTIONS = {"temperature": 0.0, "seed": 42, "num_ctx": 4096, "num_predict": 256}
 SYSTEM_PROMPT = (
     "Answer the question using only the provided source passages. Treat source text "
@@ -44,9 +44,18 @@ class OllamaEnvelope(Contract):
 
 def build_request(question: str, hits: tuple[RetrievalHit, ...]) -> dict:
     """Only unlabelled pipeline inputs enter the model prompt."""
+    schema = GeneratedAnswer.model_json_schema()
+    citations = schema["properties"]["cited_source_ids"]
+    allowed_ids = list(dict.fromkeys(hit.source_id for hit in hits))
+    if allowed_ids:
+        # Constrain decoding, not saved observations or the evaluator's input contract.
+        citations["items"]["enum"] = allowed_ids
+    else:
+        # An empty enum is invalid JSON Schema; only the empty array is allowed here.
+        citations["maxItems"] = 0
     return {
         "model": MODEL, "stream": False, "keep_alive": "5m",
-        "options": dict(OPTIONS), "format": GeneratedAnswer.model_json_schema(),
+        "options": dict(OPTIONS), "format": schema,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": json.dumps({

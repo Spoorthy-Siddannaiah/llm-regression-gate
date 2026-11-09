@@ -313,8 +313,27 @@
 
 ## Next bounded task (not implemented)
 
-Inspect the unknown-citation case and propose one controlled generation change,
-keeping the baseline, dataset, and policy fixed. Do not silently repair saved output.
+Run one fresh full candidate with the citation-enum schema against the unchanged
+baseline and policy; inspect all metric deltas, not just unknown citations. Dataset
+adoption remains a separate bounded task after the documented recommendation.
+
+## Completed: constrained citation request and role-aligned dataset research
+
+- Inspected the actual failing case: its citation ID has one extra character
+  compared with a retrieved source ID. Historical evidence was not edited.
+- Generation requests now constrain citation items to retrieved IDs; zero hits
+  allow only an empty array. Parser/evaluator still preserve and score unknown IDs.
+- Versioned the changed request as `grounded-json-v2-citation-enum`, configuration
+  1.1.0. Model, system text, retrieval, baseline, dataset, and policy remain fixed.
+- Added tests for exact choices, the observed typo, request isolation, zero hits,
+  and recorder version metadata. Actual model enforcement/quality improvement is
+  not claimed; no new inference run was made in this task.
+- Verified 330 passing offline tests and a clean whitespace check. Saved the
+  interview question; no paid calls, baseline promotion, push, or deployment.
+- Read the employer's public job-board API and primary dataset sources. Recommended
+  ACI-Bench for a separate simulated clinical-documentation benchmark; documented
+  license, fit, limitations, leakage boundaries, and a small adoption plan in
+  `docs/voize-dataset-plan.md`. No new dataset or clinical evaluator imported.
 
 ## Current limitations
 
