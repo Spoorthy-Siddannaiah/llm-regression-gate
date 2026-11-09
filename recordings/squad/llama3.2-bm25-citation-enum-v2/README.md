@@ -50,7 +50,7 @@ uv run --python 3.12 --locked llm-reliability \
   --output-dir reports/citation-enum-replay-new
 ```
 
-Choose a new output directory. Expected: schema-3 reports, no failures, exit 0.
+Choose a new output directory. Expected: schema-4 reports, no failures, exit 0.
 Passing this limited policy does not establish semantic correctness or production
 release approval. A valid source ID may still be irrelevant or fail to support
 an answer. Results are from one local run, not a statistical evaluation.
