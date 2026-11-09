@@ -413,3 +413,16 @@ hosted run and report artifacts before claiming success. Local release verificat
 All 54 baseline hashes matched. Semantic
 correctness, representative clinical labels, privacy compliance, fresh PR inference,
 latency/cost gates and production deployment remain outside this release's claims.
+
+## README portfolio walkthrough
+
+- Reworked the opening around the problem, implemented CLI and observed evidence.
+- Moved the actual regression/fix and short offline demo ahead of technical detail.
+- Added the verified hosted run at `995ef72`, its workflow badge and report results.
+- Kept limitations explicit and prioritized fresh PR inference, reviewed cases,
+  calibrated semantic evaluation, domain evidence and repeated measurements as future work.
+- Preserved detailed methodology, provenance, data attribution and operating guidance
+  in an expandable technical reference. No implementation or evaluation inputs changed.
+- Verification: 23 local README links/anchors checked; all eight offline replays
+  returned expected outcomes; all 54 baseline hashes match; whitespace checks passed.
+- Next: review and authorize publication of this documentation update.

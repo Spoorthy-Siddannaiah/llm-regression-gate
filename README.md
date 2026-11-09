@@ -1,51 +1,167 @@
 # LLM Regression Gate
 
-**Deterministic evaluation and regression testing for LLM applications.**
+**Catch measurable RAG regressions before accepting a pipeline change.**
 
-Prompt, model and retrieval changes can regress answer evidence, citation coverage
-or retrieval performance. Unit tests alone do not establish whether application
-quality has been preserved. This tool compares recorded baseline and candidate
-outputs against versioned evaluation inputs and configurable policies, then writes
-case-level evidence and returns a CI-compatible exit code.
+[![Regression checks](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/actions/workflows/regression.yml/badge.svg)](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/actions/workflows/regression.yml)
 
-The implemented scope is a local, recorded-response regression gate with optional
-local RAG generation. It is an independent project, separate from the Databricks
-Enterprise AI Knowledge Copilot.
+**The problem:** a RAG application can still run successfully after a prompt or
+retrieval change while giving worse answers. A passing application test does not
+tell you whether the model lost the evidence needed to answer a question.
 
-[Getting started](#getting-started) · [Architecture](#architecture) ·
-[Methodology](#evaluation-methodology-and-limitations) ·
-[Measured examples](#example-regression-and-controlled-fix) ·
-[Local verification](#verification-and-test-results) · [Limitations](#known-limitations)
+**What I built:** a Python CLI that compares candidate responses with a fixed
+baseline on a versioned dataset. It checks required phrases, citations and
+retrieval results, explains which cases got worse, and returns a pass/fail exit
+code that CI can enforce. Optional local BM25 + Ollama generation creates new
+recordings; everyday evaluation replays saved outputs without paid APIs.
 
-## Problem and motivation
+**The proof:** on 25 public SQuAD questions over 50 Wikipedia passages, reducing
+retrieval from three passages to one caused measured coverage drops in actual
+Llama 3.2 outputs, and the gate rejected the candidate.
+A separate citation-schema fix passed the unchanged policy. Neither experiment
+replaced the baseline or weakened the thresholds.
 
-LLM generation can vary across runs, model runtimes and hardware, even with fixed
-sampling settings. A change to context selection or output formatting may improve
-one case while breaking another. Aggregate scores can hide those exchanges.
+**The boundary:** this is a reproducible evaluation and release-checking project,
+not proof of semantic correctness or a clinically validated system. Current CI
+tests recorded examples; it does not generate fresh model answers for every PR.
 
-A useful regression decision therefore needs stable cases, separate recordings,
-explicit expectations and inspectable provenance. Replaying fixed outputs makes
-the evaluator repeatable; generating fresh outputs is a separate operation. A team
-can use the resulting exit code to block a pipeline stage when a selected policy
-fails, while reviewing the evidence rather than interpreting a score as proof of
-correctness. This repository's CI exercises known recorded examples; it does not
-automatically generate new answers from every pull request.
+[See the evidence](#example-regression-and-controlled-fix) ·
+[Run it locally](#getting-started) · [How it works](#architecture) ·
+[Limitations](#known-limitations) · [Next improvements](#future-improvements)
 
-## Key capabilities
+## What I built
 
-- **Versioned datasets:** stable case IDs bind questions to required phrases, relevant source IDs and criticality.
-- **Separate recordings:** baseline and candidate files retain observed answers, citations, ranked retrieval IDs and configuration versions.
-- **Strict input validation:** typed loaders reject malformed data, duplicate IDs or JSON keys, incompatible dataset versions, missing/extra cases and invalid labelled corpus references.
-- **Required-phrase checks:** normalized literal matching records which authored assertions are present or missing.
-- **Labelled citation coverage:** cited source IDs are compared with each case's relevance labels without treating every unlabelled citation as invalid.
-- **Corpus membership:** exact cited-ID lookup distinguishes existing sources from unknown IDs in the supplied snapshot.
-- **Retrieval Recall@K:** ranked retrieval is evaluated against relevant-source labels with one shared cutoff for both recordings.
-- **Paired case changes:** reports identify improved, unchanged and regressed cases, affected metrics and critical-case regressions.
-- **Configurable gates:** policies combine absolute metric floors, allowed drops, critical-fact requirements and an optional maximum regressed-case count.
-- **Unknown-citation limits:** an explicitly selected v2 policy can enforce both an absolute count and a maximum increase from baseline.
-- **Provenance checks:** recording manifests verify dataset, corpus and evidence hashes, with optional candidate-code target validation.
-- **Evaluation receipts:** CLI reports identify input bytes, evaluator source files, policy/evaluator versions and target-validation outcome without embedding raw content in the receipt.
-- **Offline reports and replay:** JSON/Markdown reports and explicit exit codes support regression testing without live inference or paid APIs.
+- **Evaluation CLI:** one comparison command, JSON/Markdown reports, and distinct exits for pass, quality failure and execution error.
+- **Local RAG example:** BM25 retrieval over public Wikipedia passages and actual Ollama/Llama 3.2 recordings.
+- **Regression policies:** shared checks for baseline and candidate, aggregate and case-level changes, critical cases and optional unknown-citation limits.
+- **Reproducible evidence:** separate reference data and model recordings, versioned settings, raw request/response evidence and hash-based provenance checks.
+- **GitHub Actions:** 356 tests and eight replay scenarios that verify both expected acceptance and expected rejection, with downloadable reports.
+
+```text
+Versioned dataset + fixed baseline + candidate recording
+                         ↓
+             Validate inputs and provenance
+                         ↓
+          Score both → compare → apply policy
+                         ↓
+              JSON + Markdown evidence
+                         ↓
+       Exit 0: pass · 1: quality failure · 2: error
+```
+
+## Example regression and controlled fix
+
+A developer reducing the retrieval passage budget can remove evidence the model
+needs. The saved top-one candidate demonstrates this with actual model outputs:
+
+| Metric | Fixed baseline: top 3 | Candidate: top 1 | Delta |
+| --- | ---: | ---: | ---: |
+| Required-phrase coverage | 84% | 68% | −16 percentage points |
+| Labelled citation coverage | 80% | 68% | −12 percentage points |
+| Retrieval Recall@3 | 84% | 68% | −16 percentage points |
+
+For “Who was the Super Bowl 50 MVP?”, the baseline answers “Von Miller”; the candidate
+loses the associated paragraph and returns an empty answer. After validating both
+recordings, the engine computes that case's phrase, citation and retrieval drops.
+The relative-only policy rejects all three aggregate drops, writes per-case
+explanations and returns **exit 1**. See the [actual report excerpt](docs/example-regression.md).
+
+An invalid-citation failure is demonstrated separately. The observed baseline
+contains one cited ID with an extra character, absent from the corpus. Its v2
+self-check has zero relative degradation but fails the absolute zero-unknown limit.
+This distinguishes an existing quality defect from a newly introduced regression.
+A future candidate introducing an unknown ID would be checked by the same v2 rules;
+an unsupported claim without a failing assertion may remain undetected.
+
+The controlled fix restricts generated citation choices to the exact retrieved IDs.
+Its recorded candidate has **0 unknown citation occurrences versus 1 in the baseline**,
+with coverage/recall unchanged at **0.84 / 0.80 / 0.84**. The unchanged v2 policy
+returns **exit 0**. Only the affected case's citation observations differ; the
+baseline and thresholds were not replaced. These are small, single-run experiments,
+not statistical evidence of generalization, latency reduction or clinical safety.
+
+## Getting started
+
+From a local checkout, with uv and Python 3.12.13 available:
+
+```sh
+uv sync --python 3.12.13 --locked
+uv run --locked python scripts/verify_replays.py --output-dir reports/first-review
+```
+
+Choose a new output directory each time. This runs eight saved scenarios, including
+intentional failures, and writes JSON/Markdown reports. The verification command
+exits 0 only when **every scenario produces its expected decision**; individual
+bad candidates are expected to fail their gates.
+
+After dependency installation, replay needs **no model server, API key or paid
+service**. For installation details, a direct comparison command and exit codes,
+see [detailed local usage](#detailed-local-usage).
+
+## Verification and test results
+
+**Verified locally and on GitHub Actions using Python 3.12.13.**
+The [successful hosted run](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/actions/runs/42700771347)
+evaluated commit `995ef72`: all 356 tests and eight replay checks passed.
+Its eight JSON and eight Markdown reports were downloaded and checked.
+
+| Verification | Result |
+| --- | --- |
+| Full test suite | 356 passed |
+| CI replay scenarios | 8 expected outcomes |
+| Hosted GitHub Actions | 356 tests and all 8 replay checks passed on `995ef72` |
+| Isolated source snapshot with fresh locked installation | 356 passed |
+| Wheel and source distribution | Successfully built |
+| Installed wheel replay outside the source checkout | Passed |
+| Baseline integrity | 54/54 files unchanged |
+
+Tests cover schema/coverage errors, known gate outcomes, case-level masking, input
+drift, sanitized provider failures with fictional markers, duplicate JSON keys,
+report/receipt consistency and recording integrity. Model calls are mocked where
+needed. The isolated-snapshot and installed-wheel checks are documented in
+[audit-fix verification](docs/audit-fixes.md); the snapshot checks the copied source
+and existing Git history rather than manufacturing a new commit.
+
+[GitHub Actions](.github/workflows/regression.yml) is configured for pull requests,
+pushes and manual dispatch, with read-only contents permissions, nonpersisted
+checkout credentials and pinned action SHAs. Available evaluation reports are
+configured for upload with seven-day retention. Known rejected candidates must
+produce the expected evaluation exits; the v2 replay steps also inspect reasons.
+A green workflow validates the evaluator against saved examples, not fresh model
+outputs from that PR and not deployment eligibility.
+
+The badge links to the workflow's current status; the run linked above is the
+specific verified result. Hosted success validates the saved scenarios, not fresh
+inference, production quality or deployment eligibility. Credential-pattern scanning
+is a limited check, not a comprehensive security guarantee.
+
+## Known limitations
+
+- Literal phrase checks can accept negation or unsupported additions and reject valid paraphrases or unit conversions.
+- Citation-label coverage does not prove claim support; unlabelled IDs can be legitimate, and corpus membership establishes only existence in that snapshot.
+- The selected SQuAD slice is small and nonrandom; relevance labels are not exhaustive, and no explicit correct-abstention or clinical safety benchmark exists.
+- No training-data contamination assessment or held-out production benchmark is provided.
+- Zero metric floors cannot establish absolute quality, and aggregate improvements can offset standard-case losses unless a stricter case constraint is selected.
+- No general semantic correctness, factual completeness or guaranteed hallucination detection is provided; no LLM judge is implemented.
+- No fresh model inference is automatically performed on each PR, and baseline/policy changes are not protected by repository rules implemented in this code.
+- In-memory retrieval and whole-file processing are intended for small local evaluations; large-scale throughput, latency and cost are not benchmarked.
+- Report writes can leave partial artifacts on I/O failure, and generation does not implement resumable distributed execution.
+- This is not a live production observability platform or deployment system; sensitive production use requires additional privacy and operational controls.
+
+## Future improvements
+
+The next priorities address the current project's largest gaps. These are
+**planned improvements, not implemented capabilities**:
+
+| Priority | Improvement | Evidence it should add |
+| --- | --- | --- |
+| 1 | Generate a fresh candidate from the intended PR revision, then run the existing gate | Detect behavior changes in the proposed pipeline rather than only replay known recordings |
+| 2 | Expand the dataset with reviewed answerable, unanswerable, paraphrase and contradiction cases | Measure false alarms and missed failures in the current checks |
+| 3 | Add semantic and claim-support evaluation, calibrated against human labels | Assess meaning and citation support beyond phrase presence and source-ID membership |
+| 4 | Add a separately scoped clinical-documentation benchmark with licensing and privacy review | Test domain-relevant errors without presenting SQuAD results as clinical evidence |
+| 5 | Repeat controlled runs and measure latency/cost alongside quality | Evaluate variability and trade-offs beyond one saved run per configuration |
+
+These are separate engineering tasks, not prerequisites to reproducing this release's
+recorded-response examples. ACI-Bench remains a proposal, not current evidence.
 
 ## Architecture
 
@@ -86,6 +202,41 @@ synthetic v1 comparisons can operate without one. Membership can also be request
 as a report-only diagnostic. Optional local generation produces a new candidate
 before this evaluation flow; it never promotes the candidate to baseline.
 See [module boundaries and provenance contracts](docs/architecture.md).
+
+## Technical reference
+
+<details>
+<summary>Evaluation contracts, data origins, implementation details and operating guidance</summary>
+
+## Problem and motivation
+
+LLM generation can vary across runs, model runtimes and hardware, even with fixed
+sampling settings. A change to context selection or output formatting may improve
+one case while breaking another. Aggregate scores can hide those exchanges.
+
+A useful regression decision therefore needs stable cases, separate recordings,
+explicit expectations and inspectable provenance. Replaying fixed outputs makes
+the evaluator repeatable; generating fresh outputs is a separate operation. A team
+can use the resulting exit code to block a pipeline stage when a selected policy
+fails, while reviewing the evidence rather than interpreting a score as proof of
+correctness. This repository's CI exercises known recorded examples; it does not
+automatically generate new answers from every pull request.
+
+## Key capabilities
+
+- **Versioned datasets:** stable case IDs bind questions to required phrases, relevant source IDs and criticality.
+- **Separate recordings:** baseline and candidate files retain observed answers, citations, ranked retrieval IDs and configuration versions.
+- **Strict input validation:** typed loaders reject malformed data, duplicate IDs or JSON keys, incompatible dataset versions, missing/extra cases and invalid labelled corpus references.
+- **Required-phrase checks:** normalized literal matching records which authored assertions are present or missing.
+- **Labelled citation coverage:** cited source IDs are compared with each case's relevance labels without treating every unlabelled citation as invalid.
+- **Corpus membership:** exact cited-ID lookup distinguishes existing sources from unknown IDs in the supplied snapshot.
+- **Retrieval Recall@K:** ranked retrieval is evaluated against relevant-source labels with one shared cutoff for both recordings.
+- **Paired case changes:** reports identify improved, unchanged and regressed cases, affected metrics and critical-case regressions.
+- **Configurable gates:** policies combine absolute metric floors, allowed drops, critical-fact requirements and an optional maximum regressed-case count.
+- **Unknown-citation limits:** an explicitly selected v2 policy can enforce both an absolute count and a maximum increase from baseline.
+- **Provenance checks:** recording manifests verify dataset, corpus and evidence hashes, with optional candidate-code target validation.
+- **Evaluation receipts:** CLI reports identify input bytes, evaluator source files, policy/evaluator versions and target-validation outcome without embedding raw content in the receipt.
+- **Offline reports and replay:** JSON/Markdown reports and explicit exit codes support regression testing without live inference or paid APIs.
 
 ## Execution lifecycle
 
@@ -197,37 +348,6 @@ coverage separately exposes omitted sources. Thresholds need domain review and
 calibration; the bundled policies illustrate
 behavior, not production acceptance criteria. See [v2 policy semantics](docs/citation-gate-v2.md).
 
-## Example regression and controlled fix
-
-A developer reducing the retrieval passage budget can remove evidence the model
-needs. The saved top-one candidate demonstrates this with actual model outputs:
-
-| Metric | Fixed baseline: top 3 | Candidate: top 1 | Delta |
-| --- | ---: | ---: | ---: |
-| Required-phrase coverage | 0.84 | 0.68 | -0.16 |
-| Labelled citation coverage | 0.80 | 0.68 | -0.12 |
-| Retrieval Recall@3 | 0.84 | 0.68 | -0.16 |
-
-For “Who was the Super Bowl 50 MVP?”, the baseline answers “Von Miller”; the candidate
-loses the associated paragraph and returns an empty answer. After validating both
-recordings, the engine computes that case's phrase, citation and retrieval drops.
-The relative-only policy rejects all three aggregate drops, writes per-case
-explanations and returns **exit 1**. See the [actual report excerpt](docs/example-regression.md).
-
-An invalid-citation failure is demonstrated separately. The observed baseline
-contains one cited ID with an extra character, absent from the corpus. Its v2
-self-check has zero relative degradation but fails the absolute zero-unknown limit.
-This distinguishes an existing quality defect from a newly introduced regression.
-A future candidate introducing an unknown ID would be checked by the same v2 rules;
-an unsupported claim without a failing assertion may remain undetected.
-
-The controlled fix restricts generated citation choices to the exact retrieved IDs.
-Its recorded candidate has **0 unknown citation occurrences versus 1 in the baseline**,
-with coverage/recall unchanged at **0.84 / 0.80 / 0.84**. The unchanged v2 policy
-returns **exit 0**. Only the affected case's citation observations differ; the
-baseline and thresholds were not replaced. These are small, single-run experiments,
-not statistical evidence of generalization, latency reduction or clinical safety.
-
 ## Technology stack
 
 | Area | Implemented technology |
@@ -270,7 +390,7 @@ pyproject.toml, uv.lock                Package metadata, build pins and dependen
 CHANGELOG.md                          Implemented release scope and audit hardening
 ```
 
-## Getting started
+## Detailed local usage
 
 ### Prerequisites and installation
 
@@ -329,39 +449,6 @@ For passing, invalid-input, absolute-quality and controlled-fix commands, use th
 | 1 | Evaluation and reporting completed; selected gate failed |
 | 2 | Invalid input, integrity mismatch or execution/reporting failure |
 
-## Verification and test results
-
-**Locally verified on Python 3.12.13; no hosted-CI claim.**
-
-| Verification | Result |
-| --- | --- |
-| Full test suite | 356 passed |
-| New audit-remediation tests | 22 added |
-| CI replay scenarios | 8 expected outcomes |
-| Isolated source snapshot with fresh locked installation | 356 passed |
-| Wheel and source distribution | Successfully built |
-| Installed wheel replay outside the source checkout | Passed |
-| Baseline integrity | 54/54 files unchanged |
-
-Tests cover schema/coverage errors, known gate outcomes, case-level masking, input
-drift, sanitized provider failures with fictional markers, duplicate JSON keys,
-report/receipt consistency and recording integrity. Model calls are mocked where
-needed. The isolated-snapshot and installed-wheel checks are documented in
-[audit-fix verification](docs/audit-fixes.md); the snapshot checks the copied source
-and existing Git history rather than manufacturing a new commit.
-
-[GitHub Actions](.github/workflows/regression.yml) is configured for pull requests,
-pushes and manual dispatch, with read-only contents permissions, nonpersisted
-checkout credentials and pinned action SHAs. Available evaluation reports are
-configured for upload with seven-day retention. Known rejected candidates must
-produce the expected evaluation exits; the v2 replay steps also inspect reasons.
-A green workflow validates the evaluator against saved examples, not fresh model
-outputs from that PR and not deployment eligibility.
-
-**Hosted GitHub Actions has not yet been verified. Local replay success does not
-prove hosted CI success.** No green Actions badge is displayed. Credential-pattern
-scanning is a limited check, not a comprehensive security guarantee.
-
 ## Engineering design decisions
 
 - **Separate references from observations:** labelled answers must not leak into generation prompts or be mistaken for model baseline outputs.
@@ -395,32 +482,7 @@ hostile concurrent writers. See [provenance](docs/provenance.md) and
 [candidate freshness](docs/candidate-freshness.md). No GDPR compliance or healthcare
 certification is claimed. Preserve the dataset attribution when sharing its adaptation.
 
-## Known limitations
-
-- Literal phrase checks can accept negation or unsupported additions and reject valid paraphrases or unit conversions.
-- Citation-label coverage does not prove claim support; unlabelled IDs can be legitimate, and corpus membership establishes only existence in that snapshot.
-- The selected SQuAD slice is small and nonrandom; relevance labels are not exhaustive, and no explicit correct-abstention or clinical safety benchmark exists.
-- No training-data contamination assessment or held-out production benchmark is provided.
-- Zero metric floors cannot establish absolute quality, and aggregate improvements can offset standard-case losses unless a stricter case constraint is selected.
-- No general semantic correctness, factual completeness or guaranteed hallucination detection is provided; no LLM judge is implemented.
-- No fresh model inference is automatically performed on each PR, and baseline/policy changes are not protected by repository rules implemented in this code.
-- In-memory retrieval and whole-file processing are intended for small local evaluations; large-scale throughput, latency and cost are not benchmarked.
-- Report writes can leave partial artifacts on I/O failure, and generation does not implement resumable distributed execution.
-- This is not a live production observability platform or deployment system; sensitive production use requires additional privacy and operational controls.
-
-## Future improvements
-
-Potential extensions, **not implemented**:
-
-- Restricted production-trace ingestion and reviewed dataset curation.
-- Broader semantic/faithfulness evaluation with calibrated evaluators and human review.
-- Expanded benchmarks, including an explicitly scoped clinical-documentation dataset.
-- Stateful agent and tool-workflow evaluation.
-- Additional model/provider integrations and controlled latency/cost comparisons.
-- Trusted pipelines that generate and bind fresh candidates to the intended code change.
-
-These are separate engineering tasks, not prerequisites to reproducing this release's
-recorded-response examples. ACI-Bench remains a proposal, not current evidence.
+</details>
 
 ## License
 
