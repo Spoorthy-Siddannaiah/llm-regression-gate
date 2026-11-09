@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56be53b8acb8001400a50314",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-09T09:45:21.342329Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"Roger Goodell\", \"cited_source_ids\": [\"squad-context-1db0cd5d7127a86b1a900c37558ba9c8baccde5ae42c65591dfe73499f5d89b7\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4919693208,
+    "load_duration": 39679417,
+    "prompt_eval_count": 529,
+    "prompt_eval_cached_count": 110,
+    "prompt_eval_duration": 1718559000,
+    "eval_count": 61,
+    "eval_duration": 3012389000
+  }
+}

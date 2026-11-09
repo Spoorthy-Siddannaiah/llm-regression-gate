@@ -61,3 +61,37 @@ def test_real_candidate_cli_replay_detects_relative_regressions(tmp_path):
         report["policy"]["fact_coverage"], report["policy"]["citation_label_coverage"],
         report["policy"]["retrieval_recall"],
     ))
+
+
+def test_actual_citation_enum_candidate_passes_without_losing_other_metrics(tmp_path):
+    candidate = ROOT / "recordings/squad/llama3.2-bm25-citation-enum-v2"
+    old = json.loads((BASELINE / "recording.json").read_text())
+    new = json.loads((candidate / "recording.json").read_text())
+    changed = [a["case_id"] for a, b in zip(old["responses"], new["responses"], strict=True) if a != b]
+    assert changed == ["squad-56e17644e3433e1400422f40"]
+    for index in range(1, 26):
+        before = json.loads((BASELINE / f"evidence/{index:03d}.request.json").read_text())["request"]
+        after = json.loads((candidate / f"evidence/{index:03d}.request.json").read_text())["request"]
+        sources = json.loads(after["messages"][1]["content"])["sources"]
+        choices = after["format"]["properties"]["cited_source_ids"]["items"].pop("enum")
+        assert choices == [source["source_id"] for source in sources]
+        assert before == after  # The only request change was the citation enum.
+    output = tmp_path / "reports"
+    process = subprocess.run([
+        sys.executable, "-m", "llm_reliability",
+        "--dataset", str(ROOT / "datasets/squad/v1/dataset.json"),
+        "--sources", str(ROOT / "datasets/squad/v1/sources.json"), "--require-manifests",
+        "--baseline", str(BASELINE / "recording.json"),
+        "--candidate", str(candidate / "recording.json"),
+        "--expected-candidate-code", str(candidate / "expected-code.json"),
+        "--policy", str(ROOT / "configs/gate.citation-v2.json"),
+        "--settings", str(ROOT / "configs/evaluator.v1.json"),
+        "--output-dir", str(output),
+    ], cwd=tmp_path, capture_output=True, text=True)
+    assert process.returncode == 0, process.stderr
+    report = json.loads((output / "report.json").read_text())
+    assert report["passed"] is True and report["failures"] == []
+    assert all(metric["delta"] == 0 for metric in report["metrics"])
+    assert report["citation_existence_gate"]["baseline_unknown_count"] == 1
+    assert report["citation_existence_gate"]["candidate_unknown_count"] == 0
+    assert report["citation_existence_gate"]["increase"] == -1

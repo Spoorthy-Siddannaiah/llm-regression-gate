@@ -11,7 +11,7 @@ from llm_reliability.retrieval import BM25Retriever
 
 
 ROOT = Path(__file__).resolve().parents[1]
-@pytest.fixture(params=["llama3.2-bm25-v1", "llama3.2-bm25-top1-v1"])
+@pytest.fixture(params=["llama3.2-bm25-v1", "llama3.2-bm25-top1-v1", "llama3.2-bm25-citation-enum-v2"])
 def run_dir(request):
     return ROOT / "recordings/squad" / request.param
 

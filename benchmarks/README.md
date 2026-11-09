@@ -87,3 +87,12 @@ schema-3 gate results and the selected policy hash. Baseline self-comparison fai
 the absolute zero-unknown-ID cap (1 observed, 0 increase). The top-one candidate
 passes the unknown-ID rules (0 observed, -1 change) but still fails all three prior
 relative quality checks. No recordings or v1 results were changed.
+
+## Actual controlled citation fix
+
+The [new actual candidate recording](../recordings/squad/llama3.2-bm25-citation-enum-v2/README.md)
+constrains citation choices in the generation schema. Unknown citation occurrences
+fall from 1 to 0, with phrase coverage .84, citation-label coverage .80, and
+Recall@3 .84 unchanged. The unchanged v2 policy passes. Only the affected case's
+citations differ in recorded observations. Raw evidence and the expected code
+snapshot are committed; reports are regenerated offline instead of committed.

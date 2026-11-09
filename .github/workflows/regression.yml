@@ -179,6 +179,30 @@ jobs:
           assert evidence["increase"] == -1
           PY
 
+      - name: Replay actual constrained-citation candidate with v2
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv run --python 3.12.13 --locked llm-reliability \
+            --dataset datasets/squad/v1/dataset.json \
+            --sources datasets/squad/v1/sources.json --require-manifests \
+            --baseline recordings/squad/llama3.2-bm25-v1/recording.json \
+            --candidate recordings/squad/llama3.2-bm25-citation-enum-v2/recording.json \
+            --expected-candidate-code recordings/squad/llama3.2-bm25-citation-enum-v2/expected-code.json \
+            --policy configs/gate.citation-v2.json \
+            --settings configs/evaluator.v1.json \
+            --output-dir reports/ci-citation-enum
+          uv run --python 3.12.13 --locked python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("reports/ci-citation-enum/report.json").read_text())
+          assert report["report_schema_version"] == 3
+          assert report["policy"]["policy_version"] == "deterministic-gate-v2"
+          assert report["passed"] is True and report["failures"] == []
+          assert all(metric["delta"] == 0 for metric in report["metrics"])
+          assert report["citation_existence_gate"]["candidate_unknown_count"] == 0
+          assert report["citation_existence_gate"]["increase"] == -1
+          PY
+
       - name: Upload available evaluation reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
@@ -199,5 +223,7 @@ jobs:
             reports/ci-v2-absolute-failure/report.md
             reports/ci-v2-real-regression/report.json
             reports/ci-v2-real-regression/report.md
+            reports/ci-citation-enum/report.json
+            reports/ci-citation-enum/report.md
           if-no-files-found: warn
           retention-days: 7

@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56e17e6ee3433e1400422f7f",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-09T09:47:25.312692Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"2000\", \"cited_source_ids\": [\"squad-context-00b76f48835bfc2434242a5dea1681e9e4d9c363cc74180aa0b9b9fec6f02bef\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5060273792,
+    "load_duration": 20222334,
+    "prompt_eval_count": 596,
+    "prompt_eval_cached_count": 110,
+    "prompt_eval_duration": 2067581000,
+    "eval_count": 58,
+    "eval_duration": 2827162000
+  }
+}

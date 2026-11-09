@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56dddf4066d3e219004dad5f",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-09T09:45:53.88701Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"William the Conqueror\", \"cited_source_ids\": [\"squad-context-6a4859b84af16a97c8e1dcf1acad6e45d077ea9ef8ecf5e9a80b9bc201a26760\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6192882167,
+    "load_duration": 4892459,
+    "prompt_eval_count": 905,
+    "prompt_eval_cached_count": 110,
+    "prompt_eval_duration": 2890299000,
+    "eval_count": 64,
+    "eval_duration": 3173932000
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "git_status": "available",
+  "git_commit": "bb71ce1f947cff3fef80874dae1ade680afd6249",
+  "working_tree_dirty": false,
+  "source_sha256": {
+    "scripts/record_ollama.py": "7e61b26176bad4ed872900b0ba5c146e7cbdac5b87a90982111076471fb47ae5",
+    "pyproject.toml": "e37997117d6341e696155cf52be7e39dcf936f1db1998a04a85a7256f30c65a8",
+    "uv.lock": "4d397de9f2138289e78d47dff8a8d236d28a5b98dedafbb58371006f5564241c",
+    "scripts/run_local_candidate.py": "d6b0bf55675f68eace5fb82f2eab6572b8c486167e8df82c00adbe21f4fb581d",
+    "src/llm_reliability/__init__.py": "248773bf17f097db507cee9017aed2d10f2b927c4a7d8b3205b2923a2d08bf9e",
+    "src/llm_reliability/__main__.py": "ad3fe72eca43aadad407ebef4c00cc4b198e3927957f46ebbb00a5de63921a81",
+    "src/llm_reliability/alternative_diagnostics.py": "0a19b962ef26211bee4b64c2498944cfc70b380e0e6db873b99217436564d614",
+    "src/llm_reliability/answer_alternatives.py": "af2ed7c3cfc7651f6f790fdfe2b59c0a507fc23bc0ccf340f56ea280b5373d51",
+    "src/llm_reliability/citation_existence.py": "6da3af82534d76e3ab2d1d05a969ec2d404db05e020404d9f82204caa4c2f470",
+    "src/llm_reliability/cli.py": "7a0760d25dee524afc89d351a82a8f4cbd49fb826a23148aa91e15c79e0032e5",
+    "src/llm_reliability/fact_checks.py": "133d26987c52d616ded83fc632c57c5ecebf44e02ac589985c195ff66e6d68f0",
+    "src/llm_reliability/gates.py": "aadd78598211f0118666f64c9383ecb83d23d8649f8886160f91bb2b495114bb",
+    "src/llm_reliability/generation.py": "ee2bd2208811bd4f83060ffaa81ac84c11a506e955736eb83210c21356bfd6cb",
+    "src/llm_reliability/loading.py": "a7562807d15097f2a74f959590537cb4f914ca10be7f9f89c7b7d65873f3e2c4",
+    "src/llm_reliability/models.py": "671cd52c7f6386d5548683ac74aadcee359081265d86a528ba74443850f28366",
+    "src/llm_reliability/provenance.py": "89eb1a8f9e8701146772ebb6ad8abec58f3f4abe2dde01b29838a03c93e5c31a",
+    "src/llm_reliability/reports.py": "158fa316e89d87f636d41b6d3c7ec973682a1ad411ef1d880c8692453276681e",
+    "src/llm_reliability/retrieval.py": "0443946b551a9549667645b205a7582d775f2f672e74c08537f61c1985c4f48b",
+    "src/llm_reliability/run_provenance.py": "f328c854d2450fb9faf60b21a6a051283aad94cf11f408d81b7ac3b2abc30b21",
+    "src/llm_reliability/runner.py": "25e6970d81c5c9cd48b3d70f60cddf9adc6978c04fb1c032b92ae33bcba811c7",
+    "src/llm_reliability/source_checks.py": "49e31d0867cdb024b9387da4fbd2f62e80745465aa37bdc59627c7a047074b63",
+    "src/llm_reliability/squad.py": "8738e5074d072e7b6c4f87bc604638ff3a59144d7f39e39407ebab995be1294f"
+  }
+}

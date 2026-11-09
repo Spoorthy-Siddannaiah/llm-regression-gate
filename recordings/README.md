@@ -6,6 +6,9 @@ reference with known failures, not release-approved model results.
 The separate [`squad/llama3.2-bm25-top1-v1`](squad/llama3.2-bm25-top1-v1/README.md)
 candidate changes retrieval depth to one and demonstrates actual relative
 regressions without changing the fixed baseline.
+The [citation-enum candidate](squad/llama3.2-bm25-citation-enum-v2/README.md) is a
+separate actual run: it removes the unknown citation ID while preserving aggregate
+metrics and passes the unchanged v2 policy. No baseline promotion took place.
 
 ## Synthetic fixtures at this directory's root
 
@@ -20,8 +23,8 @@ demonstrate measured effects of an actual prompt change.
 - `candidate.synthetic.v2.json`: intentionally changes `refund-window` to 60 days
   and omits proof of purchase. The support-hours answer stays identical.
 
-The candidate is structurally valid. A later scorer should catch its critical
-quality regression; the loader must accept it. Never overwrite the baseline
+The candidate is structurally valid. The scorer catches its critical quality
+regression; the loader accepts it. Never overwrite the baseline
 automatically with candidate results.
 
 Each file records dataset identity/version, configuration identity/version,

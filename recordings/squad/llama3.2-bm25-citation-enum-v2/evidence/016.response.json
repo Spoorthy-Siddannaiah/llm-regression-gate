@@ -1,0 +1,20 @@
+{
+  "case_id": "squad-56df9e2838dc4217001520f6",
+  "response": {
+    "model": "llama3.2:latest",
+    "created_at": "2026-11-09T09:46:27.848354Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"answer\": \"1856\", \"cited_source_ids\": [\"squad-context-aeb6da0ef272211b693c1a0a845534de30c6d0617828b8e15613bb15c188d272\", \"squad-context-aecf23432fde3cedfb172dd2ad5cfefed7f4428fb510bd0ff6673e83712a2970\", \"squad-context-11c93b768b6c23ea9ac8532e397d9a735f4023af2ebcf2b5632a04130479ba42\"]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 10524813500,
+    "load_duration": 21052875,
+    "prompt_eval_count": 857,
+    "prompt_eval_cached_count": 110,
+    "prompt_eval_duration": 3031710000,
+    "eval_count": 138,
+    "eval_duration": 7138380000
+  }
+}
