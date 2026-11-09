@@ -342,6 +342,9 @@
 - Verified 334 tests, all eight replay bodies and 16 reports, README quickstart,
   and five demo outcomes 0/1/1/2/0 using the installed environment. Hosted setup,
   artifact upload, and branch rules remain unverified until publication.
+- Repeated all 334 tests in a clean local Git clone using installed dependencies
+  and that clone's source tree. Ignored runs/reports and local untracked files
+  were not needed. This was not a hosted runner or fresh dependency installation.
 - Rewrote the README around the implemented release; added changelog and publication
   handoff. Code remains unlicensed at the owner's explicit choice; SQuAD retains
   its separate attribution/license notice. Clinical dataset adoption is future work.
