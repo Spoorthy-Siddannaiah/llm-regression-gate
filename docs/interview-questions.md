@@ -155,3 +155,9 @@ own saved snapshot insufficient to prove that it came from a new PR?
 Why should a generation failure stop comparison and return exit 2, while a complete
 candidate that fails quality returns exit 1? Which artifacts would you inspect
 before accepting a run as completed?
+
+## Actual local workflow result
+
+The candidate matches the baseline's aggregate scores and unknown-citation count,
+but the gate returns exit 1. Why can this be correct? Explain the difference between
+an absolute quality requirement, a regression, and an execution error.

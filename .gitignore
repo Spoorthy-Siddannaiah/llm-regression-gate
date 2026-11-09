@@ -8,4 +8,5 @@ __pycache__/
 *.pem
 *.key
 reports/
+/runs/
 .DS_Store

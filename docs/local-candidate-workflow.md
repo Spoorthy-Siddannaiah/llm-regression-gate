@@ -86,8 +86,12 @@ Tests exercise the actual recorder and actual comparison CLI with mocked Ollama
 responses on the real dataset. They cover pass/fail, provenance freshness, baseline
 preservation, preflight rejection, generation errors/timeouts, code/input drift,
 comparison errors, and missing reports. Mocked outputs are test-only, not new model
-benchmark results. This implementation task made no real Ollama calls and did not
-regenerate or modify the historical recordings.
+benchmark results. The original implementation task made no real Ollama calls.
+A subsequent [actual local run](local-workflow-observation.md) completed generation,
+freshness validation, and comparison with exit 1: unchanged aggregate metrics but
+one unknown citation exceeding the absolute limit. Historical recordings were
+unchanged. Generated `runs/` and `reports/` directories stay local and are ignored
+by Git; the observation document records the measured result and report hashes.
 
 This is an explicitly invoked **local** workflow. It is not PR-triggered generation,
 signed execution attestation, a production release approval process, or deployment.

@@ -296,18 +296,33 @@
   mocked model responses for pass/fail. No real model run, paid calls, CI inference,
   baseline promotion, push, or deployment occurred.
 
+## Completed: first actual wrapped local run
+
+- Ran all 25 real SQuAD cases through installed local Llama 3.2, BM25 top 3,
+  and `gate.citation-v2.json` using the opt-in wrapper at commit `1090676`.
+- Completed with exit 1: phrase coverage .84, citation-label coverage .80, and
+  Recall@3 .84 matched baseline; one unknown citation exceeded the absolute cap 0.
+  This is an existing quality defect, not a newly observed aggregate regression.
+- Verified all 54 baseline files unchanged, all 53 candidate artifact hashes,
+  both completion report hashes, and candidate freshness against the captured target.
+- Offline strict replay returned 1 and produced byte-identical JSON/Markdown reports.
+  All 328 offline tests passed. Unloaded the local model after completion.
+- Added `docs/local-workflow-observation.md` with measurements, hashes, and replay
+  instructions. Raw evidence/reports remain local; `/runs/` is now ignored by Git.
+- No paid calls, baseline promotion, hosted generation, push, or deployment.
+
 ## Next bounded task (not implemented)
 
-Run the new wrapper against the installed local model in a new directory when
-explicitly requested, then inspect the generated provenance and quality outcome.
-Do not assume the new run passes or replace the reference automatically.
+Inspect the unknown-citation case and propose one controlled generation change,
+keeping the baseline, dataset, and policy fixed. Do not silently repair saved output.
 
 ## Current limitations
 
 Required-phrase, citation-ID, retrieval recall checks, a runner, gate, and reports
 exist with an offline CLI, exit codes, local Ollama recording, and an unexecuted
 hosted CI workflow. PR-driven model generation is not wired. Source checks use
-case labels, not a validated source registry.
+case labels for relevance; the v2 gate additionally checks citation membership in
+the hashed corpus. Neither establishes that a cited passage supports an answer.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels; real manifests additionally bind files to hashes. Configuration identity
 may intentionally differ between recordings. No paid APIs or hosted providers are used.
