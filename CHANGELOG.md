@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased audit hardening
+
+- Frozen recorder input bytes and pre-completion drift checks.
+- Sanitized provider error categories/locations without raw response logging.
+- Neutral report-origin wording, duplicate-key rejection, and corpus reference checks.
+- Report schema 4: paired case changes and CLI evaluation provenance receipts.
+- Optional `max_regressed_cases`; existing gate decisions preserved when omitted.
+- Verified action SHA pins, Ubuntu 24.04, and pinned build requirements.
+- No historical dataset, recording, policy threshold, or baseline changed.
+- No license added, commits created, or publication performed.
+
 ## 0.1.0 — local release candidate, 2026-11-09
 
 - Typed, versioned datasets and recorded baseline/candidate comparisons.

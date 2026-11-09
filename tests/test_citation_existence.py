@@ -75,7 +75,7 @@ def test_real_cli_diagnostics_preserve_gate_and_work_together(tmp_path, candidat
     assert first.returncode == second.returncode == expected, second.stderr
     original = json.loads((plain / "report.json").read_text())
     report = json.loads((extended / "report.json").read_text())
-    assert report.pop("report_schema_version") == 2
+    assert report.pop("report_schema_version") == 4
     diagnostic = report.pop("diagnostics")
     assert ("answer_alternatives" in diagnostic) == with_alternatives
     citations = diagnostic["citation_existence"]
@@ -86,6 +86,8 @@ def test_real_cli_diagnostics_preserve_gate_and_work_together(tmp_path, candidat
     unknown_cases = [case for case in citations["baseline"]["cases"] if case["unknown_source_ids"]]
     assert [case["case_id"] for case in unknown_cases] == ["squad-56e17644e3433e1400422f40"]
     original.pop("report_schema_version")
+    original.pop("provenance")
+    report.pop("provenance")
     assert original == report
     markdown = (extended / "report.md").read_text()
     assert "Optional citation existence (diagnostic only)" in markdown

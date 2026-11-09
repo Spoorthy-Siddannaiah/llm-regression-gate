@@ -31,19 +31,21 @@ def test_extended_reports_show_evidence_without_changing_gate(evidence, tmp_path
     gate, diagnostic = evidence
     before = gate.model_dump_json(), diagnostic.model_dump_json()
     payload = json.loads(render_json(gate, answer_alternatives=diagnostic))
-    assert payload.pop("report_schema_version") == 2
+    assert payload.pop("report_schema_version") == 4
     assert payload.pop("diagnostics")["answer_alternatives"] == diagnostic.model_dump(mode="json")
+    assert payload.pop("provenance") is None
+    assert payload.pop("case_changes")
     assert payload == gate.model_dump(mode="json")
     text = render_markdown(gate, answer_alternatives=diagnostic)
     assert "**Gate: FAIL**" in text
-    assert "Report schema: 2" in text
+    assert "Report schema: 4" in text
     assert "diagnostic only" in text
     assert "| baseline | 0.840000 | 0.840000 |" in text
     assert "| candidate | 0.680000 | 0.680000 |" in text
     assert "Allowed alternatives | Matched | Unmatched" in text
     assert diagnostic.input_sha256["references"] in text
     paths = write_reports(gate, tmp_path / "extended", answer_alternatives=diagnostic)
-    assert json.loads(paths[0].read_text())["report_schema_version"] == 2
+    assert json.loads(paths[0].read_text())["report_schema_version"] == 4
     assert paths[1].read_text() == text
     assert before == (gate.model_dump_json(), diagnostic.model_dump_json())
 
@@ -53,7 +55,7 @@ def test_disabled_diagnostic_preserves_default_output(evidence):
     assert render_json(gate) == render_json(gate, answer_alternatives=None)
     assert render_markdown(gate) == render_markdown(gate, answer_alternatives=None)
     payload = json.loads(render_json(gate))
-    assert payload["report_schema_version"] == 1
+    assert payload["report_schema_version"] == 4
     assert "diagnostics" not in payload
     assert "Optional answer alternatives" not in render_markdown(gate)
 
@@ -96,9 +98,11 @@ def test_cli_opt_in_preserves_exit_code_and_gate_payload(tmp_path, candidate, ex
     assert first.returncode == second.returncode == expected, second.stderr
     before = json.loads((plain / "report.json").read_text())
     after = json.loads((extended / "report.json").read_text())
-    assert after.pop("report_schema_version") == 2
+    assert after.pop("report_schema_version") == 4
     after.pop("diagnostics")
     before.pop("report_schema_version")
+    before.pop("provenance")
+    after.pop("provenance")
     assert before == after
 
 

@@ -49,7 +49,7 @@ def test_unknown_ids_enforced_without_diagnostic_flag(experiment):
     assert all("refund-window" in failure.message for failure in result.failures)
     assert result.citation_existence_gate.candidate_unknown_count == 1
     payload = json.loads(render_json(result))
-    assert payload["report_schema_version"] == 3
+    assert payload["report_schema_version"] == 4
     assert payload["policy"]["unknown_citations"]["max_candidate_unknown"] == 0
     assert payload["citation_existence_gate"]["increase"] == 1
     assert "Enforced unknown-citation gate" in render_markdown(result)
@@ -106,7 +106,7 @@ def test_v2_requires_corpus_while_v1_remains_default(experiment):
     result = compare_and_gate(inputs)
     assert type(result.policy) is GatePolicy
     assert "citation_existence_gate" not in result.model_dump()
-    assert json.loads(render_json(result))["report_schema_version"] == 1
+    assert json.loads(render_json(result))["report_schema_version"] == 4
 
 
 @pytest.mark.parametrize("field", ["max_candidate_unknown", "max_increase"])
@@ -131,7 +131,7 @@ def test_policy_loading_is_explicit_and_preserves_legacy_default(tmp_path):
 
 @pytest.mark.parametrize("candidate", ["llama3.2-bm25-v1", "llama3.2-bm25-top1-v1"])
 @pytest.mark.parametrize("diagnostics", [False, True])
-def test_real_cli_v2_explains_failure_and_keeps_schema_three(tmp_path, candidate, diagnostics):
+def test_real_cli_v2_explains_failure_and_keeps_schema_four(tmp_path, candidate, diagnostics):
     output = tmp_path / "report"
     command = [
         sys.executable, "-m", "llm_reliability", "--dataset", str(ROOT / "datasets/squad/v1/dataset.json"),
@@ -145,14 +145,16 @@ def test_real_cli_v2_explains_failure_and_keeps_schema_three(tmp_path, candidate
     process = subprocess.run(command, capture_output=True, text=True)
     assert process.returncode == 1, process.stderr
     report = json.loads((output / "report.json").read_text())
-    assert report["report_schema_version"] == 3
+    assert report["report_schema_version"] == 4
     codes = {failure["code"] for failure in report["failures"]}
     assert codes == ({"unknown_citation_limit"} if candidate == "llama3.2-bm25-v1" else {"excessive_drop"})
     assert report["citation_existence_gate"]["candidate_unknown_count"] == (1 if candidate == "llama3.2-bm25-v1" else 0)
     assert ("diagnostics" in report) == diagnostics
     artifact = json.loads((ROOT / "benchmarks/squad-citation-gate-v2.json").read_text())
     key = "baseline_self_check" if candidate == "llama3.2-bm25-v1" else "candidate_comparison"
-    assert {name: value for name, value in report.items() if name != "diagnostics"} == artifact[key]
+    legacy = {name: value for name, value in report.items() if name not in ("diagnostics", "case_changes", "provenance")}
+    legacy["report_schema_version"] = artifact[key]["report_schema_version"]
+    assert legacy == artifact[key]
     assert "Enforced unknown-citation gate" in (output / "report.md").read_text()
 
 

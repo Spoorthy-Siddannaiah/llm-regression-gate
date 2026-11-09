@@ -21,7 +21,9 @@ def result():
 
 def test_json_preserves_full_result_and_report_version(result):
     payload = json.loads(render_json(result))
-    assert payload.pop("report_schema_version") == 1
+    assert payload.pop("report_schema_version") == 4
+    assert payload.pop("provenance") is None
+    assert payload.pop("case_changes")
     assert payload == result.model_dump(mode="json")
     assert payload["passed"] is False
     assert payload["metrics"][0]["delta"] == -0.5
@@ -38,7 +40,7 @@ def test_markdown_contains_decision_provenance_policy_and_case_evidence(result):
     assert "synthetic\\-baseline\\-v1" in text
     assert "synthetic\\-candidate\\-v2" in text
     assert "deterministic\\-v1" in text
-    assert "synthetic fixtures" in text
+    assert "consult recording provenance" in text
     assert "do not establish semantic correctness" in text
     assert r"\('30 days', 'proof of purchase'\)" in text
 

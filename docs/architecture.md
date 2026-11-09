@@ -49,9 +49,10 @@ corpus evidence even without a diagnostic flag. Both preserve existing checks.
 
 | Report schema | Meaning |
 | --- | --- |
-| 1 | Default v1 gate result |
-| 2 | V1 plus explicitly requested diagnostic evidence |
-| 3 | V2 policy with enforced unknown-citation evidence; optional diagnostics may coexist |
+| 1 | Historical v1 gate result |
+| 2 | Historical v1 diagnostic report |
+| 3 | Historical v2 report |
+| 4 | Current v1/v2 results, paired case changes, and optional provenance receipt |
 
 ## Why keep generation separate?
 
@@ -92,3 +93,28 @@ unverified because this repository has not been pushed. Observability and live
 traffic monitoring are outside the current scope.
 
 Continue with the [offline demo runbook](demo.md).
+
+## Audit hardening
+
+The recorder reads and hashes dataset/corpus bytes once, parses that snapshot, and
+checks source files before completion. Drift leaves partial evidence, never a
+completed manifest. Provider errors log fixed categories and sanitized locations;
+raw evidence remains separate and must be access-restricted for nonpublic inputs.
+Loaders reject duplicate JSON keys and validate labelled source membership when a
+corpus is supplied or available beside the dataset. Unknown observed IDs remain
+scoreable observations.
+
+Current reports use schema 4; policies and historical artifacts retain their own
+versions. Case changes show each metric's delta and flag critical regressions.
+A case with gains and losses is classified regressed and lists both. Optional
+`max_regressed_cases` counts cases with any of the three metric drops, with the
+same 1e-12 tolerance; omission preserves aggregate-only behavior plus the existing
+critical-fact guard. No slice-level rule is implemented.
+
+CLI receipts contain input hashes, evaluator package-source hashes, evaluator and
+policy versions, and whether an explicit candidate target matched. Relevant inputs
+and evaluator source files are checked before/after evaluation; drift prevents
+report writing. Pure API callers can provide a receipt; otherwise provenance is
+explicitly null. Receipts contain no answers or passages and are not signatures.
+Files must not be concurrently rewritten by hostile writers; before/after checks
+are not filesystem transactions.

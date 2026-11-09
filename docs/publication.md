@@ -40,3 +40,10 @@ Explain the fixed dataset and baseline, show the top-one regression being reject
 then show the citation-schema fix passing without weaker thresholds. Distinguish
 limited phrase/ID checks from semantic correctness. Finish with the missing pieces:
 fresh inference for each PR, representative domain labels, and production operation.
+
+## Audit-fix working tree
+
+The owner has explicitly prohibited commits, remote configuration and publication
+for this implementation task. Review the uncommitted audit changes and
+[audit-fix verification](audit-fixes.md) first. Public release remains a separately
+authorized action, followed by hosted Actions verification. Code stays unlicensed.

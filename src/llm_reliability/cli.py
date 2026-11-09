@@ -12,6 +12,7 @@ from llm_reliability.loading import (
 from llm_reliability.reports import ReportWriteError, write_reports
 from llm_reliability.alternative_diagnostics import build_diagnostic
 from llm_reliability.citation_existence import build_citation_existence
+from llm_reliability.evaluation_receipt import EvaluationReceipt, input_hashes, evaluator_hashes
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -32,6 +33,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--citation-existence", action="store_true", help="Report cited-ID membership in the supplied corpus; does not affect the gate")
     args = parser.parse_args(argv)
     try:
+        receipt_paths = {"dataset": args.dataset, "baseline": args.baseline, "candidate": args.candidate}
+        sources_path = args.sources or args.dataset.with_name("sources.json")
+        if args.sources is not None or sources_path.exists():
+            receipt_paths["corpus"] = sources_path
+        for name in ("policy", "settings", "answer_alternatives", "expected_candidate_code"):
+            if (path := getattr(args, name)) is not None:
+                receipt_paths[name] = path
+        try:
+            before = input_hashes(receipt_paths)
+        except OSError as error:
+            raise InputLoadError(f"evaluation input snapshot: cannot read {error.filename}") from error
+        evaluator_before = evaluator_hashes()
         inputs = load_comparison(
             args.dataset, args.baseline, args.candidate,
             sources_path=args.sources, require_manifests=args.require_manifests,
@@ -65,9 +78,21 @@ def main(argv: list[str] | None = None) -> int:
         result = compare_and_gate(
             inputs, policy=policy, settings=settings, corpus=corpus, corpus_sha256=corpus_sha256,
         )
+        try:
+            if input_hashes(receipt_paths) != before or evaluator_hashes() != evaluator_before:
+                raise InputLoadError("evaluation inputs or evaluator sources changed; no reports written")
+        except OSError as error:
+            raise InputLoadError("evaluation inputs disappeared; no reports written") from error
+        receipt = EvaluationReceipt(
+            input_sha256=before, evaluator_source_sha256=evaluator_before,
+            evaluator_version=result.evaluation.settings.evaluator_version,
+            policy_version=result.policy.policy_version,
+            code_target_validation="matched" if args.expected_candidate_code is not None else "not_requested",
+        )
         json_path, markdown_path = write_reports(
             result, args.output_dir, answer_alternatives=diagnostic,
             citation_existence=citation_diagnostic,
+            provenance=receipt,
         )
         print(f"{'PASS' if result.passed else 'FAIL'}: {len(result.failures)} gate failure(s)")
         for failure in result.failures:

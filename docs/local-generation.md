@@ -123,3 +123,17 @@ labels retain the limitations documented in the SQuAD dataset README.
 
 Implementation references: [Ollama chat API](https://docs.ollama.com/api/chat),
 [structured outputs](https://docs.ollama.com/capabilities/structured-outputs).
+
+## Input snapshots and safe diagnostics
+
+Dataset and corpus bytes are captured and hashed before provider contact. Those
+exact bytes supply typed parsing and retrieval; labelled source IDs must exist.
+The recorder rechecks files before completion and retains no completed manifest
+on drift. Manifests record the original snapshot hashes, never later input hashes.
+
+Console failures expose only stage, fixed category, validation codes and sanitized
+locations. Provider exception text, raw bodies and case-ID values are not logged.
+Raw requests/responses are intentionally saved in evidence files for inspection;
+this is not redaction. For sensitive inputs use restricted storage, access review
+and a deletion policy outside public Git. The public examples contain no patient
+records. No healthcare compliance is claimed.

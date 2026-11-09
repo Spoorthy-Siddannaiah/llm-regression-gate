@@ -124,8 +124,11 @@ def test_matching_freshness_preserves_quality_result(files, tmp_path):
     del args[index:index + 2]
     args[-1] = str(plain)
     assert main(args) == 1
-    assert (flagged / "report.json").read_bytes() == (plain / "report.json").read_bytes()
-    assert (flagged / "report.md").read_bytes() == (plain / "report.md").read_bytes()
+    flagged_report = json.loads((flagged / "report.json").read_text())
+    plain_report = json.loads((plain / "report.json").read_text())
+    assert flagged_report.pop("provenance")["code_target_validation"] == "matched"
+    assert plain_report.pop("provenance")["code_target_validation"] == "not_requested"
+    assert flagged_report == plain_report
 
 
 @pytest.mark.parametrize("bad", ["missing", "malformed"])

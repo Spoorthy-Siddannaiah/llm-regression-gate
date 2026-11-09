@@ -2,13 +2,13 @@
 
 from typing import Annotated, Literal
 
-from pydantic import Field, RootModel, computed_field, model_validator
+from pydantic import Field, RootModel, computed_field, model_validator, model_serializer
 
 from llm_reliability.models import ComparisonInput, Contract, Criticality, Identifier
 from llm_reliability.citation_existence import CitationExistenceDiagnostic, build_citation_existence
 from llm_reliability.retrieval import SourceCorpus
 from llm_reliability.runner import (
-    ComparisonEvaluation, EvaluationSettings, RecordingEvaluation, evaluate_comparison,
+    CaseEvaluation, ComparisonEvaluation, EvaluationSettings, RecordingEvaluation, evaluate_comparison,
 )
 
 
@@ -23,6 +23,14 @@ class GatePolicy(Contract):
     fact_coverage: MetricThreshold = Field(default_factory=MetricThreshold)
     citation_label_coverage: MetricThreshold = Field(default_factory=MetricThreshold)
     retrieval_recall: MetricThreshold = Field(default_factory=MetricThreshold)
+    max_regressed_cases: int | None = Field(default=None, ge=0)
+
+    @model_serializer(mode="wrap")
+    def serialize_policy(self, handler):
+        payload = handler(self)
+        if self.max_regressed_cases is None:
+            payload.pop("max_regressed_cases", None)
+        return payload
 
 
 class UnknownCitationLimits(Contract):
@@ -59,7 +67,7 @@ class MetricComparison(Contract):
 
 class GateFailure(Contract):
     code: Literal["critical_facts_missing", "below_minimum", "excessive_drop",
-                  "unknown_citation_limit", "unknown_citation_increase"]
+                  "unknown_citation_limit", "unknown_citation_increase", "excessive_case_regressions"]
     metric: str
     case_id: Identifier | None = None
     message: str
@@ -101,22 +109,55 @@ class GateResultV2(GateResult):
     citation_existence_gate: CitationGateEvidence
 
 
+class CaseChange(Contract):
+    case_id: Identifier
+    criticality: Criticality
+    metrics: tuple[MetricComparison, ...]
+
+    @computed_field
+    @property
+    def regressed_metrics(self) -> tuple[str, ...]:
+        return tuple(m.metric for m in self.metrics if m.delta < -1e-12)
+
+    @computed_field
+    @property
+    def improved_metrics(self) -> tuple[str, ...]:
+        return tuple(m.metric for m in self.metrics if m.delta > 1e-12)
+
+    @computed_field
+    @property
+    def status(self) -> str:
+        return "regressed" if self.regressed_metrics else "improved" if self.improved_metrics else "unchanged"
+
+    @computed_field
+    @property
+    def critical_regression(self) -> bool:
+        return self.criticality == Criticality.CRITICAL and bool(self.regressed_metrics)
+
+
+def build_case_changes(evaluation: ComparisonEvaluation) -> tuple[CaseChange, ...]:
+    old = {case.case_id: case for case in evaluation.baseline.cases}
+    return tuple(CaseChange(
+        case_id=case.case_id, criticality=case.criticality,
+        metrics=tuple(MetricComparison(metric=name, baseline=_means_case(old[case.case_id])[name],
+                                       candidate=value) for name, value in _means_case(case).items()),
+    ) for case in evaluation.candidate.cases)
+
+
+def _means_case(case: CaseEvaluation) -> dict[str, float]:
+    matched = len(case.required_facts.matched_facts)
+    cited = len(case.citations.relevant_cited_source_ids)
+    return {
+        "fact_coverage": matched / (matched + len(case.required_facts.missing_facts)),
+        "citation_label_coverage": cited / (cited + len(case.citations.missing_relevant_source_ids)),
+        "retrieval_recall": case.retrieval_recall_at_k,
+    }
+
+
 def _means(recording: RecordingEvaluation) -> dict[str, float]:
     # The input contracts guarantee nonempty cases and nonempty relevance/fact labels.
-    fact_coverage = []
-    citation_coverage = []
-    recall = []
-    for case in recording.cases:
-        matched = len(case.required_facts.matched_facts)
-        fact_coverage.append(matched / (matched + len(case.required_facts.missing_facts)))
-        cited = len(case.citations.relevant_cited_source_ids)
-        citation_coverage.append(cited / (cited + len(case.citations.missing_relevant_source_ids)))
-        recall.append(case.retrieval_recall_at_k)
-    return {
-        "fact_coverage": sum(fact_coverage) / len(fact_coverage),
-        "citation_label_coverage": sum(citation_coverage) / len(citation_coverage),
-        "retrieval_recall": sum(recall) / len(recall),
-    }
+    values = [_means_case(case) for case in recording.cases]
+    return {name: sum(case[name] for case in values) / len(values) for name in values[0]}
 
 
 def compare_and_gate(
@@ -138,10 +179,19 @@ def compare_and_gate(
             inputs, corpus, corpus_sha256=corpus_sha256,
         ))
     evaluation = evaluate_comparison(inputs, settings=settings)
+    if selected.max_regressed_cases is not None:
+        regressed = [change.case_id for change in build_case_changes(evaluation) if change.regressed_metrics]
+        if len(regressed) > selected.max_regressed_cases:
+            case_failure = GateFailure(code="excessive_case_regressions", metric="regressed_case_count",
+                                       message=f"regressed case count {len(regressed)} exceeds maximum {selected.max_regressed_cases}")
+        else:
+            case_failure = None
+    else:
+        case_failure = None
     baseline = _means(evaluation.baseline)
     candidate = _means(evaluation.candidate)
     comparisons = []
-    failures = []
+    failures = [case_failure] if case_failure is not None else []
     for name in ("fact_coverage", "citation_label_coverage", "retrieval_recall"):
         metric = MetricComparison(metric=name, baseline=baseline[name], candidate=candidate[name])
         comparisons.append(metric)

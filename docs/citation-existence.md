@@ -33,9 +33,9 @@ uv run --python 3.12 llm-reliability \
   --output-dir reports/citation-existence-new
 ```
 
-`--citation-existence` adds `diagnostics.citation_existence` to schema-2 JSON and
+`--citation-existence` adds `diagnostics.citation_existence` to schema-4 JSON and
 a labelled Markdown section. It can be combined with `--answer-alternatives`.
-Without either flag, default schema-1 output remains unchanged. Without an explicit
+Current default reports also use schema 4; diagnostic sections are opt-in. Without an explicit
 `--sources`, the corpus defaults to `sources.json` beside the dataset.
 
 The output includes corpus SHA-256, source count, recording IDs, per-case existing

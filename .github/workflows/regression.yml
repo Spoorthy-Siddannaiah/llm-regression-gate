@@ -15,14 +15,14 @@ concurrency:
 jobs:
   regression:
     name: Tests and recorded-response gate
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     defaults:
       run:
         shell: bash
     steps:
       - name: Check out source
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -139,7 +139,7 @@ jobs:
           import json
           from pathlib import Path
           report = json.loads(Path("reports/ci-v2-absolute-failure/report.json").read_text())
-          assert report["report_schema_version"] == 3
+          assert report["report_schema_version"] == 4
           assert report["policy"]["policy_version"] == "deterministic-gate-v2"
           assert {failure["code"] for failure in report["failures"]} == {"unknown_citation_limit"}
           evidence = report["citation_existence_gate"]
@@ -170,7 +170,7 @@ jobs:
           import json
           from pathlib import Path
           report = json.loads(Path("reports/ci-v2-real-regression/report.json").read_text())
-          assert report["report_schema_version"] == 3
+          assert report["report_schema_version"] == 4
           assert report["policy"]["policy_version"] == "deterministic-gate-v2"
           assert {failure["code"] for failure in report["failures"]} == {"excessive_drop"}
           assert {failure["metric"] for failure in report["failures"]} == {"fact_coverage", "citation_label_coverage", "retrieval_recall"}
@@ -195,7 +195,7 @@ jobs:
           import json
           from pathlib import Path
           report = json.loads(Path("reports/ci-citation-enum/report.json").read_text())
-          assert report["report_schema_version"] == 3
+          assert report["report_schema_version"] == 4
           assert report["policy"]["policy_version"] == "deterministic-gate-v2"
           assert report["passed"] is True and report["failures"] == []
           assert all(metric["delta"] == 0 for metric in report["metrics"])
@@ -205,7 +205,7 @@ jobs:
 
       - name: Upload available evaluation reports
         if: ${{ always() }}
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: regression-reports
           path: |

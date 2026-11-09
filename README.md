@@ -98,6 +98,10 @@ The installed model must match the pinned digest; nothing is downloaded automati
   dataset versions, and actionable file-aware errors.
 - Required phrases, citation-label coverage, retrieval Recall@K, and critical-case
   guards. Versioned policies combine absolute floors with allowed drops.
+- Paired case changes expose regressions hidden by aggregate gains. Optional
+  `max_regressed_cases` strengthens a policy; omitted means no added constraint.
+- Duplicate JSON keys and missing labelled corpus references are rejected. CLI
+  provenance receipts identify inputs and evaluator sources by SHA-256.
 - Corpus membership for citation IDs: v2 can enforce absolute unknown-ID limits
   and allowed increases. Optional answer-alternative diagnostics stay separate.
 - Dataset/corpus/artifact hashes, model/configuration identity, and optional
@@ -150,3 +154,22 @@ The SQuAD adaptation is distributed under CC BY-SA 4.0; see its
 [attribution and modifications](datasets/squad/v1/README.md). Dataset and recording
 origin notices are separate from any license for the project's original code.
 The original code is currently unlicensed; no open-source reuse license is granted.
+
+## Methodology and report example
+
+Required-fact phrases use AND semantics; alternative phrases are a separate optional
+OR diagnostic. Citation-label coverage is labelled-source recall, not precision
+or claim support. Cases are weighted equally, with inclusive thresholds and a
+1e-12 numeric tolerance. The default zero floors cannot establish absolute quality.
+All real SQuAD cases are standard, not clinically reviewed critical cases.
+
+Current output is **report schema 4**. See the [actual regression report excerpt](docs/example-regression.md)
+and [audit-fix verification](docs/audit-fixes.md) for commands and schema migration.
+Old versioned evidence remains untouched. No general semantic correctness,
+guaranteed hallucination detection, healthcare certification, full production
+deployment, live trace monitoring, or fresh inference for every PR is claimed.
+
+The PEP 517 build stack is pinned in `pyproject.toml`; runtime/test packages remain
+in `uv.lock`. Build locally with `uv build --python 3.12 --out-dir /tmp/llm-dist-new`.
+CI selects Ubuntu 24.04 (whose image still receives updates), pinned action SHAs,
+Python 3.12.13 and uv 0.7.12. Hosted behavior remains unverified.

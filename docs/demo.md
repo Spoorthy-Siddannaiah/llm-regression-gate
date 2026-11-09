@@ -32,7 +32,7 @@ uv run --python 3.12 --locked llm-reliability \
 echo "exit=$?"
 ```
 
-Expected: **exit 0**, `PASS`, schema-3 reports. This is a synthetic fixture proving
+Expected: **exit 0**, `PASS`, schema-4 reports. This is a synthetic fixture proving
 the passing path, not a model-quality benchmark.
 
 ## 2. Catch an actual RAG regression
@@ -51,7 +51,7 @@ uv run --python 3.12 --locked llm-reliability \
 echo "exit=$?"
 ```
 
-Expected: **exit 1**, three `excessive_drop` failures, schema-2 reports. Open
+Expected: **exit 1**, three `excessive_drop` failures, schema-4 reports. Open
 `$LLM_DEMO_DIR/regression/report.md`. Show:
 
 | Metric | Baseline: top 3 | Candidate: top 1 |
@@ -83,7 +83,7 @@ uv run --python 3.12 --locked llm-reliability \
 echo "exit=$?"
 ```
 
-Expected: **exit 1**, `unknown_citation_limit`, schema-3 reports. The candidate is
+Expected: **exit 1**, `unknown_citation_limit`, schema-4 reports. The candidate is
 the same recording as the baseline: increase is 0, but the absolute cap is 0 and
 one unknown ID exists. This demonstrates why an unchanged bad baseline cannot
 establish release quality. It is a self-check, not a new candidate experiment.
@@ -119,7 +119,7 @@ uv run --python 3.12 --locked llm-reliability \
 echo "exit=$?"
 ```
 
-Expected: **exit 0**, schema-3 reports. Unknown citations fall from 1 to 0 with
+Expected: **exit 0**, schema-4 reports. Unknown citations fall from 1 to 0 with
 unchanged .84/.80/.84 aggregate metrics. The new generator's citation enum is
 the only saved request difference; neither baseline nor policy was changed.
 The saved expected-code target verifies historical provenance, not current-PR inference.

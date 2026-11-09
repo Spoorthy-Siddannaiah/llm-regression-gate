@@ -372,3 +372,38 @@ the hashed corpus. Neither establishes that a cited passage supports an answer.
 No general semantic correctness scoring exists. Versions are manually maintained
 labels; real manifests additionally bind files to hashes. Configuration identity
 may intentionally differ between recordings. No paid APIs or hosted providers are used.
+
+## Completed: authorized audit fixes (uncommitted)
+
+Started at the required clean HEAD `2ad69ec05ef5697d88befe3be8bb84994f7801ae`.
+The owner explicitly prohibited commits, remote configuration, publication, model
+calls and adding a license; those restrictions override the earlier commit workflow.
+
+- Phase 1: exact recorder input-byte snapshots, drift rejection before completion,
+  sanitized provider errors, neutral report-origin wording. 51 focused tests passed.
+- Phase 2: duplicate/nested JSON-key rejection, labelled corpus membership validation,
+  paired per-case changes and optional `max_regressed_cases`. 114 focused tests passed.
+  Existing thresholds/decisions are unchanged when the new limit is omitted.
+- Phase 3: schema-4 evaluation receipts, verified official action SHA pins,
+  Ubuntu 24.04 and pinned Python-3.12+ build dependency closure. Locked installation,
+  source distribution and wheel builds passed; runtime/test uv.lock is unchanged.
+- Phase 4: updated current documentation, actual report excerpt, changelog,
+  publication instructions, and repeatable replay/source-snapshot helpers.
+- Final verification: 356 tests passed locally and in a fresh isolated source snapshot
+  with a new locked environment. All eight replay scenarios and the eight actual
+  workflow replay bodies passed locally, producing all 16 report files. Five demo
+  cases returned expected exits 0/1/1/2/0. Installed wheel replay passed from /tmp
+  without importing the source checkout. No hosted Actions execution was performed.
+- All 54 original baseline files match commit `23bb9fa`; datasets, recordings,
+  benchmark artifacts, configs and original evidence are untouched. Documentation
+  links, whitespace and archive exclusions passed. Targeted credential-pattern scans
+  flagged no proposed-file or 407 reachable-history-blob matches; scans are limited.
+- HEAD and index unchanged, no remote or license file added. Generated artifacts
+  and environments remain under /tmp or ignored paths. See `docs/audit-fixes.md`.
+
+## Remaining release actions
+
+Review the uncommitted diff and authorize any later commit/publication separately.
+Then verify hosted CI and artifacts before claiming hosted success. Semantic
+correctness, representative clinical labels, privacy compliance, fresh PR inference,
+latency/cost gates and production deployment remain outside this release's claims.

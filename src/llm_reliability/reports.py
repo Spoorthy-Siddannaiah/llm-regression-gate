@@ -5,9 +5,10 @@ import json
 from pathlib import Path
 import re
 
-from llm_reliability.gates import GateResult, GateResultV2
+from llm_reliability.gates import GateResult, GateResultV2, build_case_changes
 from llm_reliability.alternative_diagnostics import AlternativesDiagnostic
 from llm_reliability.citation_existence import CitationExistenceDiagnostic
+from llm_reliability.evaluation_receipt import EvaluationReceipt
 
 
 class ReportWriteError(OSError):
@@ -45,8 +46,12 @@ def _validate_citation_diagnostic(result: GateResult, diagnostic: CitationExiste
 def render_json(
     result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None,
     citation_existence: CitationExistenceDiagnostic | None = None,
+    provenance: EvaluationReceipt | None = None,
 ) -> str:
-    payload = {"report_schema_version": 3 if isinstance(result, GateResultV2) else 1, **result.model_dump(mode="json")}
+    payload = {"report_schema_version": 4, **result.model_dump(mode="json"),
+               "case_changes": [case.model_dump(mode="json") for case in build_case_changes(result.evaluation)],
+               "provenance": provenance.model_dump(mode="json") if provenance else None}
+    _validate_receipt(result, provenance)
     if answer_alternatives is not None:
         _validate_diagnostic(result, answer_alternatives)
         payload["report_schema_version"] = max(2, payload["report_schema_version"])
@@ -72,7 +77,9 @@ def _items(values: tuple[str, ...]) -> str:
 def render_markdown(
     result: GateResult, *, answer_alternatives: AlternativesDiagnostic | None = None,
     citation_existence: CitationExistenceDiagnostic | None = None,
+    provenance: EvaluationReceipt | None = None,
 ) -> str:
+    _validate_receipt(result, provenance)
     if answer_alternatives is not None:
         _validate_diagnostic(result, answer_alternatives)
     if citation_existence is not None:
@@ -81,7 +88,7 @@ def render_markdown(
     lines = [
         "# Regression evaluation report", "",
         f"**Gate: {'PASS' if result.passed else 'FAIL'}**", "",
-        f"Report schema: {3 if isinstance(result, GateResultV2) else 2 if answer_alternatives is not None or citation_existence is not None else 1}", "",
+        "Report schema: 4", "",
         f"Dataset: {_text(evaluation.dataset_id)} / {_text(evaluation.dataset_version)} "
         f"(schema {evaluation.dataset_schema_version})", "",
         f"Evaluator: {_text(evaluation.settings.evaluator_version)}; "
@@ -100,6 +107,17 @@ def render_markdown(
             f"| {_text(metric.metric)} | {metric.baseline:.6f} | {metric.candidate:.6f} "
             f"| {metric.delta:+.6f} | {threshold.minimum:.6f} | {threshold.max_drop:.6f} |"
         )
+    lines.extend(["", "## Per-case metric changes", "",
+                  "Regressed takes precedence when a case has both improvements and regressions. "
+                  "Critical highlights are evidence; enforcement follows the selected policy.", "",
+                  "| Case | Status | Critical regression | Metric | Baseline | Candidate | Delta |",
+                  "| --- | --- | --- | --- | ---: | ---: | ---: |"])
+    for case in build_case_changes(evaluation):
+        for metric in case.metrics:
+            lines.append(f"| {_text(case.case_id)} | {case.status} | {case.critical_regression} | "
+                         f"{metric.metric} | {metric.baseline:.6f} | {metric.candidate:.6f} | {metric.delta:+.6f} |")
+    if result.policy.max_regressed_cases is not None:
+        lines.extend(["", f"Maximum regressed cases: {result.policy.max_regressed_cases}"])
     lines.extend(["", "## Gate failures", ""])
     if result.failures:
         for failure in result.failures:
@@ -217,8 +235,8 @@ def render_markdown(
         ), "",
         (
             "This report does not establish whether recordings are synthetic or real model "
-            "outputs; consult recording provenance. The repository's bundled recordings "
-            "are synthetic fixtures. Versions are manual labels, not content hashes. "
+            "outputs; consult recording provenance. Recording origin is not inferred "
+            "from scores. Versions are manual labels, not content hashes. "
             "The baseline was not automatically replaced."
             if answer_alternatives is None and citation_existence is None and not isinstance(result, GateResultV2) else
             "Consult recording provenance for the origin of recorded outputs. Diagnostic "
@@ -226,21 +244,41 @@ def render_markdown(
             "or signed authenticity. The baseline was not automatically replaced."
         ),
     ])
+    lines.extend(["", "## Evaluation provenance receipt", ""])
+    if provenance is None:
+        lines.append("Not supplied by this API caller; input-byte identity was not recorded in this report.")
+    else:
+        lines.extend([f"Evaluator: {_text(provenance.evaluator_version)}; policy: {_text(provenance.policy_version)}",
+                      f"Code-target validation: {provenance.code_target_validation}", "",
+                      "Hashes identify bytes, not signed authenticity or current-PR execution.", "",
+                      "| Input | SHA-256 |", "| --- | --- |"])
+        for name, digest in sorted(provenance.input_sha256.items()):
+            lines.append(f"| {_text(name)} | {digest} |")
+        lines.extend(["", "Evaluator source SHA-256:", ""])
+        for name, digest in sorted(provenance.evaluator_source_sha256.items()):
+            lines.append(f"- {_text(name)}: {digest}")
     return "\n".join(lines) + "\n"
+
+
+def _validate_receipt(result: GateResult, receipt: EvaluationReceipt | None) -> None:
+    if receipt is not None and (receipt.evaluator_version != result.evaluation.settings.evaluator_version
+                                or receipt.policy_version != result.policy.policy_version):
+        raise ValueError("provenance receipt versions do not match evaluation")
 
 
 def write_reports(
     result: GateResult, output_directory: str | Path,
     *, answer_alternatives: AlternativesDiagnostic | None = None,
     citation_existence: CitationExistenceDiagnostic | None = None,
+    provenance: EvaluationReceipt | None = None,
 ) -> tuple[Path, Path]:
     """Write into a NEW directory; refuse existing directories to prevent overwrites.
 
     Render before touching disk. The two-file write is not atomic; a disk error may
     leave partial output. Errors name the directory; choose a new directory to retry.
     """
-    json_content = render_json(result, answer_alternatives=answer_alternatives, citation_existence=citation_existence)
-    markdown_content = render_markdown(result, answer_alternatives=answer_alternatives, citation_existence=citation_existence)
+    json_content = render_json(result, answer_alternatives=answer_alternatives, citation_existence=citation_existence, provenance=provenance)
+    markdown_content = render_markdown(result, answer_alternatives=answer_alternatives, citation_existence=citation_existence, provenance=provenance)
     directory = Path(output_directory)
     json_path = directory / "report.json"
     markdown_path = directory / "report.md"

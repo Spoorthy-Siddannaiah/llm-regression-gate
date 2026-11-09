@@ -10,7 +10,7 @@ from llm_reliability.answer_alternatives import (
     AlternativeAnswerResult, check_answer_alternatives, from_reference_answers,
 )
 from llm_reliability.fact_checks import check_required_facts
-from llm_reliability.loading import load_comparison, load_corpus
+from llm_reliability.loading import load_comparison, load_corpus, parse_input_bytes
 from llm_reliability.models import Contract, Identifier
 
 
@@ -71,7 +71,7 @@ def build_diagnostic(
     dataset: Path, sources: Path, references: Path, baseline: Path, candidate: Path,
 ) -> AlternativesDiagnostic:
     inputs = load_comparison(dataset, baseline, candidate, sources_path=sources, require_manifests=True)
-    annotations = References.model_validate_json(references.read_text(encoding="utf-8")).root
+    annotations = parse_input_bytes(references.read_bytes(), References, source=references).root
     corpus = load_corpus(sources).root
     expected_ids = {case.case_id for case in inputs.dataset.cases}
     if set(annotations) != expected_ids:

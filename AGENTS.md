@@ -7,8 +7,8 @@
 - Keep versioned datasets separate from response recordings. Use stable case IDs and explicit dataset/configuration versions.
 - Reject missing cases, duplicate IDs, and incompatible comparisons. Never automatically replace the baseline.
 - Deterministic fact checks are limited assertions, not proof of general semantic correctness.
-- Explain purpose and trade-offs before editing. Implement one bounded task per turn; verify, explain the code, and ask one practical interview question. Stop before the next task.
-- Maintain docs/progress.md. Make small meaningful Git commits after verification; do not push or publish.
+- Explain purpose and trade-offs before editing. For the authorized audit-fix task, implement and verify each phase before proceeding; keep teaching explanations concise.
+- Maintain docs/progress.md. Current authorization forbids commits, remotes, pushes, publication, and adding a software license. Leave verified changes uncommitted for review.
 - Do not commit secrets, local environment files, or generated reports. Preserve existing work.
 
 ## Commands
@@ -19,4 +19,4 @@ uv run --python 3.12 pytest
 uv run llm-reliability --help
 ```
 
-Use `uv lock --python 3.12` when intentionally updating dependencies; commit uv.lock.
+Use `uv lock --python 3.12` only when intentionally updating dependencies. Keep the runtime lock unchanged for these audit fixes. Build tools are explicitly pinned in pyproject.toml.

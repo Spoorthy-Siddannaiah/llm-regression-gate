@@ -74,5 +74,6 @@ Hashes detect file drift relative to the manifest; they are not signatures. They
 cannot prove authenticity if someone rewrites both artifacts and hashes, or prove
 that recorded output came from the current pull request's code. Review and future
 fresh-candidate generation remain necessary. The checks do not establish semantic
-correctness or release acceptance. Default reports retain schema 1; optional
-alternative-answer reports use schema 2. Neither embeds a separate provenance-validation receipt.
+correctness or release acceptance. Current reports use schema 4 and include CLI receipts with input/source hashes
+and target-check status. Direct rendering without a caller-supplied receipt has
+`provenance: null`. Historical schema-1/2/3 artifacts remain unchanged.

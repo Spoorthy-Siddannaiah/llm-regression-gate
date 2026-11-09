@@ -52,6 +52,9 @@ def test_real_candidate_cli_replay_detects_relative_regressions(tmp_path):
     assert process.returncode == 1, process.stderr
     report = json.loads((output / "report.json").read_text())
     artifact = json.loads((ROOT / "benchmarks/squad-top1-experiment-v1.json").read_text())
+    assert report.pop("provenance")
+    assert report.pop("case_changes")
+    report["report_schema_version"] = artifact["comparison"]["report_schema_version"]
     assert report == artifact["comparison"]
     assert {failure["code"] for failure in report["failures"]} == {"excessive_drop"}
     assert {failure["metric"] for failure in report["failures"]} == {

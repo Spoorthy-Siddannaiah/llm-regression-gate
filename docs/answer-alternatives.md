@@ -78,8 +78,7 @@ uv run --python 3.12 llm-reliability \
   --output-dir reports/squad-alternatives-new
 ```
 
-Without the flag, schema-1 JSON/Markdown output is unchanged. With the flag, reports
-use schema 2 and add `diagnostics.answer_alternatives` to JSON plus a clearly labelled
+Current reports use schema 4 with or without the flag. Enabling it adds `diagnostics.answer_alternatives` to JSON plus a clearly labelled
 Markdown section containing aggregate coverage, allowed/matched/unmatched phrases,
 and diagnostic input hashes. The original gate result, thresholds, metrics, and
 failures stay identical. For the regressed candidate above, both modes exit 1.

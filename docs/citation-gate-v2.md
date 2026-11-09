@@ -56,14 +56,14 @@ These are offline policy replays, not new generation experiments or release appr
 
 ## Reports and compatibility
 
-V2 uses report schema **3**, preserving the selected policy and
+Current v2 output uses report schema **4**, preserving the selected policy and
 `citation_existence_gate` evidence: full per-case membership, corpus hash, baseline
 and candidate counts, and signed count increase. Markdown labels the rule
 **Enforced unknown-citation gate** and displays thresholds plus affected cases.
 Failure codes distinguish `unknown_citation_limit` from `unknown_citation_increase`.
 Exit 0/1/2 meanings remain unchanged.
 
-V1 defaults and schema-1/schema-2 historical output remain unchanged. A policy file
+V1 defaults and historical schema-1/2/3 artifacts remain unchanged. A policy file
 without `policy_version` still means v1; adding unknown-citation fields to v1 is
 an error. V2 requires an explicit `unknown_citations` block. Optional report flags
 can coexist with v2 but cannot enable, disable, or weaken its enforcement. Any

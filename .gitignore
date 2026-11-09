@@ -9,4 +9,7 @@ __pycache__/
 *.key
 reports/
 /runs/
+/dist/
+/build/
+*.egg-info/
 .DS_Store

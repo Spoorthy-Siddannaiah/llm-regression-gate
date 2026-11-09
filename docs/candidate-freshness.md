@@ -50,14 +50,14 @@ uv run --python 3.12 llm-reliability \
 ```
 
 `new-candidate` is a placeholder for a future generated run, not a bundled artifact.
-Both existing real recordings predate code-snapshot capture. They still replay
-normally, but cannot satisfy this optional freshness requirement. They are not
-backfilled or regenerated to make it pass.
+The original baseline and top-one recordings predate code snapshots. They replay
+normally but cannot satisfy optional freshness checks. The third, citation-enum
+recording includes its original code target. None has been backfilled.
 
 The baseline intentionally remains exempt from target-code equality: comparison
-against an older implementation is precisely the purpose of a baseline. Default
-replay and report schemas/bytes remain unchanged. With the flag, CLI success output
-confirms freshness validation; the reports do not yet include a separate receipt.
+against an older implementation is precisely the purpose of a baseline. Gate decisions remain unchanged. Current schema-4 CLI reports include a receipt:
+`matched` means the supplied target was validated; `not_requested` means no target
+check was requested. The expected-target file hash is included when supplied.
 
 ## Limits
 
