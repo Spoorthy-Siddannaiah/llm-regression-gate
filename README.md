@@ -166,42 +166,20 @@ recorded-response examples. ACI-Bench remains a proposal, not current evidence.
 ## Architecture
 
 ```mermaid
-flowchart TB
-    subgraph Inputs[Evaluation inputs]
-        Dataset[Versioned dataset expectations]
-        Corpus[Reference corpus]
-        Baseline[Fixed baseline recording]
-        Candidate[Candidate recording]
-        Policy[Evaluation policy and settings]
-    end
-
-    Dataset --> Load[Load JSON and validate typed contracts]
-    Corpus --> Load
-    Baseline --> Load
-    Candidate --> Load
-    Policy --> Load
-    Load --> Provenance[Verify manifests, artifact hashes and optional code target]
-    Load -->|Validated policy| Gate
-    Provenance --> Engine[Deterministic evaluation of both recordings]
-    Engine --> Phrases[Required-phrase coverage]
-    Engine --> Citations[Citation-label coverage and optional corpus membership]
-    Engine --> Retrieval[Retrieval Recall at K]
-    Phrases --> Compare[Paired case metrics and aggregate comparisons]
-    Citations --> Compare
-    Retrieval --> Compare
-    Compare --> Gate[Apply selected regression policy]
-    Gate --> Reports[Write schema-4 JSON and Markdown reports with receipt]
-    Reports --> Outcome[CLI exit 0: pass or exit 1: quality failure]
-    Load -->|Invalid input| Error[Exit 2: evaluation did not complete]
-    Provenance -->|Integrity mismatch| Error
-    Reports -->|Write failure| Error
+flowchart TD
+    Pipeline[Your RAG pipeline] -. Optional local generation .-> Candidate[Saved candidate responses]
+    Candidate --> Compare[Evaluate alongside the fixed baseline on a versioned dataset]
+    Compare --> Checks[Check required phrases, citations and retrieval]
+    Checks --> Gate[Apply regression policy]
+    Gate --> Reports[Pass or fail with JSON and Markdown evidence]
 ```
 
-The corpus is required for real recording manifests and v2 membership enforcement;
-synthetic v1 comparisons can operate without one. Membership can also be requested
-as a report-only diagnostic. Optional local generation produces a new candidate
-before this evaluation flow; it never promotes the candidate to baseline.
-See [module boundaries and provenance contracts](docs/architecture.md).
+**Current CI replays saved responses.** Generating fresh candidate responses is a
+separate, optional step; it does not run automatically for every PR. Invalid inputs
+or execution failures return a separate error status. The baseline stays fixed.
+
+See [the detailed architecture](docs/architecture.md) for input validation,
+provenance checks, scoring and error handling.
 
 ## Technical reference
 

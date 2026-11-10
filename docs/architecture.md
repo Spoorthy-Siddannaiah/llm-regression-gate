@@ -29,6 +29,45 @@ The baseline and candidate come from different runs. Selecting a reference is a
 deliberate review decision; nothing automatically replaces it. Dataset labels and
 reference answers enter evaluation only, never the generation prompt.
 
+## Evaluation internals
+
+```mermaid
+flowchart TB
+    subgraph Inputs[Evaluation inputs]
+        Dataset[Versioned dataset expectations]
+        Corpus[Reference corpus]
+        Baseline[Fixed baseline recording]
+        Candidate[Candidate recording]
+        Policy[Evaluation policy and settings]
+    end
+
+    Dataset --> Load[Load JSON and validate typed contracts]
+    Corpus --> Load
+    Baseline --> Load
+    Candidate --> Load
+    Policy --> Load
+    Load --> Provenance[Verify manifests, artifact hashes and optional code target]
+    Load -->|Validated policy| Gate
+    Provenance --> Engine[Deterministic evaluation of both recordings]
+    Engine --> Phrases[Required-phrase coverage]
+    Engine --> Citations[Citation-label coverage and optional corpus membership]
+    Engine --> Retrieval[Retrieval Recall at K]
+    Phrases --> Compare[Paired case metrics and aggregate comparisons]
+    Citations --> Compare
+    Retrieval --> Compare
+    Compare --> Gate[Apply selected regression policy]
+    Gate --> Reports[Write schema-4 JSON and Markdown reports with receipt]
+    Reports --> Outcome[CLI exit 0: pass or exit 1: quality failure]
+    Load -->|Invalid input| Error[Exit 2: evaluation did not complete]
+    Provenance -->|Integrity mismatch| Error
+    Reports -->|Write failure| Error
+```
+
+The corpus is required for real recording manifests and v2 membership enforcement;
+synthetic v1 comparisons can operate without one. Corpus membership can also be
+requested as a report-only diagnostic. Generation remains separate from evaluation,
+and candidates never automatically replace the baseline.
+
 ## Responsibilities
 
 | Module | Responsibility |
@@ -88,8 +127,10 @@ Associated-source labels are not exhaustive. Corpus membership establishes only
 ID existence in that snapshot. Hashes detect drift, not signed authenticity or
 execution of current PR code. Single-run timings are not performance benchmarks.
 
-Hosted Actions execution, artifact upload, and branch-protection enforcement remain
-unverified because this repository has not been pushed. Observability and live
+Hosted Actions execution and report upload were verified on
+[commit `995ef72`](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/actions/runs/42700771347):
+356 tests and eight replay checks passed, and all 16 reports were downloaded and
+checked. Branch-protection enforcement remains unverified. Observability and live
 traffic monitoring are outside the current scope.
 
 Continue with the [offline demo runbook](demo.md).

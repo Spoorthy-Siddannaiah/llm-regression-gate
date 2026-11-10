@@ -426,3 +426,12 @@ latency/cost gates and production deployment remain outside this release's claim
 - Verification: 23 local README links/anchors checked; all eight offline replays
   returned expected outcomes; all 54 baseline hashes match; whitespace checks passed.
 - Next: review and authorize publication of this documentation update.
+
+## Simplified README architecture
+
+- Replaced the README implementation diagram with six steps from optional RAG
+  generation to a candidate recording, evaluation against a fixed baseline,
+  checks, policy and evidence reports. CI replay and fresh generation stay distinct.
+- Moved the detailed evaluator diagram to docs/architecture.md and corrected its
+  outdated hosted-CI statement using the verified run at `995ef72`.
+- Next: verify documentation and push this owner-authorized update.
