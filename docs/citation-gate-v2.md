@@ -74,7 +74,9 @@ passing synthetic case, the baseline's absolute-limit failure, and the real
 candidate's relative failures. Expected-rejection steps require exit 1 and inspect
 schema/policy versions, exact failure codes, and count evidence. Wrong reasons,
 unexpected passes, and execution errors fail CI. Reports from all cases are retained.
-Hosted execution remains unverified; local checks passed without model calls.
+[Hosted execution on `fd89a8c`](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/actions/runs/42788109117)
+passed the recorded checks and report upload without model calls. Later local
+workflow changes require a new hosted run after approved publication.
 An additional actual [constrained-citation candidate](../recordings/squad/llama3.2-bm25-citation-enum-v2/README.md)
 now passes v2 with zero unknown IDs and unchanged aggregate scores; CI replays it
 without inference and verifies its saved code target.

@@ -12,8 +12,13 @@ build-backend = "hatchling.build"
 name = "llm-reliability-platform"
 version = "0.1.0"
 description = "Reproducible, local LLM regression checks"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["pydantic>=2.10,<3"]
+
+[project.urls]
+Repository = "https://github.com/Spoorthy-Siddannaiah/llm-regression-gate"
+Issues = "https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/issues"
 
 [project.scripts]
 llm-reliability = "llm_reliability.cli:main"

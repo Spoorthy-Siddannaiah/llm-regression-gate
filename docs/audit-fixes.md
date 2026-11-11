@@ -1,7 +1,12 @@
 # Audit fixes and reproducible verification
 
+**Historical audit record:** the task below predates publication. Its original
+commit/working-tree observations describe that audit snapshot, not current Git
+state. For current status, see [publication](publication.md); for commands and
+package identity, see [reproducibility](reproducibility.md).
+
 The audit-fix task started at clean HEAD
-`2ad69ec05ef5697d88befe3be8bb84994f7801ae`. Changes are intentionally uncommitted:
+`2ad69ec05ef5697d88befe3be8bb84994f7801ae`. At that stage, changes were intentionally uncommitted:
 the owner prohibited commits, remotes, publication, model calls and license changes.
 All historical datasets, recordings, benchmark artifacts and policy thresholds remain
 unchanged. Original code remains unlicensed.
@@ -96,9 +101,10 @@ explicit correct-abstention cases. No judge, PHI detection, latency/cost gate,
 trusted production traces, production deployment or healthcare compliance exists.
 Before/after file checks are not transactions against hostile concurrent writers.
 Receipts and manifests are integrity evidence, not signed execution attestation.
-GitHub Actions setup and upload must be verified after separately authorized publication.
+Hosted execution was subsequently verified after owner-authorized publication;
+see [the revision-specific record](publication.md). This does not verify local edits.
 
-## Actual verification results
+## Original audit verification results
 
 - **356 tests passed** locally and after a fresh locked installation of an isolated
   current-source snapshot. No tests were reported skipped.

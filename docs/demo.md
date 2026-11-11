@@ -1,5 +1,22 @@
 # Offline regression demo
 
+## One-command interviewer walkthrough
+
+```sh
+uv sync --python 3.12.13 --locked
+uv run --locked python scripts/demo.py
+```
+
+The script reuses the eight-scenario replay verifier, then prints the actual
+retrieval-regression metrics, the saved MVP answer/abstention example, and the
+passing citation fix. Values come from generated reports and preserved recordings.
+Its exit 0 means all expected outcomes were verified, including deliberate gate
+failures; it never treats execution errors as successful rejection. Default reports
+go to a new temporary location printed at the end. An explicit `--output-dir`
+must name a new directory. There is no inference, model download or baseline write.
+
+The following sections expose the underlying CLI commands for inspection.
+
 Run from the repository root in the same interactive shell. No Ollama server,
 provider key, model download, or paid inference is needed. Initial dependency
 installation may need internet access. Every command writes to a new directory.
@@ -9,8 +26,8 @@ locally. Hosted Actions execution and deployment remain separate.
 ## Setup
 
 ```sh
-uv sync --python 3.12 --locked
-uv run --python 3.12 --locked pytest
+uv sync --python 3.12.13 --locked
+uv run --python 3.12.13 --locked pytest
 LLM_DEMO_DIR="$(mktemp -d /tmp/llm-reliability-demo.XXXXXX)"
 echo "Demo reports: $LLM_DEMO_DIR"
 ```

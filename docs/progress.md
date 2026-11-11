@@ -435,3 +435,25 @@ latency/cost gates and production deployment remain outside this release's claim
 - Moved the detailed evaluator diagram to docs/architecture.md and corrected its
   outdated hosted-CI statement using the verified run at `995ef72`.
 - Next: verify documentation and push this owner-authorized update.
+
+## AI engineering portfolio polish (2026-11-11)
+
+- Audited the clean repository at `fd89a8c`; baseline locked install and 356 tests passed.
+- Added a report-driven terminal demo reusing the existing eight-scenario verifier,
+  with three tests for evidence, existing-output protection and missing-report failure.
+- Shortened the README and preserved detailed methodology/limitations in a linked
+  technical reference. Added package identity and clean-environment instructions.
+- Corrected current publication claims while retaining labelled historical audit notes.
+- Strengthened v1 CI rejection assertions; source, thresholds and evidence stay fixed.
+- Added README/repository package metadata without renaming interfaces or changing dependencies.
+- Verification: 359 tests passed locally and in a fresh locked source snapshot;
+  eight original replays and all eight actual CI replay shell bodies/assertions
+  passed locally. The terminal walkthrough displayed the recorded metrics and fix.
+- Wheel and source distribution built; a fresh wheel environment outside the
+  checkout passed the citation-fix replay with locked runtime versions. Package
+  README metadata, links and archive exclusions were checked.
+- All 207 protected source/data/policy/evidence files and uv.lock match the initial
+  audit snapshot, including all 54 baseline hashes. Markdown links and whitespace passed.
+- The owner reviewed the local results and approved committing and publishing
+  this polish. Next: verify the hosted run and downloadable reports on the new
+  published revision before reporting application readiness.

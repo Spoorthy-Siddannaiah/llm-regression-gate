@@ -1,49 +1,36 @@
-# v0.1.0 publication handoff
+# Publication status and review checklist
 
-The regression-catching MVP is ready for repository review. The README and
-[five-case demo](demo.md) are the entry points. The clinical dataset extension is
-future work, not required to demonstrate this release's implemented scope.
+The project is public at
+[Spoorthy-Siddannaiah/llm-regression-gate](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate).
+The default branch is `main`. Publication is repository hosting, not application
+deployment, production acceptance or clinical release approval.
 
-## Release contents
+## Verified published state
 
-- Typed evaluator, versioned policies, reports, CLI, and opt-in local generation.
-- Handwritten pass/fail fixtures, clearly labelled separately from actual outputs.
-- Three actual SQuAD recordings: observed baseline, degraded top-one candidate,
-  and constrained-citation candidate. All include raw evidence for offline replay.
-- Tests and eight CI replay checks, including both real rejection and real pass.
-- Attribution for the SQuAD adaptation; original code remains unlicensed by choice.
+The [hosted run on `fd89a8c`](https://github.com/Spoorthy-Siddannaiah/llm-regression-gate/actions/runs/42788109117)
+passed tests, all eight expected replay outcomes and report upload. A prior run on
+`995ef72` also had all 16 report files downloaded and checked. These observations
+apply to those revisions, not to subsequent local changes. Branch-protection
+requirements have not been verified.
 
-Generated reports, local workflow output, model files, virtual environments, and
-local environment files are excluded from publication. Raw versioned model evidence
-under `recordings/` is intentionally included. Targeted credential-pattern scans
-are useful checks, not a guarantee that a repository contains no sensitive material.
+## Review entry points
 
-## Proposed GitHub repository
+- [README](../README.md): problem, measured experiment, architecture and limitations.
+- [Terminal demo](demo.md): actual report evidence without a model server.
+- [Reproducibility](reproducibility.md): locked environment and installed-wheel checks.
+- [Portfolio audit](portfolio-audit.md): findings and the current polish scope.
 
-- Owner: `Spoorthy-Siddannaiah` (authenticated GitHub CLI account).
-- Name: `llm-regression-gate`.
-- Description: “Reproducible RAG regression gates with fixed baselines, local model evidence, and CI replay.”
-- Proposed visibility: public for portfolio review; publication needs explicit confirmation.
+## Before any additional publication
 
-No remote is configured and nothing has been pushed. The working agreement still
-says “do not push or publish”; prepare locally first, then confirm this exact
-destination and visibility with the owner.
+1. Inspect the full diff; preserve datasets, baseline hashes, recordings and policies.
+2. Run tests, eight replays, package builds and relevant environment checks.
+3. Review raw evidence for private data before adding future recordings. Ignored
+   local reports, run directories, caches, environments and model files stay local.
+4. Keep original code unlicensed unless the owner explicitly changes that choice;
+   preserve SQuAD's separate CC BY-SA attribution and notices.
+5. Obtain explicit owner approval before committing or pushing the current polish.
+6. Push only the intended branch, then inspect the hosted run for that exact revision.
+   Retain internal refs, private backups and original email metadata outside publication.
 
-After authorized publication, inspect the first hosted `Regression checks` run
-and downloadable reports. Only then claim hosted CI is verified. Configure the
-`Tests and recorded-response gate` check as required if the account/repository's
-branch rules support it. Passing CI is not deployment or clinical release approval.
-
-## Interview walkthrough
-
-Explain the fixed dataset and baseline, show the top-one regression being rejected,
-then show the citation-schema fix passing without weaker thresholds. Distinguish
-limited phrase/ID checks from semantic correctness. Finish with the missing pieces:
-fresh inference for each PR, representative domain labels, and production operation.
-
-## Audit-fix working tree
-
-The owner has explicitly prohibited commits, remote configuration and publication
-for this implementation task. Review the uncommitted audit changes and
-[audit-fix verification](audit-fixes.md) first. Public release remains a separately
-authorized action, followed by hosted Actions verification. Code stays unlicensed.
+A successful replay verifies that known examples behaved as expected. It does not
+establish semantic correctness, fresh PR inference or deployment eligibility.

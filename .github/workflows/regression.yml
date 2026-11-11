@@ -71,6 +71,17 @@ jobs:
             echo "Expected quality-regression exit 1; got $gate_status" >&2
             exit 1
           fi
+          uv run --python 3.12.13 --locked python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("reports/ci-intentional-regression/report.json").read_text())
+          assert report["report_schema_version"] == 4 and report["passed"] is False
+          assert {failure["code"] for failure in report["failures"]} == {
+              "below_minimum", "excessive_drop", "critical_facts_missing",
+          }
+          assert any(failure["case_id"] == "refund-window" and failure["code"] == "critical_facts_missing"
+                     for failure in report["failures"])
+          PY
 
       # Self-replay checks stability only; it does not approve baseline quality.
       - name: Replay observed SQuAD baseline
@@ -104,6 +115,16 @@ jobs:
             echo "Expected real quality-regression exit 1; got $gate_status" >&2
             exit 1
           fi
+          uv run --python 3.12.13 --locked python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("reports/ci-squad-regression/report.json").read_text())
+          assert report["report_schema_version"] == 4 and report["passed"] is False
+          assert {failure["code"] for failure in report["failures"]} == {"excessive_drop"}
+          assert {failure["metric"] for failure in report["failures"]} == {
+              "fact_coverage", "citation_label_coverage", "retrieval_recall",
+          }
+          PY
 
       - name: Gate accepted synthetic candidate with v2
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}

@@ -18,7 +18,8 @@ SQuAD is extractive QA data being adapted for a RAG integration slice, not an
 already-built RAG pipeline or a source of baseline model results. The Haystack
 tutorial below remains an architecture reference; its PubMedQA data choice is
 superseded. Required-phrase checking currently accepts only the first answer span;
-alternative-answer evaluation needs a later explicit extension.
+an optional [alternative-answer diagnostic](answer-alternatives.md) now reports
+other annotated phrases without changing the gate.
 
 ## Historical selection: Haystack + PubMedQA (superseded)
 
